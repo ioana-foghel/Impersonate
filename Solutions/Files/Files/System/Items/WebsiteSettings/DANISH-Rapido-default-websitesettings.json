@@ -1,0 +1,1266 @@
+﻿{
+  "items": [
+    {
+      "id": "27",
+      "sort": 0,
+      "sysname": "WebsiteSettings",
+      "source": 0,
+      "fields": [
+        {
+          "name": "Id",
+          "value": "27",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "Sort",
+          "value": 0,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ItemInstanceType",
+          "value": "",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "LayoutWidth",
+          "value": "boxed",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "LayoutCenterWidth",
+          "value": "1000px",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "LayoutTop",
+          "value": "normal",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationStickyMenu",
+          "value": true,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "LayoutBackgroundColor",
+          "value": "#FFFFFF",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "LayoutBackgroundImage",
+          "value": "",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "LayoutBrandColorOne",
+          "value": "#ec683b",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "LayoutBrandColorTwo",
+          "value": "#14304A",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "LogoImage",
+          "value": "\/Files\/Images\/DWLogoColor.svg",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "LogoBackgroundColor",
+          "value": null,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "LogoFavicon",
+          "value": "\/Files\/Images\/favicon.png",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "TopBackgroundColor",
+          "value": "#FFFFFF",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "RenderPagesInToolBar",
+          "value": false,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ToolsMenuBackgroundColor",
+          "value": "#F3F3F3",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ToolsMenuFont",
+          "value": "182",
+          "items": [
+            {
+              "id": "182",
+              "sort": 0,
+              "sysname": "Font",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "182",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 0,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontFamily",
+                  "value": "{\"Family\":\"Lato\",\"SubSets\":[\"latin\",\"latin-ext\"],\"Variants\":[\"100\",\"100italic\",\"300\",\"300italic\",\"regular\",\"italic\",\"700\",\"700italic\",\"900\",\"900italic\"],\"SelectedVariant\":\"regular\",\"Version\":\"v14\",\"LastModified\":\"2017-10-11T00:00:00\",\"Files\":{\"100\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Upp-ka9rLQmHYCsFgwL-eg.ttf\",\"100italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/zLegi10uS_9-fnUDISl0KA.ttf\",\"300\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Ja02qOppOVq9jeRjWekbHg.ttf\",\"300italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/dVebFcn7EV7wAKwgYestUg.ttf\",\"regular\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/h7rISIcQapZBpei-sXwIwg.ttf\",\"italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/P_dJOFJylV3A870UIOtr0w.ttf\",\"700\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/iX_QxBBZLhNj5JHlTzHQzg.ttf\",\"700italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/WFcZakHrrCKeUJxHA4T_gw.ttf\",\"900\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/8TPEV6NbYWZlNsXjbYVv7w.ttf\",\"900italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/draWperrI7n2xi35Cl08fA.ttf\"}}",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontColor",
+                  "value": "#333333",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontSize",
+                  "value": 14,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "LineHeight",
+                  "value": 1.4,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Casing",
+                  "value": "none",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            }
+          ],
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationBackgroundColor",
+          "value": "#14304A",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationActiveFontColor",
+          "value": "#FFFFFF",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationHeight",
+          "value": 40,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationFont",
+          "value": "158",
+          "items": [
+            {
+              "id": "158",
+              "sort": 0,
+              "sysname": "Font",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "158",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 0,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontFamily",
+                  "value": "{\"Family\":\"Lato\",\"SubSets\":[\"latin\",\"latin-ext\"],\"Variants\":[\"100\",\"100italic\",\"300\",\"300italic\",\"regular\",\"italic\",\"700\",\"700italic\",\"900\",\"900italic\"],\"SelectedVariant\":\"regular\",\"Version\":\"v14\",\"LastModified\":\"2017-10-11T00:00:00\",\"Files\":{\"100\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Upp-ka9rLQmHYCsFgwL-eg.ttf\",\"100italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/zLegi10uS_9-fnUDISl0KA.ttf\",\"300\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Ja02qOppOVq9jeRjWekbHg.ttf\",\"300italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/dVebFcn7EV7wAKwgYestUg.ttf\",\"regular\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/h7rISIcQapZBpei-sXwIwg.ttf\",\"italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/P_dJOFJylV3A870UIOtr0w.ttf\",\"700\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/iX_QxBBZLhNj5JHlTzHQzg.ttf\",\"700italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/WFcZakHrrCKeUJxHA4T_gw.ttf\",\"900\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/8TPEV6NbYWZlNsXjbYVv7w.ttf\",\"900italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/draWperrI7n2xi35Cl08fA.ttf\"}}",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontColor",
+                  "value": "#FFFFFF",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontSize",
+                  "value": 14,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "LineHeight",
+                  "value": 1.4,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Casing",
+                  "value": "none",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            }
+          ],
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationMegaMenu",
+          "value": "true",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationDropdownBackgroundColor",
+          "value": "#FFFFFF",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationDropdownFontColor",
+          "value": "#333333",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationDropdownActiveColor",
+          "value": "#FFFFFF",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationDropdownActiveFontColor",
+          "value": "#ec683b",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationDropdownHeadingColor",
+          "value": "#333333",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationDropdownHeadingSize",
+          "value": 1.6,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationMegamenuPromotionImage",
+          "value": "",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "NavigationMegamenuPromotionLink",
+          "value": "Default.aspx?Id=52",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "MobileNavigationBackgroundColor",
+          "value": "#FFFFFF",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "MobileNavigationActiveBackgroundColor",
+          "value": "#F6F6F6",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "MobileNavigationFont",
+          "value": "159",
+          "items": [
+            {
+              "id": "159",
+              "sort": 0,
+              "sysname": "Font",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "159",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 0,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontFamily",
+                  "value": "{\"Family\":\"Lato\",\"SubSets\":[\"latin\",\"latin-ext\"],\"Variants\":[\"100\",\"100italic\",\"300\",\"300italic\",\"regular\",\"italic\",\"700\",\"700italic\",\"900\",\"900italic\"],\"SelectedVariant\":\"regular\",\"Version\":\"v14\",\"LastModified\":\"2017-10-11T00:00:00\",\"Files\":{\"100\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Upp-ka9rLQmHYCsFgwL-eg.ttf\",\"100italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/zLegi10uS_9-fnUDISl0KA.ttf\",\"300\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Ja02qOppOVq9jeRjWekbHg.ttf\",\"300italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/dVebFcn7EV7wAKwgYestUg.ttf\",\"regular\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/h7rISIcQapZBpei-sXwIwg.ttf\",\"italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/P_dJOFJylV3A870UIOtr0w.ttf\",\"700\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/iX_QxBBZLhNj5JHlTzHQzg.ttf\",\"700italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/WFcZakHrrCKeUJxHA4T_gw.ttf\",\"900\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/8TPEV6NbYWZlNsXjbYVv7w.ttf\",\"900italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/draWperrI7n2xi35Cl08fA.ttf\"}}",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontColor",
+                  "value": "#333333",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontSize",
+                  "value": 16,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "LineHeight",
+                  "value": 1.4,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Casing",
+                  "value": "none",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            }
+          ],
+          "itemListInfo": null
+        },
+        {
+          "name": "MobileNavigationLevels",
+          "value": 3,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "MobileNavigationActiveFontColor",
+          "value": "#333333",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "MobileNavigationTextAlignment",
+          "value": "left",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ContentLayoutHeaderFont",
+          "value": "160",
+          "items": [
+            {
+              "id": "160",
+              "sort": 0,
+              "sysname": "Font",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "160",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 0,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontFamily",
+                  "value": "{\"Family\":\"Lato\",\"SubSets\":[\"latin\",\"latin-ext\"],\"Variants\":[\"100\",\"100italic\",\"300\",\"300italic\",\"regular\",\"italic\",\"700\",\"700italic\",\"900\",\"900italic\"],\"SelectedVariant\":\"regular\",\"Version\":\"v14\",\"LastModified\":\"2017-10-11T00:00:00\",\"Files\":{\"100\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Upp-ka9rLQmHYCsFgwL-eg.ttf\",\"100italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/zLegi10uS_9-fnUDISl0KA.ttf\",\"300\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Ja02qOppOVq9jeRjWekbHg.ttf\",\"300italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/dVebFcn7EV7wAKwgYestUg.ttf\",\"regular\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/h7rISIcQapZBpei-sXwIwg.ttf\",\"italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/P_dJOFJylV3A870UIOtr0w.ttf\",\"700\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/iX_QxBBZLhNj5JHlTzHQzg.ttf\",\"700italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/WFcZakHrrCKeUJxHA4T_gw.ttf\",\"900\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/8TPEV6NbYWZlNsXjbYVv7w.ttf\",\"900italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/draWperrI7n2xi35Cl08fA.ttf\"}}",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontColor",
+                  "value": "#333333",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontSize",
+                  "value": 28,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "LineHeight",
+                  "value": 1.4,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Casing",
+                  "value": "none",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            }
+          ],
+          "itemListInfo": null
+        },
+        {
+          "name": "ContentLayoutSubheaderFont",
+          "value": "161",
+          "items": [
+            {
+              "id": "161",
+              "sort": 0,
+              "sysname": "Font",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "161",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 0,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontFamily",
+                  "value": "{\"Family\":\"Lato\",\"SubSets\":[\"latin\",\"latin-ext\"],\"Variants\":[\"100\",\"100italic\",\"300\",\"300italic\",\"regular\",\"italic\",\"700\",\"700italic\",\"900\",\"900italic\"],\"SelectedVariant\":\"regular\",\"Version\":\"v14\",\"LastModified\":\"2017-10-11T00:00:00\",\"Files\":{\"100\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Upp-ka9rLQmHYCsFgwL-eg.ttf\",\"100italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/zLegi10uS_9-fnUDISl0KA.ttf\",\"300\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Ja02qOppOVq9jeRjWekbHg.ttf\",\"300italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/dVebFcn7EV7wAKwgYestUg.ttf\",\"regular\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/h7rISIcQapZBpei-sXwIwg.ttf\",\"italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/P_dJOFJylV3A870UIOtr0w.ttf\",\"700\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/iX_QxBBZLhNj5JHlTzHQzg.ttf\",\"700italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/WFcZakHrrCKeUJxHA4T_gw.ttf\",\"900\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/8TPEV6NbYWZlNsXjbYVv7w.ttf\",\"900italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/draWperrI7n2xi35Cl08fA.ttf\"}}",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontColor",
+                  "value": "#333333",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontSize",
+                  "value": 24,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "LineHeight",
+                  "value": 1.4,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Casing",
+                  "value": "none",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            }
+          ],
+          "itemListInfo": null
+        },
+        {
+          "name": "ContentLayoutBodyText",
+          "value": "162",
+          "items": [
+            {
+              "id": "162",
+              "sort": 0,
+              "sysname": "Font",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "162",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 0,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontFamily",
+                  "value": "{\"Family\":\"Lato\",\"SubSets\":[\"latin\",\"latin-ext\"],\"Variants\":[\"100\",\"100italic\",\"300\",\"300italic\",\"regular\",\"italic\",\"700\",\"700italic\",\"900\",\"900italic\"],\"SelectedVariant\":\"regular\",\"Version\":\"v14\",\"LastModified\":\"2017-10-11T00:00:00\",\"Files\":{\"100\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Upp-ka9rLQmHYCsFgwL-eg.ttf\",\"100italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/zLegi10uS_9-fnUDISl0KA.ttf\",\"300\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/Ja02qOppOVq9jeRjWekbHg.ttf\",\"300italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/dVebFcn7EV7wAKwgYestUg.ttf\",\"regular\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/h7rISIcQapZBpei-sXwIwg.ttf\",\"italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/P_dJOFJylV3A870UIOtr0w.ttf\",\"700\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/iX_QxBBZLhNj5JHlTzHQzg.ttf\",\"700italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/WFcZakHrrCKeUJxHA4T_gw.ttf\",\"900\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/8TPEV6NbYWZlNsXjbYVv7w.ttf\",\"900italic\":\"http:\/\/fonts.gstatic.com\/s\/lato\/v14\/draWperrI7n2xi35Cl08fA.ttf\"}}",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontColor",
+                  "value": "#333333",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontSize",
+                  "value": 14,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "LineHeight",
+                  "value": 1.4,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Casing",
+                  "value": "none",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            }
+          ],
+          "itemListInfo": null
+        },
+        {
+          "name": "ContentLayoutPrimaryButton",
+          "value": "95",
+          "items": [
+            {
+              "id": "95",
+              "sort": 0,
+              "sysname": "Button",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "95",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 0,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "BackgroundColor",
+                  "value": "#ec683b",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontColor",
+                  "value": "#FFFFFF",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontSize",
+                  "value": 15,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "LineHeight",
+                  "value": 38,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontWeight",
+                  "value": "normal",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ButtonDesign",
+                  "value": "square",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            }
+          ],
+          "itemListInfo": null
+        },
+        {
+          "name": "ContentLayoutSecondaryButton",
+          "value": "96",
+          "items": [
+            {
+              "id": "96",
+              "sort": 0,
+              "sysname": "Button",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "96",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 0,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "BackgroundColor",
+                  "value": "#14304A",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontColor",
+                  "value": "#14304A",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontSize",
+                  "value": 15,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "LineHeight",
+                  "value": 38,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "FontWeight",
+                  "value": "normal",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ButtonDesign",
+                  "value": "outline-square",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            }
+          ],
+          "itemListInfo": null
+        },
+        {
+          "name": "ContentLayoutLinksColor",
+          "value": "#ec683b",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ContentLayoutLinksHoverColor",
+          "value": "#14304A",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ContentLayoutPaginationActiveColor",
+          "value": "#14304A",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "FooterBackgroundColor",
+          "value": "#191919",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "FooterFontColor",
+          "value": "#FFFFFF",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "FooterColumnOneHeader",
+          "value": "KONTAKT",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "FooterColumnOne",
+          "value": "<p>Dynamicweb - Rapido<br \/>\u000d\u000aDynamicweb Software A\/S<br \/>\u000d\u000aBj&oslash;rnholms All&eacute; 30<br \/>\u000d\u000aDK-8260 Viby J<\/p>\u000d\u000a\u000d\u000a<p>Tlf: +4570252090<br \/>\u000d\u000aEmail: info@dynamicweb.dk<\/p>\u000d\u000a",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "FooterColumnTwoHeader",
+          "value": "",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "FooterColumnTwo",
+          "value": "",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "FooterNewsletterSignUp",
+          "value": true,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "FooterSocialLinks",
+          "value": 313,
+          "items": [
+            {
+              "id": "179",
+              "sort": 1,
+              "sysname": "SocialLinks",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "179",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 1,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Icon",
+                  "value": "fa-facebook-square",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Link",
+                  "value": "http:\/\/facebook.dk",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            },
+            {
+              "id": "180",
+              "sort": 2,
+              "sysname": "SocialLinks",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "180",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 2,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Icon",
+                  "value": "fa-twitter-square",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Link",
+                  "value": "http:\/\/twitter.com",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            },
+            {
+              "id": "181",
+              "sort": 3,
+              "sysname": "SocialLinks",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "181",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 3,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Icon",
+                  "value": "fa-youtube-square",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Link",
+                  "value": "http:\/\/youtube.com",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            },
+            {
+              "id": "182",
+              "sort": 4,
+              "sysname": "SocialLinks",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "182",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 4,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Icon",
+                  "value": "fa-instagram",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Link",
+                  "value": "http:\/\/instagr.am",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            },
+            {
+              "id": "183",
+              "sort": 5,
+              "sysname": "SocialLinks",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "183",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 5,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Icon",
+                  "value": "fa-linkedin-square",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Link",
+                  "value": "http:\/\/linkedin.dk",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            },
+            {
+              "id": "184",
+              "sort": 6,
+              "sysname": "SocialLinks",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "184",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 6,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Icon",
+                  "value": "fa-google-plus-square",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Link",
+                  "value": "http:\/\/google.com",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            },
+            {
+              "id": "185",
+              "sort": 7,
+              "sysname": "SocialLinks",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "185",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 7,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Icon",
+                  "value": "fa-pinterest-square",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Link",
+                  "value": "http:\/\/pintrest.com",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            },
+            {
+              "id": "186",
+              "sort": 8,
+              "sysname": "SocialLinks",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "186",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 8,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Icon",
+                  "value": "fa-vimeo-square",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Link",
+                  "value": "http:\/\/vimeo.com",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            }
+          ],
+          "itemListInfo": {
+            "id": 313,
+            "itemType": "SocialLinks",
+            "relations": [ "179", "180", "181", "182", "183", "184", "185", "186" ]
+          }
+        },
+        {
+          "name": "FooterCopyrightText",
+          "value": "© 2017 Dynamicweb - Rapido. All rights reserved.",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "EcommerceFacetsViewMode",
+          "value": "left",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "EcommerceSaleTagColor",
+          "value": "#FFFFFF",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "EcommerceSaleTagBackgroundColor",
+          "value": "#DE0000",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "EcommerceReceiptLogoImage",
+          "value": "\/Files\/Images\/DWLogo.png",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ProductItemContainer",
+          "value": true,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ProductGridItemContainer",
+          "value": true,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ProductDetailsItemContainer",
+          "value": true,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ProductDefaultListView",
+          "value": "ProductItemContainer",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "HidePayment",
+          "value": false,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "HideShipping",
+          "value": false,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "HideComment",
+          "value": false,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "EmailLogoImage",
+          "value": "\/Files\/Images\/DWLogo.png",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ContactNumber",
+          "value": "+4570252090",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "ContactEmail",
+          "value": "info@dynamicweb.dk",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "WireframeMode",
+          "value": false,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "HeaderButtonText",
+          "value": "Demo",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "HeaderButtonLink",
+          "value": "Default.aspx?Id=456",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "HeaderButtonType",
+          "value": "Primary",
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "UseCustomJavascript",
+          "value": false,
+          "items": null,
+          "itemListInfo": null
+        },
+        {
+          "name": "CustomSettings",
+          "value": "40",
+          "items": [
+            {
+              "id": "40",
+              "sort": 0,
+              "sysname": "CustomWebsiteSettings",
+              "source": 0,
+              "fields": [
+                {
+                  "name": "Id",
+                  "value": "40",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "Sort",
+                  "value": 0,
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "ItemInstanceType",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                },
+                {
+                  "name": "CustomSettings",
+                  "value": "",
+                  "items": null,
+                  "itemListInfo": null
+                }
+              ]
+            }
+          ],
+          "itemListInfo": null
+        }
+      ]
+    }
+  ]
+}

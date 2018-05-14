@@ -1,0 +1,809 @@
+2018-05-09 16:35:20.4561|ERROR|Templates|Error compiling razor template
+RazorEngine.Templating.TemplateCompilationException: Unable to compile template. 'Dynamicweb.Ecommerce.International.Language.GetLanguages()' is obsolete: 'Use LanguageService.GetLanguages instead.'
+
+Other compilation errors may have occurred. Check the Errors property for more information.
+   at RazorEngine.Compilation.DirectCompilerServiceBase.CompileType(TypeContext context)
+   at RazorEngine.Templating.TemplateService.CreateTemplateType(String razorTemplate, Type modelType)
+   at RazorEngine.Templating.TemplateService.GetTemplate[T](String razorTemplate, Object model, String cacheName)
+   at RazorEngine.Templating.TemplateService.GetTemplate(String razorTemplate, Object model, String cacheName)
+   at RazorEngine.Templating.TemplateService.Parse(String razorTemplate, Object model, DynamicViewBag viewBag, String cacheName)
+   at RazorEngine.Razor.Parse[T](String razorTemplate, T model, String cacheName)
+   at Dynamicweb.Rendering.Template.RenderRazorTemplate()
+Error compiling template "Designs/Rapido/eCom/Product/Product.cshtml"
+Line 1739: 'Dynamicweb.Ecommerce.International.Language.GetLanguages()' is obsolete: 'Use LanguageService.GetLanguages instead.'
+Line 1891: 'Dynamicweb.Ecommerce.International.Language.GetLanguages()' is obsolete: 'Use LanguageService.GetLanguages instead.'
+Line 2220: The name 'productCatalogId' does not exist in the current context
+Line 2224: The name 'requestQuery' does not exist in the current context
+Line 2228: The name 'productCatalogId' does not exist in the current context
+<hr/>
+<div class='template-code'>
+<span class='line-number'>  1</span>	@inherits Dynamicweb.Rendering.RazorTemplateBase&lt;Dynamicweb.Rendering.RazorTemplateModel&lt;Dynamicweb.Rendering.Template&gt;&gt;
+<span class='line-number'>  2</span>	@using Dynamicweb.Extensibility
+<span class='line-number'>  3</span>	@using Dynamicweb.Content
+<span class='line-number'>  4</span>	@using System
+<span class='line-number'>  5</span>	@using System.IO
+<span class='line-number'>  6</span>	@using System.Text.RegularExpressions
+<span class='line-number'>  7</span>	@using Dynamicweb.Ecommerce.International;
+<span class='line-number'>  8</span>	
+<span class='line-number'>  9</span>	@{
+<span class='line-number'> 10</span>	    string exportPageId = GetPageIdByNavigationTag(&quot;ProductExportFeed&quot;).ToString();
+<span class='line-number'> 11</span>	    int pdfFolderId = GetPageIdByNavigationTag(&quot;PdfFolder&quot;);
+<span class='line-number'> 12</span>	    string productId = GetString(&quot;Ecom:Product.ID&quot;);
+<span class='line-number'> 13</span>	    string onSale = GetString(&quot;Ecom:Product.Discount.Price.PriceWithVATFormatted&quot;) == GetString(&quot;Ecom:Product.Price.PriceWithVATFormatted&quot;) ? &quot;u-hidden&quot; : &quot;&quot;;
+<span class='line-number'> 14</span>	    string hideHelpText = &quot;&quot;;
+<span class='line-number'> 15</span>	    string feedId = GetPageIdByNavigationTag(&quot;ProductsFeed&quot;).ToString();
+<span class='line-number'> 16</span>	    string feedUrl = &quot;/Default.aspx?ID=&quot; + feedId + &quot;&amp;feedType=productCatalog&quot;;
+<span class='line-number'> 17</span>	    int featuresCount = 0;
+<span class='line-number'> 18</span>	    int thumbsCount = GetLoop(&quot;Details&quot;).Count;
+<span class='line-number'> 19</span>	    int documentsCount = 0;
+<span class='line-number'> 20</span>	
+<span class='line-number'> 21</span>	    foreach (LoopItem customField in GetLoop(&quot;CustomFieldValues&quot;))
+<span class='line-number'> 22</span>	    {
+<span class='line-number'> 23</span>	        if (!String.IsNullOrEmpty(customField.GetString(&quot;Product.CustomField.Value.Clean&quot;)))
+<span class='line-number'> 24</span>	        {
+<span class='line-number'> 25</span>	            featuresCount++;
+<span class='line-number'> 26</span>	        }
+<span class='line-number'> 27</span>	    }
+<span class='line-number'> 28</span>	
+<span class='line-number'> 29</span>	    foreach (LoopItem customField in GetLoop(&quot;ProductCategories&quot;))
+<span class='line-number'> 30</span>	    {
+<span class='line-number'> 31</span>	        foreach (LoopItem field in customField.GetLoop(&quot;ProductCategoryFields&quot;))
+<span class='line-number'> 32</span>	        {
+<span class='line-number'> 33</span>	            if (!String.IsNullOrEmpty(field.GetString(&quot;Ecom:Product.CategoryField.Value&quot;)))
+<span class='line-number'> 34</span>	            {
+<span class='line-number'> 35</span>	                featuresCount++;
+<span class='line-number'> 36</span>	            }
+<span class='line-number'> 37</span>	        }
+<span class='line-number'> 38</span>	    }
+<span class='line-number'> 39</span>	
+<span class='line-number'> 40</span>	    foreach (LoopItem alternativeImage in GetLoop(&quot;Ecom:Product.AlternativeImages&quot;))
+<span class='line-number'> 41</span>	    {
+<span class='line-number'> 42</span>	        if (!String.IsNullOrEmpty(alternativeImage.GetString(&quot;Ecom:Product.AlternativeImages.Image&quot;)))
+<span class='line-number'> 43</span>	        {
+<span class='line-number'> 44</span>	            thumbsCount++;
+<span class='line-number'> 45</span>	        }
+<span class='line-number'> 46</span>	    }
+<span class='line-number'> 47</span>	
+<span class='line-number'> 48</span>	    if (!String.IsNullOrEmpty(GetString(&quot;Ecom:Product.ImageSmall.Default.Clean&quot;)))
+<span class='line-number'> 49</span>	    {
+<span class='line-number'> 50</span>	        thumbsCount++;
+<span class='line-number'> 51</span>	    }
+<span class='line-number'> 52</span>	
+<span class='line-number'> 53</span>	    foreach (LoopItem variantgroup in GetLoop(&quot;VariantGroups&quot;))
+<span class='line-number'> 54</span>	    {
+<span class='line-number'> 55</span>	        foreach (LoopItem variantoption in variantgroup.GetLoop(&quot;VariantAvailableOptions&quot;))
+<span class='line-number'> 56</span>	        {
+<span class='line-number'> 57</span>	            if (variantoption.GetBoolean(&quot;Ecom:VariantOption.Selected&quot;))
+<span class='line-number'> 58</span>	            {
+<span class='line-number'> 59</span>	                hideHelpText = &quot;u-hidden&quot;;
+<span class='line-number'> 60</span>	            }
+<span class='line-number'> 61</span>	        }
+<span class='line-number'> 62</span>	    }
+<span class='line-number'> 63</span>	
+<span class='line-number'> 64</span>	    string feedPageUrl = &quot;/Default.aspx?ID=&quot; + GetPageIdByNavigationTag(&quot;RelatedProductsFeed&quot;);
+<span class='line-number'> 65</span>	    string feedFullUrl = feedPageUrl + &quot;&amp;feedType=productCatalog&amp;PageSize=3&amp;ProdID=&quot; + productId;
+<span class='line-number'> 66</span>	    string productContainerId = &quot;Product&quot; + productId;
+<span class='line-number'> 67</span>	}
+<span class='line-number'> 68</span>	
+<span class='line-number'> 69</span>	&lt;!-- Trigger for the image modal --&gt;
+<span class='line-number'> 70</span>	&lt;input type=&quot;checkbox&quot; id=&quot;ImageModalTrigger&quot; class=&quot;modal-trigger&quot; /&gt;
+<span class='line-number'> 71</span>	
+<span class='line-number'> 72</span>	&lt;!-- Image modal --&gt;
+<span class='line-number'> 73</span>	&lt;div class=&quot;modal-container&quot;&gt;
+<span class='line-number'> 74</span>	    &lt;label for=&quot;ImageModalTrigger&quot; id=&quot;ImageModalOverlay&quot; class=&quot;modal-overlay&quot;&gt;&lt;/label&gt;
+<span class='line-number'> 75</span>	    &lt;div class=&quot;modal modal--full&quot; id=&quot;ImageModal&quot;&gt;
+<span class='line-number'> 76</span>	        &lt;div class=&quot;modal__body&quot;&gt;
+<span class='line-number'> 77</span>	            &lt;img id=&quot;FullImage&quot; class=&quot;modal--full__img&quot; src=&quot;@GetString(&quot;Ecom:Product.ImageLarge.Default.Clean&quot;)&quot; alt=&quot;@GetString(&quot;Ecom:Product.Name&quot;)&quot; /&gt;
+<span class='line-number'> 78</span>	        &lt;/div&gt;
+<span class='line-number'> 79</span>	    &lt;/div&gt;
+<span class='line-number'> 80</span>	&lt;/div&gt;
+<span class='line-number'> 81</span>	
+<span class='line-number'> 82</span>	&lt;input type=&quot;checkbox&quot; class=&quot;panel-trigger js-remember-state&quot; id=&quot;PIMProductToolsTrigger&quot; checked /&gt;
+<span class='line-number'> 83</span>	&lt;div class=&quot;fit-to-panel-size&quot;&gt;
+<span class='line-number'> 84</span>	    &lt;div class=&quot;paragraph-container__grid--bleed&quot;&gt;
+<span class='line-number'> 85</span>	        @*Please be aware that the below html must be implemented twice (Static HTML and dynamic Script template) to make it update when shifting units *@
+<span class='line-number'> 86</span>	
+<span class='line-number'> 87</span>	        &lt;div class=&quot;js-ajax-container&quot; id=&quot;@productContainerId&quot; data-template=&quot;productUpdateableContentTemplate&quot; data-json-feed=&quot;@feedUrl&quot; data-preloader=&quot;false&quot; data-init-onload=&quot;false&quot;&gt;
+<span class='line-number'> 88</span>	            &lt;div class=&quot;grid product&quot;&gt;
+<span class='line-number'> 89</span>	                @* Image block with optional thumbs *@
+<span class='line-number'> 90</span>	                @if (!String.IsNullOrEmpty(GetString(&quot;Ecom:Product.ImageLarge.Default.Clean&quot;)))
+<span class='line-number'> 91</span>	                {
+<span class='line-number'> 92</span>	                    &lt;div class=&quot;grid__col-md-6 grid__col-sm-6&quot;&gt;
+<span class='line-number'> 93</span>	                        &lt;div class=&quot;grid grid--bleed&quot;&gt;
+<span class='line-number'> 94</span>	                            @if (thumbsCount &gt; 0)
+<span class='line-number'> 95</span>	                {
+<span class='line-number'> 96</span>	                                &lt;div class=&quot;grid__col-2 u-hidden-xxs product__thumbs dw-mod&quot;&gt;
+<span class='line-number'> 97</span>	                                    &lt;div class=&quot;thumb-list&quot;&gt;
+<span class='line-number'> 98</span>	                                        &lt;div class=&quot;thumb-list__item thumb-list__item--active dw-mod js-thumb-btn&quot; onmouseover=&quot;ImageList.LoadImage(this)&quot; data-for=&quot;Image_@productId&quot; data-full-image=&quot;@GetString(&quot;Ecom:Product.ImageLarge.Default.Clean&quot;)&quot; data-image-path=&quot;@GetString(&quot;Ecom:Product.ImageLarge.Default.Clean&quot;)&quot;&gt;&lt;img src=&quot;/Admin/Public/GetImage.ashx?width=100&amp;amp;height=100&amp;amp;crop=5&amp;amp;Compression=75&amp;amp;image=@GetString(&quot;Ecom:Product.ImageLarge.Default.Clean&quot;)&quot; alt=&quot;@GetString(&quot;Ecom:Product.Name&quot;)&quot;&gt;&lt;/div&gt;
+<span class='line-number'> 99</span>	                                        @foreach (LoopItem alternativeImage in GetLoop(&quot;Ecom:Product.AlternativeImages&quot;))
+<span class='line-number'>100</span>	                                        {
+<span class='line-number'>101</span>	                                            if (!String.IsNullOrEmpty(alternativeImage.GetString(&quot;Ecom:Product.AlternativeImages.Image&quot;)))
+<span class='line-number'>102</span>	                                            {
+<span class='line-number'>103</span>	                                                string fullImage = alternativeImage.GetString(&quot;Ecom:Product.AlternativeImages.Image&quot;);
+<span class='line-number'>104</span>	                                                string image = &quot;/Admin/Public/GetImage.ashx?width=550&amp;amp;height=550&amp;amp;crop=5&amp;DoNotUpscale=true&amp;amp;Compression=75&amp;amp;image=&quot; + alternativeImage.GetString(&quot;Ecom:Product.AlternativeImages.Image&quot;);
+<span class='line-number'>105</span>	                                                string thumb = &quot;/Admin/Public/GetImage.ashx?width=100&amp;amp;height=100&amp;amp;crop=5&amp;DoNotUpscale=true&amp;amp;Compression=75&amp;amp;image=&quot; + alternativeImage.GetString(&quot;Ecom:Product.AlternativeImages.Image&quot;);
+<span class='line-number'>106</span>	
+<span class='line-number'>107</span>	                                                &lt;div class=&quot;thumb-list__item dw-mod js-thumb-btn&quot; onmouseover=&quot;ImageList.LoadImage(this)&quot; data-for=&quot;Image_@productId&quot; data-full-image=&quot;@fullImage&quot; data-image-path=&quot;@image&quot;&gt;&lt;img src=&quot;@thumb&quot; alt=&quot;@GetString(&quot;Ecom:Product.Name&quot;)&quot;&gt;&lt;/div&gt;
+<span class='line-number'>108</span>	                                            }
+<span class='line-number'>109</span>	                                        }
+<span class='line-number'>110</span>	
+<span class='line-number'>111</span>	                                        @foreach (LoopItem detail in GetLoop(&quot;Details&quot;))
+<span class='line-number'>112</span>	                                        {
+<span class='line-number'>113</span>	                                            string fullImage = detail.GetString(&quot;Ecom:Product:Detail.Image.Clean&quot;);
+<span class='line-number'>114</span>	                                            string image = &quot;/Admin/Public/GetImage.ashx?width=550&amp;amp;height=550&amp;amp;crop=5&amp;DoNotUpscale=true&amp;amp;Compression=75&amp;amp;image=&quot; + detail.GetString(&quot;Ecom:Product:Detail.Image.Clean&quot;);
+<span class='line-number'>115</span>	                                            string thumb = &quot;/Admin/Public/GetImage.ashx?width=100&amp;amp;height=100&amp;amp;crop=5&amp;DoNotUpscale=true&amp;amp;Compression=75&amp;amp;image=&quot; + detail.GetString(&quot;Ecom:Product:Detail.Image.Clean&quot;);
+<span class='line-number'>116</span>	
+<span class='line-number'>117</span>	                                            &lt;div class=&quot;thumb-list__item dw-mod js-thumb-btn&quot; onmouseover=&quot;ImageList.LoadImage(this)&quot; data-for=&quot;Image_@productId&quot; data-full-image=&quot;@fullImage&quot; data-image-path=&quot;@image&quot;&gt;&lt;img src=&quot;@thumb&quot; alt=&quot;@GetString(&quot;Ecom:Product.Name&quot;)&quot;&gt;&lt;/div&gt;
+<span class='line-number'>118</span>	                                        }
+<span class='line-number'>119</span>	                                    &lt;/div&gt;
+<span class='line-number'>120</span>	                                &lt;/div&gt;
+<span class='line-number'>121</span>	                            }
+<span class='line-number'>122</span>	                            &lt;div class=&quot;grid__col-auto&quot;&gt;
+<span class='line-number'>123</span>	                                @if (GetString(&quot;Ecom:Product.Discount.Price.PriceWithVATFormatted&quot;) != GetString(&quot;Ecom:Product.Price.PriceWithVATFormatted&quot;))
+<span class='line-number'>124</span>	                                {
+<span class='line-number'>125</span>	                                    &lt;div class=&quot;sticker u-margin-left dw-mod&quot;&gt;@Translate(&quot;Sale!&quot;)&lt;/div&gt;
+<span class='line-number'>126</span>	                                }
+<span class='line-number'>127</span>	                                &lt;label for=&quot;ImageModalTrigger&quot;&gt;
+<span class='line-number'>128</span>	                                    &lt;img class=&quot;thumb-image-view product__image dw-mod&quot; onclick=&quot;document.getElementById(&#39;FullImage&#39;).src = this.getAttribute(&#39;data-full-image&#39;)&quot; id=&quot;Image_@productId&quot; src=&quot;/Admin/Public/GetImage.ashx?crop=5&amp;height=550&amp;width=550&amp;Compression=75&amp;DoNotUpscale=true&amp;image=@GetString(&quot;Ecom:Product.ImageLarge.Default.Clean&quot;)&quot; data-full-image=&quot;@GetString(&quot;Ecom:Product.ImageLarge.Default.Clean&quot;)&quot; alt=&quot;@GetString(&quot;Ecom:Product.Name&quot;)&quot; /&gt;
+<span class='line-number'>129</span>	                                &lt;/label&gt;
+<span class='line-number'>130</span>	                            &lt;/div&gt;
+<span class='line-number'>131</span>	                        &lt;/div&gt;
+<span class='line-number'>132</span>	                    &lt;/div&gt;
+<span class='line-number'>133</span>	                }
+<span class='line-number'>134</span>	
+<span class='line-number'>135</span>	                @* Primary product informations *@
+<span class='line-number'>136</span>	                &lt;div class=&quot;grid__col-md-5&quot;&gt;
+<span class='line-number'>137</span>	                    &lt;div class=&quot;grid__cell&quot;&gt;
+<span class='line-number'>138</span>	                        &lt;div class=&quot;product__title dw-mod&quot;&gt;
+<span class='line-number'>139</span>	                            &lt;h1 class=&quot;u-no-margin&quot;&gt;@GetString(&quot;Ecom:Product.Name&quot;) @GetString(&quot;Ecom:Product.SelectedVariantComboName&quot;)&lt;/h1&gt;
+<span class='line-number'>140</span>	                            &lt;div class=&quot;item-number&quot;&gt;@GetString(&quot;Ecom:Product.Number&quot;)&lt;/div&gt;
+<span class='line-number'>141</span>	                        &lt;/div&gt;
+<span class='line-number'>142</span>	                        &lt;div&gt;
+<span class='line-number'>143</span>	                            @* Short description *@
+<span class='line-number'>144</span>	                            &lt;div class=&quot;introduction-text&quot;&gt;
+<span class='line-number'>145</span>	                                @GetString(&quot;Ecom:Product.ShortDescription&quot;)
+<span class='line-number'>146</span>	                            &lt;/div&gt;
+<span class='line-number'>147</span>	
+<span class='line-number'>148</span>	                            @* Variants *@
+<span class='line-number'>149</span>	                            @if (GetLoop(&quot;VariantGroups&quot;).Count &gt; 0 &amp;&amp; GetBoolean(&quot;Ecom:Product.ShowInProductList&quot;))
+<span class='line-number'>150</span>	                            {
+<span class='line-number'>151</span>	                                &lt;div&gt;
+<span class='line-number'>152</span>	                                    &lt;div id=&quot;Variants&quot; data-template=&quot;VariantGroup&quot; data-product-id=&quot;@productId&quot;&gt;&lt;/div&gt;
+<span class='line-number'>153</span>	                                    &lt;small id=&quot;helpText_@productId&quot; class=&quot;help-text @hideHelpText&quot;&gt;@Translate(&quot;Please select variant!&quot;)&lt;/small&gt;
+<span class='line-number'>154</span>	                                &lt;/div&gt;
+<span class='line-number'>155</span>	                            }
+<span class='line-number'>156</span>	
+<span class='line-number'>157</span>	                            @* BOMProducts *@
+<span class='line-number'>158</span>	                            @if (GetLoop(&quot;BOMProducts&quot;).Count &gt; 0)
+<span class='line-number'>159</span>	                            {
+<span class='line-number'>160</span>	                                &lt;h2 class=&quot;section-title&quot;&gt;@Translate(&quot;Including products&quot;)&lt;/h2&gt;
+<span class='line-number'>161</span>	                                foreach (LoopItem BOMProductItem in GetLoop(&quot;BOMProducts&quot;))
+<span class='line-number'>162</span>	                                {
+<span class='line-number'>163</span>	                                    string link = &quot;/&quot; + BOMProductItem.GetString(&quot;Ecom:Product.LinkGroup.Clean&quot;) + (!String.IsNullOrEmpty(BOMProductItem.GetString(&quot;Ecom:Product.VariantID&quot;)) ? &quot;&amp;VariantID=&quot; + BOMProductItem.GetString(&quot;Ecom:Product.VariantID&quot;) : &quot;&quot;);
+<span class='line-number'>164</span>	                                    &lt;div class=&quot;grid__col--border grid&quot;&gt;
+<span class='line-number'>165</span>	                                        &lt;div class=&quot;grid__cell grid__cell--align-middle-left&quot;&gt;
+<span class='line-number'>166</span>	                                            &lt;a href=&quot;@link&quot; class=&quot;u-pull--left u-margin-right&quot;&gt;
+<span class='line-number'>167</span>	                                                &lt;img src=&quot;/Admin/Public/GetImage.ashx?width=50&amp;image=@BOMProductItem.GetString(&quot;Ecom:Product.ImageSmall.Default.Clean&quot;)&amp;Compression=99&quot; /&gt;
+<span class='line-number'>168</span>	                                            &lt;/a&gt;
+<span class='line-number'>169</span>	                                            &lt;a href=&quot;@link&quot;&gt;@BOMProductItem.GetString(&quot;Ecom:Product.Name&quot;)&lt;/a&gt;
+<span class='line-number'>170</span>	                                        &lt;/div&gt;
+<span class='line-number'>171</span>	                                    &lt;/div&gt;
+<span class='line-number'>172</span>	                                }
+<span class='line-number'>173</span>	                            }
+<span class='line-number'>174</span>	                        &lt;/div&gt;
+<span class='line-number'>175</span>	
+<span class='line-number'>176</span>	                        &lt;input type=&quot;hidden&quot; id=&quot;CartButton_@GetString(&quot;Ecom:Product.ID&quot;)&quot; name=&quot;submit&quot; /&gt;
+<span class='line-number'>177</span>	                        &lt;input type=&quot;hidden&quot; value=&quot;@GetString(&quot;Ecom:Product.VariantID.Extented&quot;)&quot; name=&quot;Variant&quot; id=&quot;Variant_@GetString(&quot;Ecom:Product.ID&quot;)&quot; /&gt;
+<span class='line-number'>178</span>	                    &lt;/div&gt;
+<span class='line-number'>179</span>	                &lt;/div&gt;
+<span class='line-number'>180</span>	
+<span class='line-number'>181</span>	                &lt;div class=&quot;grid__col-3&quot;&gt;&lt;/div&gt;
+<span class='line-number'>182</span>	            &lt;/div&gt;
+<span class='line-number'>183</span>	        &lt;/div&gt;
+<span class='line-number'>184</span>	
+<span class='line-number'>185</span>	        &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'>186</span>	            @* Long description *@
+<span class='line-number'>187</span>	            @if (!String.IsNullOrEmpty(GetString(&quot;Ecom:Product.LongDescription&quot;)))
+<span class='line-number'>188</span>	            {
+<span class='line-number'>189</span>	                &lt;div class=&quot;grid__col-12&quot;&gt;
+<span class='line-number'>190</span>	                    &lt;h2 class=&quot;section-title&quot;&gt;@Translate(&quot;Description&quot;)&lt;/h2&gt;
+<span class='line-number'>191</span>	
+<span class='line-number'>192</span>	                    @GetString(&quot;Ecom:Product.LongDescription&quot;)
+<span class='line-number'>193</span>	                &lt;/div&gt;
+<span class='line-number'>194</span>	            }
+<span class='line-number'>195</span>	
+<span class='line-number'>196</span>	            @* Features lists *@
+<span class='line-number'>197</span>	            @if (featuresCount &gt; 0 &amp;&amp; featuresCount &lt; 10)
+<span class='line-number'>198</span>	            {
+<span class='line-number'>199</span>	                &lt;div class=&quot;grid__col-12 grid__col--bleed-y&quot;&gt;
+<span class='line-number'>200</span>	                    &lt;h2 class=&quot;section-title&quot;&gt;@Translate(&quot;Product information&quot;)&lt;/h2&gt;
+<span class='line-number'>201</span>	                    &lt;div class=&quot;grid grid--bleed&quot;&gt;
+<span class='line-number'>202</span>	                        @if (GetLoop(&quot;CustomFieldValues&quot;).Count &gt; 0)
+<span class='line-number'>203</span>	                        {
+<span class='line-number'>204</span>	                            &lt;div class=&quot;grid__col-md-6 grid__col-sm-6&quot;&gt;
+<span class='line-number'>205</span>	                                &lt;table class=&quot;table table--clean table--compact u-margin-bottom&quot;&gt;
+<span class='line-number'>206</span>	                                    @foreach (LoopItem customField in GetLoop(&quot;CustomFieldValues&quot;))
+<span class='line-number'>207</span>	                                    {
+<span class='line-number'>208</span>	                                        string fieldValue = customField.GetString(&quot;Product.CustomField.Value&quot;);
+<span class='line-number'>209</span>	
+<span class='line-number'>210</span>	                                        if (customField.GetLoop(&quot;Product.CustomField.Options&quot;).Count &gt; 0)
+<span class='line-number'>211</span>	                                        {
+<span class='line-number'>212</span>	                                            fieldValue = &quot;&quot;;
+<span class='line-number'>213</span>	                                            int count = 0;
+<span class='line-number'>214</span>	
+<span class='line-number'>215</span>	                                            foreach (LoopItem customFieldOptions in customField.GetLoop(&quot;Product.CustomField.Options&quot;))
+<span class='line-number'>216</span>	                                            {
+<span class='line-number'>217</span>	                                                if (customFieldOptions.GetBoolean(&quot;Product.CustomField.Option.IsSelected&quot;))
+<span class='line-number'>218</span>	                                                {
+<span class='line-number'>219</span>	                                                    if (count != 0)
+<span class='line-number'>220</span>	                                                    {
+<span class='line-number'>221</span>	                                                        fieldValue += &quot;, &quot;;
+<span class='line-number'>222</span>	                                                    }
+<span class='line-number'>223</span>	
+<span class='line-number'>224</span>	                                                    fieldValue += customFieldOptions.GetString(&quot;Product.CustomField.Option.Name&quot;);
+<span class='line-number'>225</span>	                                                    count++;
+<span class='line-number'>226</span>	                                                }
+<span class='line-number'>227</span>	                                            }
+<span class='line-number'>228</span>	                                        }
+<span class='line-number'>229</span>	
+<span class='line-number'>230</span>	                                        if (fieldValue == &quot;False&quot;)
+<span class='line-number'>231</span>	                                        {
+<span class='line-number'>232</span>	                                            fieldValue = Translate(&quot;No&quot;);
+<span class='line-number'>233</span>	                                        }
+<span class='line-number'>234</span>	
+<span class='line-number'>235</span>	                                        if (fieldValue == &quot;True&quot;)
+<span class='line-number'>236</span>	                                        {
+<span class='line-number'>237</span>	                                            fieldValue = Translate(&quot;Yes&quot;);
+<span class='line-number'>238</span>	                                        }
+<span class='line-number'>239</span>	
+<span class='line-number'>240</span>	                                        if (!String.IsNullOrEmpty(customField.GetString(&quot;Product.CustomField.Name&quot;)) &amp;&amp; !String.IsNullOrEmpty(fieldValue))
+<span class='line-number'>241</span>	                                        {
+<span class='line-number'>242</span>	                                            &lt;tr&gt;
+<span class='line-number'>243</span>	                                                &lt;td width=&quot;160&quot;&gt;@customField.GetString(&quot;Product.CustomField.Name&quot;):&lt;/td&gt;
+<span class='line-number'>244</span>	                                                @if (!String.IsNullOrEmpty(customField.GetString(&quot;Document.FullPath&quot;)))
+<span class='line-number'>245</span>	                                                {
+<span class='line-number'>246</span>	                                                    &lt;td class=&quot;u-ta-left&quot;&gt;&lt;a href=&quot;@customField.GetString(&quot;Document.FullPath&quot;)&quot; download title=&quot;@Translate(&quot;Download&quot;)&quot;&gt;&lt;i class=&quot;fa fa-arrow-circle-down&quot;&gt;&lt;/i&gt; @fieldValue&lt;/a&gt;&lt;/td&gt;
+<span class='line-number'>247</span>	                                                }
+<span class='line-number'>248</span>	                                                else
+<span class='line-number'>249</span>	                                                {
+<span class='line-number'>250</span>	                                                    &lt;td class=&quot;u-ta-left&quot;&gt;&lt;span property=&quot;identifier&quot;&gt;@fieldValue&lt;/span&gt;&lt;/td&gt;
+<span class='line-number'>251</span>	                                                }
+<span class='line-number'>252</span>	                                            &lt;/tr&gt;
+<span class='line-number'>253</span>	                                        }
+<span class='line-number'>254</span>	                                    }
+<span class='line-number'>255</span>	                                &lt;/table&gt;
+<span class='line-number'>256</span>	                            &lt;/div&gt;
+<span class='line-number'>257</span>	                            &lt;div class=&quot;grid__col-md-6 grid__col-sm-6&quot;&gt;&lt;/div&gt;
+<span class='line-number'>258</span>	                        }
+<span class='line-number'>259</span>	
+<span class='line-number'>260</span>	                        @if (GetLoop(&quot;ProductCategories&quot;).Count &gt; 0)
+<span class='line-number'>261</span>	                        {
+<span class='line-number'>262</span>	                            &lt;div class=&quot;grid__col-md-6 grid__col-sm-6&quot;&gt;
+<span class='line-number'>263</span>	                                &lt;table class=&quot;table table--clean table--compact u-margin-bottom&quot;&gt;
+<span class='line-number'>264</span>	                                    @foreach (LoopItem categoryGroup in GetLoop(&quot;ProductCategories&quot;))
+<span class='line-number'>265</span>	                                    {
+<span class='line-number'>266</span>	                                        int fieldsCount = 0;
+<span class='line-number'>267</span>	                                        foreach (LoopItem categoryField in categoryGroup.GetLoop(&quot;ProductCategoryFields&quot;))
+<span class='line-number'>268</span>	                                        {
+<span class='line-number'>269</span>	                                            if (!String.IsNullOrEmpty(categoryField.GetString(&quot;Ecom:Product.CategoryField.Value&quot;)))
+<span class='line-number'>270</span>	                                            {
+<span class='line-number'>271</span>	                                                fieldsCount++;
+<span class='line-number'>272</span>	                                            }
+<span class='line-number'>273</span>	                                        }
+<span class='line-number'>274</span>	
+<span class='line-number'>275</span>	                                        if (fieldsCount &gt; 0)
+<span class='line-number'>276</span>	                                        {
+<span class='line-number'>277</span>	                                            &lt;tr&gt;
+<span class='line-number'>278</span>	                                                &lt;td colspan=&quot;2&quot; class=&quot;u-ta-left table__section-header dw-mod&quot;&gt;@categoryGroup.GetString(&quot;Ecom:Product.Category.Name&quot;)&lt;/td&gt;
+<span class='line-number'>279</span>	                                            &lt;/tr&gt;
+<span class='line-number'>280</span>	
+<span class='line-number'>281</span>	                                            foreach (LoopItem categoryField in categoryGroup.GetLoop(&quot;ProductCategoryFields&quot;))
+<span class='line-number'>282</span>	                                            {
+<span class='line-number'>283</span>	                                                string fieldValue = categoryField.GetString(&quot;Ecom:Product.CategoryField.Value&quot;);
+<span class='line-number'>284</span>	
+<span class='line-number'>285</span>	                                                if (fieldValue == &quot;False&quot;)
+<span class='line-number'>286</span>	                                                {
+<span class='line-number'>287</span>	                                                    fieldValue = Translate(&quot;No&quot;);
+<span class='line-number'>288</span>	                                                }
+<span class='line-number'>289</span>	
+<span class='line-number'>290</span>	                                                if (fieldValue == &quot;True&quot;)
+<span class='line-number'>291</span>	                                                {
+<span class='line-number'>292</span>	                                                    fieldValue = Translate(&quot;Yes&quot;);
+<span class='line-number'>293</span>	                                                }
+<span class='line-number'>294</span>	
+<span class='line-number'>295</span>	                                                if (!String.IsNullOrEmpty(categoryField.GetString(&quot;Ecom:Product.CategoryField.Label&quot;)) &amp;&amp; !String.IsNullOrEmpty(fieldValue))
+<span class='line-number'>296</span>	                                                {
+<span class='line-number'>297</span>	                                                    &lt;tr&gt;
+<span class='line-number'>298</span>	                                                        &lt;td width=&quot;160&quot;&gt;@categoryField.GetString(&quot;Ecom:Product.CategoryField.Label&quot;):&lt;/td&gt;
+<span class='line-number'>299</span>	                                                        @if (categoryField.GetString(&quot;Ecom:Product.CategoryField.TypeID&quot;) == &quot;9&quot;)
+<span class='line-number'>300</span>	                                                        {
+<span class='line-number'>301</span>	                                                            &lt;td class=&quot;u-ta-left&quot;&gt;&lt;a href=&quot;@fieldValue&quot; download title=&quot;@Translate(&quot;Download&quot;)&quot;&gt;&lt;i class=&quot;fa fa-arrow-circle-down&quot;&gt;&lt;/i&gt; @fieldValue&lt;/a&gt;&lt;/td&gt;
+<span class='line-number'>302</span>	                                                        }
+<span class='line-number'>303</span>	                                                        else
+<span class='line-number'>304</span>	                                                        {
+<span class='line-number'>305</span>	                                                            &lt;td class=&quot;u-ta-left&quot;&gt;&lt;span property=&quot;identifier&quot;&gt;@fieldValue&lt;/span&gt;&lt;/td&gt;
+<span class='line-number'>306</span>	                                                        }
+<span class='line-number'>307</span>	                                                    &lt;/tr&gt;
+<span class='line-number'>308</span>	                                                }
+<span class='line-number'>309</span>	                                            }
+<span class='line-number'>310</span>	                                        }
+<span class='line-number'>311</span>	                                    }
+<span class='line-number'>312</span>	                                &lt;/table&gt;
+<span class='line-number'>313</span>	                            &lt;/div&gt;
+<span class='line-number'>314</span>	                            &lt;div class=&quot;grid__col-md-6 grid__col-sm-6&quot;&gt;&lt;/div&gt;
+<span class='line-number'>315</span>	                        }
+<span class='line-number'>316</span>	                    &lt;/div&gt;
+<span class='line-number'>317</span>	                &lt;/div&gt;
+<span class='line-number'>318</span>	            }
+<span class='line-number'>319</span>	
+<span class='line-number'>320</span>	            @if (featuresCount &gt;= 10)
+<span class='line-number'>321</span>	            {
+<span class='line-number'>322</span>	                &lt;div class=&quot;grid__col-12 grid__col--bleed-y&quot;&gt;
+<span class='line-number'>323</span>	                    &lt;input type=&quot;checkbox&quot; id=&quot;expandable-text-trigger&quot; class=&quot;expandable-text-trigger&quot; /&gt;
+<span class='line-number'>324</span>	                    &lt;div class=&quot;expandable-text-container&quot;&gt;
+<span class='line-number'>325</span>	                        &lt;div class=&quot;expandable-text-container__content dw-mod&quot;&gt;
+<span class='line-number'>326</span>	                            &lt;h2 class=&quot;section-title&quot;&gt;@Translate(&quot;Product information&quot;)&lt;/h2&gt;
+<span class='line-number'>327</span>	                            &lt;div class=&quot;grid grid--bleed&quot;&gt;
+<span class='line-number'>328</span>	                                @if (GetLoop(&quot;CustomFieldValues&quot;).Count &gt; 0)
+<span class='line-number'>329</span>	                                {
+<span class='line-number'>330</span>	                                    &lt;div class=&quot;grid__col-md-5 grid__col-sm-6&quot;&gt;
+<span class='line-number'>331</span>	                                        &lt;table class=&quot;table table--clean table--compact u-margin-bottom&quot;&gt;
+<span class='line-number'>332</span>	                                            @foreach (LoopItem customField in GetLoop(&quot;CustomFieldValues&quot;))
+<span class='line-number'>333</span>	                                            {
+<span class='line-number'>334</span>	                                                string fieldValue = customField.GetString(&quot;Product.CustomField.Value.Clean&quot;);
+<span class='line-number'>335</span>	
+<span class='line-number'>336</span>	                                                if (customField.GetLoop(&quot;Product.CustomField.Options&quot;).Count &gt; 0)
+<span class='line-number'>337</span>	                                                {
+<span class='line-number'>338</span>	                                                    fieldValue = &quot;&quot;;
+<span class='line-number'>339</span>	                                                    int count = 0;
+<span class='line-number'>340</span>	
+<span class='line-number'>341</span>	                                                    foreach (LoopItem customFieldOptions in customField.GetLoop(&quot;Product.CustomField.Options&quot;))
+<span class='line-number'>342</span>	                                                    {
+<span class='line-number'>343</span>	                                                        if (customFieldOptions.GetBoolean(&quot;Product.CustomField.Option.IsSelected&quot;))
+<span class='line-number'>344</span>	                                                        {
+<span class='line-number'>345</span>	                                                            if (count != 0)
+<span class='line-number'>346</span>	                                                            {
+<span class='line-number'>347</span>	                                                                fieldValue += &quot;, &quot;;
+<span class='line-number'>348</span>	                                                            }
+<span class='line-number'>349</span>	
+<span class='line-number'>350</span>	                                                            fieldValue += customFieldOptions.GetString(&quot;Product.CustomField.Option.Name&quot;);
+<span class='line-number'>351</span>	                                                            count++;
+<span class='line-number'>352</span>	                                                        }
+<span class='line-number'>353</span>	                                                    }
+<span class='line-number'>354</span>	                                                }
+<span class='line-number'>355</span>	
+<span class='line-number'>356</span>	                                                if (fieldValue == &quot;False&quot;)
+<span class='line-number'>357</span>	                                                {
+<span class='line-number'>358</span>	                                                    fieldValue = Translate(&quot;No&quot;);
+<span class='line-number'>359</span>	                                                }
+<span class='line-number'>360</span>	
+<span class='line-number'>361</span>	                                                if (fieldValue == &quot;True&quot;)
+<span class='line-number'>362</span>	                                                {
+<span class='line-number'>363</span>	                                                    fieldValue = Translate(&quot;Yes&quot;);
+<span class='line-number'>364</span>	                                                }
+<span class='line-number'>365</span>	
+<span class='line-number'>366</span>	                                                if (!String.IsNullOrEmpty(customField.GetString(&quot;Product.CustomField.Name&quot;)) &amp;&amp; !String.IsNullOrEmpty(fieldValue))
+<span class='line-number'>367</span>	                                                {
+<span class='line-number'>368</span>	                                                    &lt;tr&gt;
+<span class='line-number'>369</span>	                                                        &lt;td width=&quot;160&quot;&gt;@customField.GetString(&quot;Product.CustomField.Name&quot;):&lt;/td&gt;
+<span class='line-number'>370</span>	                                                        @if (!String.IsNullOrEmpty(customField.GetString(&quot;Document.FullPath&quot;)))
+<span class='line-number'>371</span>	                                                        {
+<span class='line-number'>372</span>	                                                            documentsCount++;
+<span class='line-number'>373</span>	                                                            &lt;td class=&quot;u-ta-left&quot;&gt;&lt;a href=&quot;@customField.GetString(&quot;Document.FullPath&quot;)&quot; download title=&quot;@Translate(&quot;Download&quot;)&quot;&gt;&lt;span property=&quot;identifier&quot;&gt;&lt;i class=&quot;fa fa-arrow-circle-down&quot;&gt;&lt;/i&gt; @fieldValue&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;
+<span class='line-number'>374</span>	                                                        }
+<span class='line-number'>375</span>	                                                        else
+<span class='line-number'>376</span>	                                                        {
+<span class='line-number'>377</span>	                                                            &lt;td class=&quot;u-ta-left&quot;&gt;&lt;span property=&quot;identifier&quot;&gt;@fieldValue&lt;/span&gt;&lt;/td&gt;
+<span class='line-number'>378</span>	                                                        }
+<span class='line-number'>379</span>	                                                    &lt;/tr&gt;
+<span class='line-number'>380</span>	                                                }
+<span class='line-number'>381</span>	                                            }
+<span class='line-number'>382</span>	                                        &lt;/table&gt;
+<span class='line-number'>383</span>	                                    &lt;/div&gt;
+<span class='line-number'>384</span>	                                    &lt;div class=&quot;grid__col-md-5 grid__col-sm-6&quot;&gt;&lt;/div&gt;
+<span class='line-number'>385</span>	                                }
+<span class='line-number'>386</span>	
+<span class='line-number'>387</span>	                                @if (GetLoop(&quot;ProductCategories&quot;).Count &gt; 0)
+<span class='line-number'>388</span>	                                {
+<span class='line-number'>389</span>	                                    &lt;div class=&quot;grid__col-md-5 grid__col-sm-6&quot;&gt;
+<span class='line-number'>390</span>	                                        &lt;table class=&quot;table table--clean table--compact u-margin-bottom&quot;&gt;
+<span class='line-number'>391</span>	                                            @foreach (LoopItem categoryGroup in GetLoop(&quot;ProductCategories&quot;))
+<span class='line-number'>392</span>	                                            {
+<span class='line-number'>393</span>	                                                int fieldsCount = 0;
+<span class='line-number'>394</span>	                                                foreach (LoopItem categoryField in categoryGroup.GetLoop(&quot;ProductCategoryFields&quot;))
+<span class='line-number'>395</span>	                                                {
+<span class='line-number'>396</span>	                                                    if (!String.IsNullOrEmpty(categoryField.GetString(&quot;Ecom:Product.CategoryField.Value&quot;)))
+<span class='line-number'>397</span>	                                                    {
+<span class='line-number'>398</span>	                                                        fieldsCount++;
+<span class='line-number'>399</span>	                                                    }
+<span class='line-number'>400</span>	                                                }
+<span class='line-number'>401</span>	
+<span class='line-number'>402</span>	                                                if (fieldsCount &gt; 0)
+<span class='line-number'>403</span>	                                                {
+<span class='line-number'>404</span>	                                                    &lt;tr&gt;
+<span class='line-number'>405</span>	                                                        &lt;td colspan=&quot;2&quot; class=&quot;u-ta-left table__section-header dw-mod&quot;&gt;@categoryGroup.GetString(&quot;Ecom:Product.Category.Name&quot;)&lt;/td&gt;
+<span class='line-number'>406</span>	                                                    &lt;/tr&gt;
+<span class='line-number'>407</span>	
+<span class='line-number'>408</span>	                                                    foreach (LoopItem categoryField in categoryGroup.GetLoop(&quot;ProductCategoryFields&quot;))
+<span class='line-number'>409</span>	                                                    {
+<span class='line-number'>410</span>	                                                        string fieldValue = categoryField.GetString(&quot;Ecom:Product.CategoryField.Value&quot;);
+<span class='line-number'>411</span>	
+<span class='line-number'>412</span>	                                                        if (fieldValue == &quot;False&quot;)
+<span class='line-number'>413</span>	                                                        {
+<span class='line-number'>414</span>	                                                            fieldValue = Translate(&quot;No&quot;);
+<span class='line-number'>415</span>	                                                        }
+<span class='line-number'>416</span>	
+<span class='line-number'>417</span>	                                                        if (fieldValue == &quot;True&quot;)
+<span class='line-number'>418</span>	                                                        {
+<span class='line-number'>419</span>	                                                            fieldValue = Translate(&quot;Yes&quot;);
+<span class='line-number'>420</span>	                                                        }
+<span class='line-number'>421</span>	
+<span class='line-number'>422</span>	                                                        if (!String.IsNullOrEmpty(categoryField.GetString(&quot;Ecom:Product.CategoryField.Label&quot;)) &amp;&amp; !String.IsNullOrEmpty(fieldValue))
+<span class='line-number'>423</span>	                                                        {
+<span class='line-number'>424</span>	                                                            &lt;tr&gt;
+<span class='line-number'>425</span>	                                                                &lt;td width=&quot;160&quot;&gt;@categoryField.GetString(&quot;Ecom:Product.CategoryField.Label&quot;):&lt;/td&gt;
+<span class='line-number'>426</span>	                                                                @if (categoryField.GetString(&quot;Ecom:Product.CategoryField.TypeID&quot;) == &quot;9&quot;)
+<span class='line-number'>427</span>	                                                                {
+<span class='line-number'>428</span>	                                                                    documentsCount++;
+<span class='line-number'>429</span>	                                                                    &lt;td class=&quot;u-ta-left&quot;&gt;&lt;a href=&quot;@fieldValue&quot; download title=&quot;@Translate(&quot;Download&quot;)&quot;&gt;&lt;i class=&quot;fa fa-arrow-circle-down&quot;&gt;&lt;/i&gt; @fieldValue&lt;/a&gt;&lt;/td&gt;
+<span class='line-number'>430</span>	                                                                }
+<span class='line-number'>431</span>	                                                                else
+<span class='line-number'>432</span>	                                                                {
+<span class='line-number'>433</span>	                                                                    &lt;td class=&quot;u-ta-left&quot;&gt;&lt;span property=&quot;identifier&quot;&gt;@fieldValue&lt;/span&gt;&lt;/td&gt;
+<span class='line-number'>434</span>	                                                                }
+<span class='line-number'>435</span>	                                                            &lt;/tr&gt;
+<span class='line-number'>436</span>	                                                        }
+<span class='line-number'>437</span>	                                                    }
+<span class='line-number'>438</span>	                                                }
+<span class='line-number'>439</span>	                                            }
+<span class='line-number'>440</span>	                                        &lt;/table&gt;
+<span class='line-number'>441</span>	                                    &lt;/div&gt;
+<span class='line-number'>442</span>	                                    &lt;div class=&quot;grid__col-md-5 grid__col-sm-6&quot;&gt;&lt;/div&gt;
+<span class='line-number'>443</span>	                                }
+<span class='line-number'>444</span>	                            &lt;/div&gt;
+<span class='line-number'>445</span>	                        &lt;/div&gt;
+<span class='line-number'>446</span>	
+<span class='line-number'>447</span>	                        &lt;div class=&quot;u-ta-center&quot;&gt;
+<span class='line-number'>448</span>	                            &lt;label for=&quot;expandable-text-trigger&quot; class=&quot;btn btn--secondary expandable-text-container__btn more dw-mod&quot;&gt;@Translate(&quot;Show more&quot;)&lt;/label&gt;
+<span class='line-number'>449</span>	                            &lt;label for=&quot;expandable-text-trigger&quot; class=&quot;btn btn--secondary expandable-text-container__btn less dw-mod&quot;&gt;@Translate(&quot;Show less&quot;)&lt;/label&gt;
+<span class='line-number'>450</span>	                        &lt;/div&gt;
+<span class='line-number'>451</span>	                    &lt;/div&gt;
+<span class='line-number'>452</span>	                &lt;/div&gt;
+<span class='line-number'>453</span>	            }
+<span class='line-number'>454</span>	
+<span class='line-number'>455</span>	            @* Related products *@
+<span class='line-number'>456</span>	            &lt;div class=&quot;grid js-ajax-container&quot; id=&quot;ProductList&quot; data-template=&quot;ProductContainer&quot; data-pre-render-template=&quot;ProductPreRenderContainer&quot; data-json-feed=&quot;@feedFullUrl&quot; data-preloader=&quot;overlay&quot;&gt;&lt;/div&gt;
+<span class='line-number'>457</span>	        &lt;/div&gt;
+<span class='line-number'>458</span>	    &lt;/div&gt;
+<span class='line-number'>459</span>	&lt;/div&gt;
+<span class='line-number'>460</span>	&lt;aside class=&quot;panel panel--right dw-mod&quot;&gt;
+<span class='line-number'>461</span>	    &lt;label for=&quot;PIMProductToolsTrigger&quot; class=&quot;panel-trigger-btn grid--justify-center dw-mod&quot;&gt;&lt;/label&gt;
+<span class='line-number'>462</span>	
+<span class='line-number'>463</span>	    &lt;div class=&quot;panel__content dw-mod&quot;&gt;
+<span class='line-number'>464</span>	        &lt;form action=&quot;/Default.aspx?ID=@exportPageId&amp;ProductID=@System.Web.HttpContext.Current.Request.QueryString.Get(&quot;ProductID&quot;)&quot; method=&quot;post&quot;&gt;
+<span class='line-number'>465</span>	            &lt;div class=&quot;panel__content__body panel__content__body--auto-height-400px dw-mod&quot;&gt;
+<span class='line-number'>466</span>	                &lt;h6 class=&quot;panel__header dw-mod&quot;&gt;@Translate(&quot;Images&quot;) (@(thumbsCount))&lt;/h6&gt;
+<span class='line-number'>467</span>	                @if (thumbsCount &gt; 0)
+<span class='line-number'>468</span>	                {
+<span class='line-number'>469</span>	                    &lt;ul class=&quot;list list--clean dw-mod&quot;&gt;
+<span class='line-number'>470</span>	                        &lt;li&gt;
+<span class='line-number'>471</span>	                            &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'>472</span>	                                &lt;div class=&quot;grid__col-xs-1 grid--align-self-center&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;Image_@GetString(&quot;Ecom:Product.ImageSmall.Default.Clean&quot;)&quot; class=&quot;u-no-margin&quot; /&gt;&lt;/div&gt;
+<span class='line-number'>473</span>	                                &lt;div class=&quot;grid__col-xs-3 grid__col--bleed-y&quot;&gt;&lt;img src=&quot;/Admin/Public/GetImage.ashx?width=100&amp;amp;height=100&amp;amp;crop=5&amp;amp;Compression=75&amp;amp;image=@GetString(&quot;Ecom:Product.ImageSmall.Default.Clean&quot;)&quot; alt=&quot;@GetString(&quot;Ecom:Product.Name&quot;)&quot; class=&quot;flex-img&quot;&gt;&lt;/div&gt;
+<span class='line-number'>474</span>	                                &lt;div class=&quot;grid__col-xs-8 grid--align-self-center grid__col--bleed-y&quot;&gt;@GetString(&quot;Ecom:Product.Name&quot;)&lt;/div&gt;
+<span class='line-number'>475</span>	                            &lt;/div&gt;
+<span class='line-number'>476</span>	                        &lt;/li&gt;
+<span class='line-number'>477</span>	
+<span class='line-number'>478</span>	                        @foreach (LoopItem alternativeImage in GetLoop(&quot;Ecom:Product.AlternativeImages&quot;))
+<span class='line-number'>479</span>	                        {
+<span class='line-number'>480</span>	                            if (!String.IsNullOrEmpty(alternativeImage.GetString(&quot;Ecom:Product.AlternativeImages.Image&quot;)))
+<span class='line-number'>481</span>	                            {
+<span class='line-number'>482</span>	                                string image = alternativeImage.GetString(&quot;Ecom:Product.AlternativeImages.Image&quot;);
+<span class='line-number'>483</span>	                                string thumb = &quot;/Admin/Public/GetImage.ashx?width=100&amp;amp;height=100&amp;amp;crop=5&amp;amp;Compression=75&amp;amp;image=&quot; + image;
+<span class='line-number'>484</span>	
+<span class='line-number'>485</span>	                                &lt;li&gt;
+<span class='line-number'>486</span>	                                    &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'>487</span>	                                        &lt;div class=&quot;grid__col-xs-1 grid--align-self-center&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;Image_@image&quot; class=&quot;u-no-margin&quot; /&gt;&lt;/div&gt;
+<span class='line-number'>488</span>	                                        &lt;div class=&quot;grid__col-xs-3 grid__col--bleed-y&quot;&gt;&lt;img src=&quot;@thumb&quot; alt=&quot;@GetString(&quot;Ecom:Product.Name&quot;)&quot;&gt;&lt;/div&gt;
+<span class='line-number'>489</span>	                                        &lt;div class=&quot;grid__col-xs-8 grid--align-self-center grid__col--bleed-y&quot;&gt;&lt;span class=&quot;u-truncate-text u-w170px&quot;&gt;@GetString(&quot;Ecom:Product.Name&quot;)&lt;/span&gt;&lt;/div&gt;
+<span class='line-number'>490</span>	                                    &lt;/div&gt;
+<span class='line-number'>491</span>	                                &lt;/li&gt;
+<span class='line-number'>492</span>	                            }
+<span class='line-number'>493</span>	                        }
+<span class='line-number'>494</span>	
+<span class='line-number'>495</span>	                        @foreach (LoopItem detail in GetLoop(&quot;Details&quot;))
+<span class='line-number'>496</span>	                        {
+<span class='line-number'>497</span>	                            string image = detail.GetString(&quot;Ecom:Product:Detail.Image.Clean&quot;);
+<span class='line-number'>498</span>	                            string thumb = &quot;/Admin/Public/GetImage.ashx?width=100&amp;amp;height=100&amp;amp;crop=5&amp;amp;Compression=75&amp;amp;image=&quot; + image;
+<span class='line-number'>499</span>	                            &lt;li&gt;
+<span class='line-number'>500</span>	                                &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'>501</span>	                                    &lt;div class=&quot;grid__col-xs-1 grid--align-self-center&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;Image_@image&quot; class=&quot;u-no-margin&quot; /&gt;&lt;/div&gt;
+<span class='line-number'>502</span>	                                    &lt;div class=&quot;grid__col-xs-3 grid__col--bleed-y&quot;&gt;&lt;img src=&quot;@thumb&quot; alt=&quot;@GetString(&quot;Ecom:Product.Name&quot;)&quot; class=&quot;flex-img&quot;&gt;&lt;/div&gt;
+<span class='line-number'>503</span>	                                    &lt;div class=&quot;grid__col-xs-8 grid--align-self-center grid__col--bleed-y&quot;&gt;&lt;span class=&quot;u-truncate-text u-w170px&quot;&gt;@GetString(&quot;Ecom:Product.Name&quot;)&lt;/span&gt;&lt;/div&gt;
+<span class='line-number'>504</span>	                                &lt;/div&gt;
+<span class='line-number'>505</span>	                            &lt;/li&gt;
+<span class='line-number'>506</span>	                        }
+<span class='line-number'>507</span>	                    &lt;/ul&gt;
+<span class='line-number'>508</span>	                }
+<span class='line-number'>509</span>	
+<span class='line-number'>510</span>	                @if (documentsCount &gt; 0)
+<span class='line-number'>511</span>	                {
+<span class='line-number'>512</span>	                    &lt;h6 class=&quot;panel__header panel__header--line dw-mod&quot;&gt;@Translate(&quot;Documents&quot;) (@documentsCount)&lt;/h6&gt;
+<span class='line-number'>513</span>	
+<span class='line-number'>514</span>	                        &lt;ul class=&quot;list list--clean dw-mod&quot;&gt;
+<span class='line-number'>515</span>	                            @foreach (LoopItem customField in GetLoop(&quot;CustomFieldValues&quot;))
+<span class='line-number'>516</span>	                            {
+<span class='line-number'>517</span>	                                if (!String.IsNullOrEmpty(customField.GetString(&quot;Document.FullPath&quot;)))
+<span class='line-number'>518</span>	                                {
+<span class='line-number'>519</span>	                                    &lt;li&gt;
+<span class='line-number'>520</span>	                                        &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'>521</span>	                                            &lt;div class=&quot;grid__col-xs-1 grid__col--bleed-y&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;Document_@customField.GetString(&quot;Document.FullPath&quot;)&quot; class=&quot;u-no-margin&quot; /&gt;&lt;/div&gt;
+<span class='line-number'>522</span>	                                            &lt;div class=&quot;grid__col-xs-11 grid__col--bleed-y&quot;&gt;&lt;span class=&quot;u-truncate-text u-max-w220px&quot;&gt;@Path.GetFileName(customField.GetString(&quot;Document.FullPath&quot;))&lt;/span&gt;&lt;/div&gt;
+<span class='line-number'>523</span>	                                        &lt;/div&gt;
+<span class='line-number'>524</span>	                                    &lt;/li&gt;
+<span class='line-number'>525</span>	                                }
+<span class='line-number'>526</span>	                            }
+<span class='line-number'>527</span>	
+<span class='line-number'>528</span>	                            @foreach (LoopItem categoryGroup in GetLoop(&quot;ProductCategories&quot;))
+<span class='line-number'>529</span>	                            {
+<span class='line-number'>530</span>	                                foreach (LoopItem categoryField in categoryGroup.GetLoop(&quot;ProductCategoryFields&quot;))
+<span class='line-number'>531</span>	                                {
+<span class='line-number'>532</span>	                                    string fieldValue = categoryField.GetString(&quot;Ecom:Product.CategoryField.Value&quot;);
+<span class='line-number'>533</span>	
+<span class='line-number'>534</span>	                                    if (!String.IsNullOrEmpty(fieldValue))
+<span class='line-number'>535</span>	                                    {
+<span class='line-number'>536</span>	                                        if (categoryField.GetString(&quot;Ecom:Product.CategoryField.TypeID&quot;) == &quot;9&quot;)
+<span class='line-number'>537</span>	                                        {
+<span class='line-number'>538</span>	                                            &lt;li&gt;
+<span class='line-number'>539</span>	                                                &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'>540</span>	                                                    &lt;div class=&quot;grid__col-xs-1 grid__col--bleed-y&quot;&gt;&lt;input type=&quot;checkbox&quot; name=&quot;Document_@fieldValue&quot; class=&quot;u-no-margin&quot; /&gt;&lt;/div&gt;
+<span class='line-number'>541</span>	                                                    &lt;div class=&quot;grid__col-xs-11 grid__col--bleed-y&quot;&gt;&lt;span class=&quot;u-truncate-text u-max-w220px&quot;&gt;@Path.GetFileName(fieldValue)&lt;/span&gt;&lt;/div&gt;
+<span class='line-number'>542</span>	                                                &lt;/div&gt;
+<span class='line-number'>543</span>	                                            &lt;/li&gt;
+<span class='line-number'>544</span>	                                        }
+<span class='line-number'>545</span>	                                    }
+<span class='line-number'>546</span>	                                }
+<span class='line-number'>547</span>	                            }
+<span class='line-number'>548</span>	                        &lt;/ul&gt;
+<span class='line-number'>549</span>	                }
+<span class='line-number'>550</span>	            &lt;/div&gt;
+<span class='line-number'>551</span>	
+<span class='line-number'>552</span>	            &lt;div class=&quot;panel__content__footer panel__content__footer--400px dw-mod&quot;&gt;
+<span class='line-number'>553</span>	                &lt;input id=&quot;ID&quot; name=&quot;ID&quot; type=&quot;hidden&quot; value=&quot;532&quot; /&gt;
+<span class='line-number'>554</span>	                &lt;input id=&quot;download&quot; name=&quot;download&quot; type=&quot;hidden&quot; value=&quot;true&quot; /&gt;
+<span class='line-number'>555</span>	                &lt;input id=&quot;siteUrl&quot; name=&quot;siteUrl&quot; type=&quot;hidden&quot; value=&quot;@string.Format(&quot;{0}://{1}&quot;, GetGlobalValue(&quot;Global:Request.Scheme&quot;), GetGlobalValue(&quot;Global:Request.Host&quot;))&quot; /&gt;
+<span class='line-number'>556</span>	
+<span class='line-number'>557</span>	                &lt;h6 class=&quot;panel__header panel__header--line dw-mod&quot;&gt;@Translate(&quot;Export&quot;)&lt;/h6&gt;
+<span class='line-number'>558</span>	
+<span class='line-number'>559</span>	                &lt;label&gt;@Translate(&quot;Language&quot;)&lt;/label&gt;
+<span class='line-number'>560</span>	                &lt;select id=&quot;exportLanguage&quot; name=&quot;LanguageId&quot; class=&quot;u-full-width&quot;&gt;
+<span class='line-number'>561</span>	                    @foreach (Language lang in Language.GetLanguages())
+<span class='line-number'>562</span>	                    {
+<span class='line-number'>563</span>	                        &lt;option value=&quot;@lang.LanguageId&quot;&gt;@lang.Name&lt;/option&gt;
+<span class='line-number'>564</span>	                    }
+<span class='line-number'>565</span>	                &lt;/select&gt;
+<span class='line-number'>566</span>	
+<span class='line-number'>567</span>	                &lt;label&gt;@Translate(&quot;Purpose&quot;)&lt;/label&gt;
+<span class='line-number'>568</span>	                &lt;select id=&quot;purpose&quot; name=&quot;purpose&quot; class=&quot;u-full-width&quot;&gt;
+<span class='line-number'>569</span>	                    &lt;option value=&quot;Original&quot;&gt;@Translate(&quot;Original&quot;)&lt;/option&gt;
+<span class='line-number'>570</span>	                    &lt;option value=&quot;Print&quot;&gt;@Translate(&quot;Print&quot;)&lt;/option&gt;
+<span class='line-number'>571</span>	                    &lt;option value=&quot;Office&quot;&gt;@Translate(&quot;Office&quot;)&lt;/option&gt;
+<span class='line-number'>572</span>	                    &lt;option value=&quot;Web&quot;&gt;Web&lt;/option&gt;
+<span class='line-number'>573</span>	                &lt;/select&gt;
+<span class='line-number'>574</span>	
+<span class='line-number'>575</span>	                &lt;label&gt;@Translate(&quot;Export format&quot;)&lt;/label&gt;
+<span class='line-number'>576</span>	                &lt;select id=&quot;exportFormat&quot; name=&quot;format&quot; class=&quot;u-full-width&quot;&gt;
+<span class='line-number'>577</span>	                    &lt;option value=&quot;xml&quot;&gt;Xml&lt;/option&gt;
+<span class='line-number'>578</span>	                    &lt;option value=&quot;json&quot;&gt;Json&lt;/option&gt;
+<span class='line-number'>579</span>	                    &lt;option value=&quot;csv&quot;&gt;Csv&lt;/option&gt;
+<span class='line-number'>580</span>	                &lt;/select&gt;
+<span class='line-number'>581</span>	
+<span class='line-number'>582</span>	                &lt;input type=&quot;submit&quot; value=&quot;@Translate(&quot;Download&quot;)&quot; class=&quot;btn btn--full btn--primary dw-mod&quot; title=&quot;@Translate(&quot;Download&quot;)&quot; /&gt;
+<span class='line-number'>583</span>	            &lt;/div&gt;
+<span class='line-number'>584</span>	        &lt;/form&gt;
+<span class='line-number'>585</span>	
+<span class='line-number'>586</span>	        &lt;form action=&quot;/Default.aspx?ID=@exportPageId&amp;ProductID=@System.Web.HttpContext.Current.Request.QueryString.Get(&quot;ProductID&quot;)&amp;GeneratePdf=true&quot; method=&quot;post&quot;&gt;
+<span class='line-number'>587</span>	            &lt;div class=&quot;panel__content__footer panel__content__footer--400px dw-mod&quot;&gt;
+<span class='line-number'>588</span>	                &lt;h6 class=&quot;panel__header panel__header--line dw-mod&quot;&gt;@Translate(&quot;Generate PDF&quot;)&lt;/h6&gt;
+<span class='line-number'>589</span>	                &lt;input id=&quot;siteUrl&quot; name=&quot;siteUrl&quot; type=&quot;hidden&quot; value=&quot;@string.Format(&quot;{0}://{1}&quot;, GetGlobalValue(&quot;Global:Request.Scheme&quot;), GetGlobalValue(&quot;Global:Request.Host&quot;))&quot; /&gt;
+<span class='line-number'>590</span>	                &lt;label&gt;@Translate(&quot;Language&quot;)&lt;/label&gt;
+<span class='line-number'>591</span>	                &lt;select id=&quot;PdfLanguageId&quot; name=&quot;PdfLanguageId&quot; class=&quot;u-full-width&quot;&gt;
+<span class='line-number'>592</span>	                    @foreach (Language lang in Language.GetLanguages())
+<span class='line-number'>593</span>	                    {
+<span class='line-number'>594</span>	                        &lt;option value=&quot;@lang.LanguageId&quot;&gt;@lang.Name&lt;/option&gt;
+<span class='line-number'>595</span>	                    }
+<span class='line-number'>596</span>	                &lt;/select&gt;
+<span class='line-number'>597</span>	
+<span class='line-number'>598</span>	                &lt;label&gt;@Translate(&quot;Generate PDF&quot;)&lt;/label&gt;
+<span class='line-number'>599</span>	                &lt;select id=&quot;PdfPageId&quot; name=&quot;PdfPageId&quot; class=&quot;u-full-width&quot;&gt;
+<span class='line-number'>600</span>	                    &lt;option value=&quot;&quot; selected&gt;@Translate(&quot;Select type&quot;)&lt;/option&gt;
+<span class='line-number'>601</span>	                    @foreach (Dynamicweb.Content.Page page in ServiceLocator.Current.GetPageService().GetPagesByParentID(pdfFolderId))
+<span class='line-number'>602</span>	                    {
+<span class='line-number'>603</span>	                        &lt;option value=&quot;@page.ID&quot; selected&gt;@page.MenuText&lt;/option&gt;
+<span class='line-number'>604</span>	                    }
+<span class='line-number'>605</span>	                &lt;/select&gt;
+<span class='line-number'>606</span>	
+<span class='line-number'>607</span>	                &lt;input type=&quot;submit&quot; value=&quot;@Translate(&quot;Generate PDF&quot;)&quot; class=&quot;btn btn--full btn--primary dw-mod&quot; title=&quot;@Translate(&quot;Generate PDF&quot;)&quot; /&gt;
+<span class='line-number'>608</span>	            &lt;/div&gt;
+<span class='line-number'>609</span>	        &lt;/form&gt;
+<span class='line-number'>610</span>	    &lt;/div&gt;
+<span class='line-number'>611</span>	&lt;/aside&gt;
+<span class='line-number'>612</span>	
+<span class='line-number'>613</span>	@* Script templates for the updateable product content *@
+<span class='line-number'>614</span>	&lt;script id=&quot;productUpdateableContentTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>615</span>	    &lt;div class=&quot;grid product&quot;&gt;
+<span class='line-number'>616</span>	        @* Image block with optional thumbs *@
+<span class='line-number'>617</span>	        &lt;div class=&quot;grid__col-md-6 grid__col-sm-6&quot;&gt;
+<span class='line-number'>618</span>	            &lt;div class=&quot;grid grid--bleed&quot;&gt;
+<span class='line-number'>619</span>	                &lt;div class=&quot;grid__col-2 u-color-light-gray--bg u-hidden-xxs &quot;&gt;
+<span class='line-number'>620</span>	                    &lt;div class=&quot;thumb-list&quot;&gt;
+<span class='line-number'>621</span>	                        &lt;div id=&quot;ThumbnailImages&quot; data-template=&quot;ThumbnailImageTemplate&quot;&gt;&lt;/div&gt;
+<span class='line-number'>622</span>	                    &lt;/div&gt;
+<span class='line-number'>623</span>	                &lt;/div&gt;
+<span class='line-number'>624</span>	
+<span class='line-number'>625</span>	                &lt;div class=&quot;grid__col-auto&quot;&gt;
+<span class='line-number'>626</span>	                    &lt;div class=&quot;sticker {{onSale}} dw-mod&quot;&gt;@Translate(&quot;Sale!&quot;)&lt;/div&gt;
+<span class='line-number'>627</span>	                    &lt;img class=&quot;thumb-image-view flex-img&quot; id=&quot;Image_{{id}}&quot; src=&quot;/Admin/Public/GetImage.ashx?height=550&amp;amp;crop=5&amp;amp;Compression=75&amp;amp;image={{image}}&quot; alt=&quot;{{name}}&quot; /&gt;
+<span class='line-number'>628</span>	                &lt;/div&gt;
+<span class='line-number'>629</span>	            &lt;/div&gt;
+<span class='line-number'>630</span>	        &lt;/div&gt;
+<span class='line-number'>631</span>	
+<span class='line-number'>632</span>	        @* Primary product informations *@
+<span class='line-number'>633</span>	        &lt;div class=&quot;grid__col-auto&quot;&gt;
+<span class='line-number'>634</span>	            &lt;div class=&quot;grid__cell&quot;&gt;
+<span class='line-number'>635</span>	                &lt;div class=&quot;u-pull--left product__title dw-mod&quot;&gt;
+<span class='line-number'>636</span>	                    &lt;h1 class=&quot;u-no-margin&quot;&gt;{{name}}&lt;/h1&gt;
+<span class='line-number'>637</span>	                    &lt;div class=&quot;item-number dw-mod&quot;&gt;{{number}}&lt;/div&gt;
+<span class='line-number'>638</span>	                &lt;/div&gt;
+<span class='line-number'>639</span>	
+<span class='line-number'>640</span>	                &lt;div&gt;
+<span class='line-number'>641</span>	                    @* Short description *@
+<span class='line-number'>642</span>	                    &lt;div class=&quot;introduction-text&quot;&gt;
+<span class='line-number'>643</span>	                        {{description}}
+<span class='line-number'>644</span>	                    &lt;/div&gt;
+<span class='line-number'>645</span>	
+<span class='line-number'>646</span>	                    @* Variants *@
+<span class='line-number'>647</span>	                    &lt;div&gt;
+<span class='line-number'>648</span>	                        @* Combinations div needed to handle variant options(used in script block with Variants.SetVariantOptionStatesForProductList function) and should not be deleted *@
+<span class='line-number'>649</span>	                        &lt;div id=&quot;Combinations&quot; data-template=&quot;VariantCombinations&quot; data-product-id=&quot;{{id}}&quot; class=&quot;js-variants-wrap u-hidden&quot;&gt;&lt;/div&gt;
+<span class='line-number'>650</span>	                        &lt;div id=&quot;Variants&quot; data-template=&quot;VariantGroup&quot; data-product-id=&quot;{{id}}&quot;&gt;&lt;/div&gt;
+<span class='line-number'>651</span>	                        &lt;small id=&quot;helpText_{{id}}&quot; class=&quot;help-text {{hideViewMore}} {{hideHelpText}}&quot;&gt;@Translate(&quot;Please select variant!&quot;)&lt;/small&gt;
+<span class='line-number'>652</span>	                    &lt;/div&gt;
+<span class='line-number'>653</span>	                &lt;/div&gt;
+<span class='line-number'>654</span>	            &lt;/div&gt;
+<span class='line-number'>655</span>	
+<span class='line-number'>656</span>	            &lt;div class=&quot;grid__cell-footer&quot;&gt;
+<span class='line-number'>657</span>	                &lt;input type=&quot;hidden&quot; id=&quot;CartButton_{{id}}&quot; class=&quot;btn btn--primary dw-mod u-pull--right&quot; name=&quot;submit&quot; /&gt;
+<span class='line-number'>658</span>	                &lt;input type=&quot;hidden&quot; value=&quot;{{variantid}}&quot; name=&quot;Variant&quot; id=&quot;Variant_{{id}}&quot; /&gt;
+<span class='line-number'>659</span>	            &lt;/div&gt;
+<span class='line-number'>660</span>	        &lt;/div&gt;
+<span class='line-number'>661</span>	    &lt;/div&gt;
+<span class='line-number'>662</span>	&lt;/script&gt;
+<span class='line-number'>663</span>	
+<span class='line-number'>664</span>	@* Thumbnail images *@
+<span class='line-number'>665</span>	&lt;script id=&quot;ThumbnailImageTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>666</span>	    &lt;div class=&quot;thumb-list__item dw-mod js-thumb-btn&quot; onmouseover=&quot;ImageList.LoadImage(this)&quot; data-for=&quot;Image_{{productId}}&quot; data-image-path=&quot;/Admin/Public/GetImage.ashx?width=500&amp;amp;height=500&amp;amp;crop=5&amp;amp;Compression=75&amp;amp;image={{image}}&quot;&gt;&lt;img src=&quot;/Admin/Public/GetImage.ashx?width=100&amp;amp;height=100&amp;amp;crop=5&amp;amp;Compression=75&amp;amp;image={{image}}&quot;&gt;&lt;/div&gt;
+<span class='line-number'>667</span>	&lt;/script&gt;
+<span class='line-number'>668</span>	
+<span class='line-number'>669</span>	
+<span class='line-number'>670</span>	@* Variants templates *@
+<span class='line-number'>671</span>	&lt;script id=&quot;VariantGroup&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>672</span>	    &lt;div&gt;
+<span class='line-number'>673</span>	        &lt;div&gt;{{name}}&lt;/div&gt;
+<span class='line-number'>674</span>	        &lt;div id=&quot;VariantOptions&quot; data-template=&quot;VariantOption&quot;&gt;&lt;/div&gt;
+<span class='line-number'>675</span>	    &lt;/div&gt;
+<span class='line-number'>676</span>	&lt;/script&gt;
+<span class='line-number'>677</span>	
+<span class='line-number'>678</span>	&lt;script id=&quot;VariantOption&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>679</span>	    &lt;button type=&quot;button&quot; id=&quot;{{id}}&quot; data-product-id=&quot;@productId&quot; onclick=&quot;Variants.UpdateVariants(this)&quot; class=&quot;btn btn--tag {{disabled}} {{selected}}&quot; data-check=&quot;{{selected}}&quot; {{disabled}}&gt;{{name}}&lt;/button&gt;
+<span class='line-number'>680</span>	&lt;/script&gt;
+<span class='line-number'>681</span>	
+<span class='line-number'>682</span>	@* Favorites templates *@
+<span class='line-number'>683</span>	&lt;script id=&quot;FavoriteTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>684</span>	    &lt;div class=&quot;favorites-list u-pull--right u-ta-left&quot;&gt;
+<span class='line-number'>685</span>	        &lt;i class=&quot;{{favoriteIcon}} fa-1_5x&quot;&gt;&lt;/i&gt;
+<span class='line-number'>686</span>	        &lt;div class=&quot;favorites-list__container dw-mod&quot;&gt;
+<span class='line-number'>687</span>	            &lt;ul id=&quot;FavoriteLists&quot; data-template=&quot;FavoriteListItem&quot; class=&quot;list list--clean dw-mod&quot;&gt;&lt;/ul&gt;
+<span class='line-number'>688</span>	        &lt;/div&gt;
+<span class='line-number'>689</span>	    &lt;/div&gt;
+<span class='line-number'>690</span>	&lt;/script&gt;
+<span class='line-number'>691</span>	
+<span class='line-number'>692</span>	@* BOMProduct templates *@
+<span class='line-number'>693</span>	&lt;script id=&quot;BOMProductTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>694</span>	    &lt;div class=&quot;grid__col--border grid&quot;&gt;
+<span class='line-number'>695</span>	        &lt;div class=&quot;grid__cell grid__cell--align-middle-left&quot;&gt;
+<span class='line-number'>696</span>	            &lt;a href=&quot;{{link}}&quot; class=&quot;u-pull--left u-margin-right&quot;&gt;
+<span class='line-number'>697</span>	                &lt;img src=&quot;/Admin/Public/GetImage.ashx?width=50&amp;image={{image}}&amp;Compression=99&quot; /&gt;
+<span class='line-number'>698</span>	            &lt;/a&gt;
+<span class='line-number'>699</span>	            &lt;a href=&quot;{{link}}&quot;&gt;{{name}}&lt;/a&gt;
+<span class='line-number'>700</span>	        &lt;/div&gt;
+<span class='line-number'>701</span>	    &lt;/div&gt;
+<span class='line-number'>702</span>	&lt;/script&gt;
+<span class='line-number'>703</span>	
+<span class='line-number'>704</span>	&lt;script id=&quot;FavoriteListItem&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>705</span>	    &lt;li&gt;
+<span class='line-number'>706</span>	        &lt;a href=&quot;{{link}}&quot; class=&quot;list__link dw-mod&quot;&gt;&lt;i class=&quot;{{favoriteIcon}}&quot;&gt;&lt;/i&gt; {{name}}&lt;/a&gt;
+<span class='line-number'>707</span>	    &lt;/li&gt;
+<span class='line-number'>708</span>	&lt;/script&gt;
+<span class='line-number'>709</span>	
+<span class='line-number'>710</span>	&lt;script id=&quot;unitOption&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>711</span>	    &lt;div class=&quot;dropdown__item dw-mod&quot; onclick=&quot;Dynamo.UpdateContent(&#39;@productContainerId&#39;, &#39;@feedUrl&amp;ProductID=@productId&amp;UnitID={{value}}&#39;)&quot;&gt;{{name}}&lt;/div&gt;
+<span class='line-number'>712</span>	&lt;/script&gt;
+<span class='line-number'>713</span>	
+<span class='line-number'>714</span>	
+<span class='line-number'>715</span>	@* Script templates for related products *@
+<span class='line-number'>716</span>	&lt;script id=&quot;ProductPreRenderContainer&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>717</span>	    &lt;div class=&quot;grid__col-md-4&quot;&gt;
+<span class='line-number'>718</span>	        &lt;div class=&quot;pre-render-element pre-render-element--md&quot;&gt;&lt;/div&gt;
+<span class='line-number'>719</span>	    &lt;/div&gt;
+<span class='line-number'>720</span>	    &lt;div class=&quot;grid__col-md-4&quot;&gt;
+<span class='line-number'>721</span>	        &lt;div class=&quot;pre-render-element pre-render-element--md&quot;&gt;&lt;/div&gt;
+<span class='line-number'>722</span>	    &lt;/div&gt;
+<span class='line-number'>723</span>	    &lt;div class=&quot;grid__col-md-4&quot;&gt;
+<span class='line-number'>724</span>	        &lt;div class=&quot;pre-render-element pre-render-element--md&quot;&gt;&lt;/div&gt;
+<span class='line-number'>725</span>	    &lt;/div&gt;
+<span class='line-number'>726</span>	&lt;/script&gt;
+<span class='line-number'>727</span>	
+<span class='line-number'>728</span>	&lt;script id=&quot;ProductContainer&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>729</span>	    &lt;div class=&quot;grid__col-12&quot;&gt;
+<span class='line-number'>730</span>	        &lt;h2 class=&quot;section-title section-title--condensed&quot;&gt;@Translate(&quot;What about these products?&quot;)&lt;/h2&gt;
+<span class='line-number'>731</span>	    &lt;/div&gt;
+<span class='line-number'>732</span>	
+<span class='line-number'>733</span>	    &lt;div class=&quot;grid__col-1 grid__col--bleed-x&quot;&gt;
+<span class='line-number'>734</span>	        &lt;div class=&quot;grid__cell grid__cell--align-middle-right&quot;&gt;
+<span class='line-number'>735</span>	            &lt;button class=&quot;btn btn--condensed btn--clean {{prevdisabled}} dw-mod&quot; onclick=&quot;Dynamo.UpdateContent(&#39;ProductList&#39;, &#39;{{prevPage}}&#39;)&quot; {{prevdisabled}}&gt;&lt;i class=&quot;fa fa-chevron-left fa-2x&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+<span class='line-number'>736</span>	        &lt;/div&gt;
+<span class='line-number'>737</span>	    &lt;/div&gt;
+<span class='line-number'>738</span>	    &lt;div class=&quot;grid__col-10 grid__col--bleed-x&quot;&gt;
+<span class='line-number'>739</span>	        &lt;div id=&quot;ProductsContainer&quot; class=&quot;grid product-list dw-mod&quot; data-template=&quot;ProductGridItemContainer&quot;&gt;&lt;/div&gt;
+<span class='line-number'>740</span>	    &lt;/div&gt;
+<span class='line-number'>741</span>	    &lt;div class=&quot;grid__col-1 grid__col--bleed-x&quot;&gt;
+<span class='line-number'>742</span>	        &lt;div class=&quot;grid__cell grid__cell--align-middle-left&quot;&gt;
+<span class='line-number'>743</span>	            &lt;button class=&quot;btn btn--condensed btn--clean {{nextdisabled}} dw-mod&quot; onclick=&quot;Dynamo.UpdateContent(&#39;ProductList&#39;, &#39;{{nextPage}}&#39;)&quot; {{nextdisabled}}&gt;&lt;i class=&quot;fa fa-chevron-right fa-2x&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+<span class='line-number'>744</span>	        &lt;/div&gt;
+<span class='line-number'>745</span>	    &lt;/div&gt;
+<span class='line-number'>746</span>	&lt;/script&gt;
+<span class='line-number'>747</span>	
+<span class='line-number'>748</span>	&lt;script id=&quot;ProductGridItemContainer&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>749</span>	    &lt;div id=&quot;Product&quot; class=&quot;grid__col-lg-4 grid__col-md-4 grid__col-sm-4 grid__col-xs-6&quot; data-template=&quot;ProductGridItem&quot; data-preloader=&quot;false&quot;&gt;&lt;/div&gt;
+<span class='line-number'>750</span>	&lt;/script&gt;
+<span class='line-number'>751</span>	
+<span class='line-number'>752</span>	&lt;script id=&quot;ProductGridItem&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>753</span>	    &lt;div class=&quot;grid__cell u-border {{noImage}}&quot;&gt;
+<span class='line-number'>754</span>	        &lt;div class=&quot;sticker {{onSale}} dw-mod&quot;&gt;@Translate(&quot;Sale!&quot;)&lt;/div&gt;
+<span class='line-number'>755</span>	        &lt;a href=&quot;{{link}}&quot; onclick=&quot;Scroll.SavePosition(event)&quot;&gt;&lt;img class=&quot;grid__cell-img grid__cell-img--centered&quot; src=&quot;/Admin/Public/GetImage.ashx?width=300&amp;amp;height=300&amp;amp;crop=5&amp;amp;Compression=75&amp;amp;image={{image}}&quot; alt=&quot;{{name}}&quot; /&gt;&lt;/a&gt;
+<span class='line-number'>756</span>	    &lt;/div&gt;
+<span class='line-number'>757</span>	
+<span class='line-number'>758</span>	    &lt;div class=&quot;grid__cell card u-color-light--bg u-border-left u-border-right&quot;&gt;
+<span class='line-number'>759</span>	        &lt;div class=&quot;u-ta-center&quot;&gt;
+<span class='line-number'>760</span>	            &lt;a href=&quot;{{link}}&quot; onclick=&quot;Scroll.SavePosition(event)&quot; title=&quot;{{name}}&quot;&gt;&lt;h6 class=&quot;u-ta-center u-condensed-text&quot;&gt;{{name}}&lt;/h6&gt;&lt;/a&gt;
+<span class='line-number'>761</span>	            &lt;div class=&quot;item-number dw-mod&quot;&gt;{{number}}&lt;/div&gt;
+<span class='line-number'>762</span>	            &lt;div class=&quot;before-price {{onSale}} dw-mod&quot;&gt;{{discount}}&lt;/div&gt;
+<span class='line-number'>763</span>	            &lt;div class=&quot;price dw-mod&quot;&gt;{{price}}&lt;/div&gt;
+<span class='line-number'>764</span>	        &lt;/div&gt;
+<span class='line-number'>765</span>	    &lt;/div&gt;
+<span class='line-number'>766</span>	
+<span class='line-number'>767</span>	    &lt;div class=&quot;card-footer u-color-light--bg u-border-left u-border-right u-border-bottom&quot;&gt;
+<span class='line-number'>768</span>	        &lt;div class=&quot;u-ta-center&quot;&gt;
+<span class='line-number'>769</span>	            &lt;a href=&quot;{{link}}&quot; id=&quot;CartButton_{{id}}&quot; class=&quot;btn btn--secondary btn--full u-no-margin dw-mod&quot;&gt;@Translate(&quot;View&quot;)&lt;/a&gt;
+<span class='line-number'>770</span>	        &lt;/div&gt;
+<span class='line-number'>771</span>	    &lt;/div&gt;
+<span class='line-number'>772</span>	&lt;/script&gt;
+<span class='line-number'>773</span>	
+<span class='line-number'>774</span>	@*Variants data generation*@
+<span class='line-number'>775</span>	&lt;script&gt;
+<span class='line-number'>776</span>	    document.addEventListener(&quot;DOMContentLoaded&quot;, function (event) {
+<span class='line-number'>777</span>	        Facets.Init(&quot;productList&quot;, &#39;@productCatalogId&#39;, &#39;@requestQuery&#39;);
+<span class='line-number'>778</span>	
+<span class='line-number'>779</span>	        Variants.SetProductFeedId(&#39;@productCatalogId&#39;);
+<span class='line-number'>780</span>	        Variants.SetViewMode(&quot;productList&quot;);
+<span class='line-number'>781</span>	
+<span class='line-number'>782</span>	        document.getElementById(&quot;productList&quot;).addEventListener(&#39;contentLoaded&#39;, function (e) {
+<span class='line-number'>783</span>	            if (e.srcElement.classList.contains(&quot;js-variants-wrap&quot;)) {
+<span class='line-number'>784</span>	                Variants.SetVariantOptionStatesForProductList(e.srcElement);
+<span class='line-number'>785</span>	            }
+<span class='line-number'>786</span>	        }, false);
+<span class='line-number'>787</span>	    });
+<span class='line-number'>788</span>	&lt;/script&gt;
+</div>
+

@@ -1,0 +1,78 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+@{ 
+    int caseListPageId = GetPageIdByNavigationTag("CasesListFeed");
+    string cardClass = Pageview.Device.ToString() != "Tablet" ? "paragraph-card" : "";
+    string cardFooterClass = Pageview.Device.ToString() != "Tablet" ? "paragraph-card-footer" : "";
+}
+
+<div class="grid__col-12">
+    <div class="grid js-ajax-container" id="CasesContent" data-template="CasesContentTemplate" data-json-feed="/Default.aspx?ID=@caseListPageId" data-preloader="overlay"></div>
+    
+    <script id="CasesContentTemplate" type="text/x-template">
+        <div class="grid__col-12">
+            <div class="grid__cell">
+                <div class="collection">
+                    <div>
+                        <h5 class="u-inline-block u-margin-right">@Translate("Industry")</h5>
+                        <input type="checkbox" id="IndustrySelector" class="dropdown-trigger" />
+                        <div class="dropdown u-w180px u-margin-right u-inline-block dw-mod">
+                            <label class="dropdown__header dropdown__btn dw-mod" for="IndustrySelector">{{selectedIndustry}}</label>
+                            <div class="dropdown__content dw-mod" id="Industries" data-template="CategoryTemplate"></div>
+                            <label class="dropdown-trigger-off" for="IndustrySelector"></label>
+                        </div>
+                    </div>
+                    <div class="u-hidden-xs u-hidden-xxs">
+                        <h5 class="u-inline-block u-margin-right">@Translate("Solution type")</h5>
+                        <input type="checkbox" id="SolutionTypeSelector" class="dropdown-trigger" />
+                        <div class="dropdown u-w180px u-margin-right u-inline-block dw-mod">
+                            <label class="dropdown__header dropdown__btn dw-mod" for="SolutionTypeSelector">{{selectedSolutionType}}</label>
+                            <div class="dropdown__content dw-mod" id="SolutionTypes" data-template="CategoryTemplate"></div>
+                            <label class="dropdown-trigger-off" for="SolutionTypeSelector"></label>
+                        </div>
+                    </div>
+                    <div class="u-hidden-xs u-hidden-xxs">
+                        <h5 class="u-inline-block u-margin-right">@Translate("Integration")</h5>
+                        <input type="checkbox" id="IntegrationSelector" class="dropdown-trigger" />
+                        <div class="dropdown u-w180px u-margin-right u-inline-block dw-mod">
+                            <label class="dropdown__header dropdown__btn dw-mod" for="IntegrationSelector">{{selectedIntegration}}</label>
+                            <div class="dropdown__content dw-mod" id="Integrations" data-template="CategoryTemplate"></div>
+                            <label class="dropdown-trigger-off" for="IntegrationSelector"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid" id="Cases" data-template="CasesListTemplate"></div>
+    </script> 
+
+    <script id="CasesListTemplate" type="text/x-template">
+        <div class="grid__col-md-3 grid__col-sm-3 grid__col-xs-12">
+            <div class="u-ta-center @cardClass">
+                <div class="u-margin-bottom">
+                    <a href="{{link}}">              
+                        <div class="layered-image {{tintedImage}}" style="background-image:url(/Admin/Public/GetImage.ashx?width=992&amp;height=760&amp;crop=0&amp;Compression=75&amp;DoNotUpscale=True&amp;image={{image}}); background-size: cover;">
+                            <img src="/Admin/Public/GetImage.ashx?width=240&amp;crop=0&amp;Compression=75&amp;DoNotUpscale=true&amp;image={{logo}}" class="u-padding" />
+                        </div>
+                    </a>
+                </div>
+
+                <a href="{{link}}">
+                    <h2 class="u-no-margin u-margin-bottom">{{title}}</h2>
+                </a>
+
+                <p>{{summary}}</p>
+            </div>
+            <div class="grid__cell-footer grid--justify-center @cardFooterClass">
+                <div class="u-margin-top u-margin-bottom">
+                    <a href="{{link}}" class="btn btn--secondary btn--line-height dw-mod">@Translate("Read the case")</a>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="CategoryTemplate" type="text/x-template">
+        <div class="dropdown__item" onclick="Dynamo.UpdateContent('CasesContent', '{{feedLink}}')">{{title}}</div>
+    </script>
+</div>

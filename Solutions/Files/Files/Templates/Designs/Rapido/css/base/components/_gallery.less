@@ -1,0 +1,89 @@
+//Gallery images
+
+
+//The gallery/main view
+.gallery {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+} 
+
+.gallery__main-image {
+    display: block;
+    background-color: @gray-lighter;
+} 
+
+.gallery__image-counter {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    color: @white;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 120px;
+    height: 80px;
+    padding: @reflex-cell-spacing-lg;
+} 
+
+.gallery__image-counter__number{
+    font-size: 24px;
+    margin: 0 @reflex-cell-spacing-md;
+}
+
+.gallery__image-counter__text {
+    display: block;
+    margin: @reflex-cell-spacing-md 0;
+}
+
+
+//The slider
+.gallery-slider {
+    position: relative;
+}
+
+.gallery-slider__image {
+
+}
+
+.gallery-slider__image-counter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: @white;
+    font-size: @font-size--md;
+    font-weight: bold;
+    margin: @reflex-cell-spacing-lg;
+}
+
+.gallery-slider__close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: @white;
+    margin: @reflex-cell-spacing-lg;
+    cursor: pointer;
+}
+
+.gallery-slider__previous-btn {
+    position: absolute;
+    top: ~"calc(50% - 10px)";
+    left: 0;
+    color: @white;
+    margin: @reflex-cell-spacing-lg;
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.gallery-slider__next-btn {
+    position: absolute;
+    top: ~"calc(50% - 10px)";
+    right: 0;
+    color: @white;
+    margin: @reflex-cell-spacing-lg;
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+}

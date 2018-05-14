@@ -1,0 +1,10 @@
+2018-05-09 16:36:45.7412|ERROR|Templates|Additional System info has been logged|Error in razor template
+System.ArgumentException: Parent ID must be greater than 0, but it was 0
+   at Dynamicweb.Core.Ensure.That[TException](Boolean condition, String message)
+   at Dynamicweb.Content.PageService.GetPagesByParentID(Int32 parentId)
+   at CompiledRazorTemplates.Dynamic.bebfeeadaceded.Execute()
+   at RazorEngine.Templating.TemplateBase.RazorEngine.Templating.ITemplate.Run(ExecuteContext context)
+   at RazorEngine.Templating.TemplateService.Run(ITemplate template, DynamicViewBag viewBag)
+   at RazorEngine.Templating.TemplateService.Parse(String razorTemplate, Object model, DynamicViewBag viewBag, String cacheName)
+   at RazorEngine.Razor.Parse[T](String razorTemplate, T model, String cacheName)
+   at Dynamicweb.Rendering.Template.RenderRazorTemplate()

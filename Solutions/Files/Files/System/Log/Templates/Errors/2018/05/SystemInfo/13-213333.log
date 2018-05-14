@@ -1,0 +1,21 @@
+2018-05-13 21:33:33.2107|ERROR|Templates|Error in razor template
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at Dynamicweb.Frontend.Content.GetModuleOutput(Paragraph paragraph, PageView pageview)
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at CompiledRazorTemplates.Dynamic.affaabbbffffa.Execute()
+   at RazorEngine.Templating.TemplateBase.RazorEngine.Templating.ITemplate.Run(ExecuteContext context)
+   at RazorEngine.Templating.TemplateService.Run(ITemplate template, DynamicViewBag viewBag)
+   at RazorEngine.Templating.TemplateService.Parse(String razorTemplate, Object model, DynamicViewBag viewBag, String cacheName)
+   at RazorEngine.Razor.Parse[T](String razorTemplate, T model, String cacheName)
+   at Dynamicweb.Rendering.Template.RenderRazorTemplate()
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at Dynamicweb.Frontend.Content.GetModuleOutput(Paragraph paragraph, PageView pageview)
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at CompiledRazorTemplates.Dynamic.affaabbbffffa.Execute()
+   at RazorEngine.Templating.TemplateBase.RazorEngine.Templating.ITemplate.Run(ExecuteContext context)
+   at RazorEngine.Templating.TemplateService.Run(ITemplate template, DynamicViewBag viewBag)
+   at RazorEngine.Templating.TemplateService.Parse(String razorTemplate, Object model, DynamicViewBag viewBag, String cacheName)
+   at RazorEngine.Razor.Parse[T](String razorTemplate, T model, String cacheName)
+   at Dynamicweb.Rendering.Template.RenderRazorTemplate()

@@ -1,0 +1,53 @@
+2018-05-02 17:44:40.913: Running.
+2018-05-02 17:44:40.913: Fetching build definition.
+2018-05-02 17:44:40.913: Fetched build definition. 'Dynamicweb.Ecommerce.Indexing.ProductIndexBuilder'.
+2018-05-02 17:44:40.913: Creating index writer.
+2018-05-02 17:44:40.913: Created index writer: 'Dynamicweb.Indexing.Lucene.LuceneIndexWriter'.
+2018-05-02 17:44:40.913: Starting build process.
+2018-05-02 17:44:40.929: Dynamicweb.Ecommerce.Indexing.ProductIndexBuilder building using Dynamicweb.Indexing.Lucene.LuceneIndexWriter... Action: 'Full', Resume: 'False'
+2018-05-02 17:44:40.929: Opening index writer.
+2018-05-02 17:44:40.929: Opened index writer to overwrite index
+2018-05-02 17:44:40.929: Opening database connection.
+2018-05-02 17:44:40.929: BulkSize: '500'
+2018-05-02 17:44:40.945: MaxProductsToIndex: '2147483647'
+2018-05-02 17:44:40.945: OnlyIndexActiveProducts: 'False'
+2018-05-02 17:44:40.945: SkipGrouping: 'False'
+2018-05-02 17:44:40.945: SkipRelatedProducts: 'False'
+2018-05-02 17:44:40.945: SkipExtenders: 'False'
+2018-05-02 17:44:40.945: SkipAllExtendedFields: 'False'
+2018-05-02 17:44:40.945: SkipCategoryFields: 'False'
+2018-05-02 17:44:40.945: HandleInheritedCategoryValues: 'False'
+2018-05-02 17:44:40.945: DoNotStoreDefaultFields: 'False'
+2018-05-02 17:44:40.945: DoNotAnalyzeDefaultFields: 'False'
+2018-05-02 17:44:40.961: EmptyStringReplacement: ''
+2018-05-02 17:44:40.961: SkipImages: 'False'
+2018-05-02 17:44:40.961: ShopsToIndex: ''
+2018-05-02 17:44:40.961: Loading product group relation information.
+2018-05-02 17:44:40.977: Loaded product group relation information.
+2018-05-02 17:44:40.977: Loading group relation information.
+2018-05-02 17:44:40.977: Loaded group relation information.
+2018-05-02 17:44:40.977: Loading product group relation information.
+2018-05-02 17:44:40.977: Loaded product group relation information.
+2018-05-02 17:44:40.997: Loading product groups.
+2018-05-02 17:44:40.997: Loaded product groups.
+2018-05-02 17:44:40.997: Loading campaign information.
+2018-05-02 17:44:41.009: Loaded campaign information.
+2018-05-02 17:44:41.009: Loading variant information.
+2018-05-02 17:44:41.045: Loaded variant information.
+2018-05-02 17:44:41.073: Loaded extended variant counts.
+2018-05-02 17:44:41.073: Loaded manufacturers.
+2018-05-02 17:44:41.073: Loaded assortments.
+2018-05-02 17:44:41.073: Loaded customFields.
+2018-05-02 17:44:41.097: Loaded CategoriesValues.
+2018-05-02 17:44:41.105: Loaded StockLocations.
+2018-05-02 17:44:41.105: Loaded StockLocationStockStatuses.
+2018-05-02 17:44:41.121: Loaded shop and default images.
+2018-05-02 17:44:41.121: Loaded Favorite Lists.
+2018-05-02 17:44:41.121: Loading product relations information.
+2018-05-02 17:44:41.133: Loaded product relations information.
+2018-05-02 17:44:41.161: Starting processing products.
+2018-05-02 17:44:42.125: Completed processing products.
+2018-05-02 17:44:42.125: Closing index writer.
+2018-05-02 17:44:42.248: Closed index writer.
+2018-05-02 17:44:42.248: Ended build process.
+2018-05-02 17:44:42.248: Completed (399 / 399).

@@ -1,0 +1,47 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+@{
+    int blogListPageId = GetPageIdByNavigationTag("BlogsListFeed");
+}
+
+<div class="grid__col-md-8 grid__col-sm-12 grid__col-xs-12">
+    <div class="grid js-ajax-container" id="BlogsContent" data-template="BlogsContentTemplate" data-json-feed="/Default.aspx?ID=@blogListPageId" data-preloader="overlay"></div>
+
+    <script id="BlogsContentTemplate" type="text/x-template">
+        <div class="grid__col-12">
+            <div class="collection u-no-margin">
+                <h5>@Translate("Category")</h5>
+                <input type="checkbox" id="CategorySelector" class="dropdown-trigger" />
+                <div class="dropdown u-w180px dw-mod">
+                    <label class="dropdown__header dropdown__btn dw-mod" for="CategorySelector">{{selectedCategory}}</label>
+                    <div class="dropdown__content dw-mod" id="Categories" data-template="CategoriesTemplate"></div>
+                    <label class="dropdown-trigger-off" for="CategorySelector"></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid" id="Blogs" data-template="BlogsListTemplate"></div>
+    </script>
+
+    <script id="BlogsListTemplate" type="text/x-template">
+        <div class="grid__col-md-4 grid__col-sm-4 grid__col-xs-12 grid__col-xxs-12">
+            <a href="{{link}}">
+                <img src="/Admin/Public/GetImage.ashx?width=800&height=600&amp;crop=0&amp;DoNotUpscale=0&amp;Compression=75&amp;image={{image}}" alt="{{title}}" />
+            </a>
+        </div>
+        <div class="grid__col-md-8 grid__col-sm-8 grid__col-xs-12 grid__col-xxs-12">
+            <a href="{{link}}"><h2 class="article__header u-truncate-text dw-mod">{{title}}</h2></a>
+            <small class="article__subscription dw-mod">{{subscription}}</small>
+
+            <p class="article__short-summary dw-mod">{{summary}}</p>
+
+            <div class="grid__cell-footer">
+                <a href="{{link}}" class="btn btn--secondary u-no-margin dw-mod">@Translate("Read more")</a>
+            </div>
+        </div>
+    </script>
+
+    <script id="CategoriesTemplate" type="text/x-template">
+        <div class="dropdown__item" onclick="Dynamo.UpdateContent('BlogsContent', '/Default.aspx?ID=@blogListPageId&Category={{id}}')">{{title}}</div>
+    </script>
+</div>

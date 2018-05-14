@@ -1,0 +1,16 @@
+2018-05-05 22:17:04.3057|ERROR|Templates|Additional System info has been logged|Error parsing razor template
+RazorEngine.Templating.TemplateParsingException: Encountered end tag "div" with no matching start tag.  Are your start/end tags properly balanced?
+   at RazorEngine.Compilation.CSharp.CSharpRazorCodeGenerator.VisitError(RazorError err)
+   at System.Web.Razor.Parser.ParserVisitorExtensions.Visit(ParserVisitor self, ParserResults result)
+   at System.Web.Razor.RazorTemplateEngine.GenerateCodeCore(ITextDocument input, String className, String rootNamespace, String sourceFileName, Nullable`1 cancelToken)
+   at System.Web.Razor.RazorTemplateEngine.GenerateCode(TextReader input)
+   at RazorEngine.Compilation.CompilerServiceBase.GetGeneratorResult(RazorEngineHost host, String template)
+   at RazorEngine.Compilation.CompilerServiceBase.GetCodeCompileUnit(String className, String template, ISet`1 namespaceImports, Type templateType, Type modelType)
+   at RazorEngine.Compilation.DirectCompilerServiceBase.Compile(TypeContext context)
+   at RazorEngine.Compilation.DirectCompilerServiceBase.CompileType(TypeContext context)
+   at RazorEngine.Templating.TemplateService.CreateTemplateType(String razorTemplate, Type modelType)
+   at RazorEngine.Templating.TemplateService.GetTemplate[T](String razorTemplate, Object model, String cacheName)
+   at RazorEngine.Templating.TemplateService.GetTemplate(String razorTemplate, Object model, String cacheName)
+   at RazorEngine.Templating.TemplateService.Parse(String razorTemplate, Object model, DynamicViewBag viewBag, String cacheName)
+   at RazorEngine.Razor.Parse[T](String razorTemplate, T model, String cacheName)
+   at Dynamicweb.Rendering.Template.RenderRazorTemplate()

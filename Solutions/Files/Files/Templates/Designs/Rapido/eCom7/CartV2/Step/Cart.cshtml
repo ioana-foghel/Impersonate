@@ -1,0 +1,679 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using Dynamicweb.Core
+@using System
+
+@{
+    string pageId = GetGlobalValue("Global:Page.ID");
+    int cartOrderlinesFeedPageId = GetPageIdByNavigationTag("CartOrderlinesFeed");
+}
+
+@* Escape the container and section *@
+</div>
+</section>
+@* ----------------------------------- *@
+
+<section class="multiple-paragraphs-container">
+    <div class="center-container center-container--with-background-image dw-mod">
+        <div class="paragraph-container">
+            <form name="ordersubmit" id="OrderSubmit" method="post" action="/Default.aspx?ID=@pageId" autocomplete="off">
+                <!-- Trigger for the pacel shops modal -->
+                <input type="checkbox" id="ParcelShopsModalTrigger" class="modal-trigger" />
+
+                <!-- Login modal -->
+                <div class="modal-container">
+                    <label for="ParcelShopsModalTrigger" id="ParcelShopsModalOverlay" class="modal-overlay"></label>
+                    <div class="modal modal--sm" id="ParcelShopsModal">
+                        <div class="modal__header">
+                            <h2>@Translate("Choose a parcel shop")</h2>
+                        </div>
+                        <div class="modal__body">
+                            <ul class="list list--clean dw-mod" id="ParcelShops" data-template="ParcelShopsTemplate"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="paragraph-container__grid--bleed-x paragraph-container__grid--bleed-y">
+                    <div class="grid">
+                        @* The cart *@
+                        @Order(cartOrderlinesFeedPageId)
+                    </div>
+                    @*   <div class="grid">
+                            @* The informations
+                            <div class="grid__col-md-4 grid__col-sm-4">
+                                <div class="grid grid--direction-column">
+                                    @* Address
+                                    @CustomerAddress()
+
+                                    @* Alternate addresses
+                                    @ShippingAddress()
+                                </div>
+                            </div>
+
+                            <div class="grid__col-md-8 grid__col-sm-8 grid__col--bleed-x">
+                                <div class="grid__cell">
+                                    <div class="grid">
+                                        @* Payment
+                                        @if (!Converter.ToBoolean(Pageview.Area.Item["HidePayment"])) {
+                                            @Payment()
+                                        }
+
+                                        @* Shipping
+                                        @if (!Converter.ToBoolean(Pageview.Area.Item["HideShipping"])) {
+                                            @Shipping()
+                                        }
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@* Re-enter the container and section *@
+<section class="content-container center-container dw-mod">
+    <div class="grid">
+        @* ----------------------------------- *@
+
+
+        @helper CustomerAddress()
+        {
+string editProfileLink = "/Default.aspx?ID=" + GetPageIdByNavigationTag("CustomerProfile").ToString();
+
+    <div class="grid__col-12 grid__col--bleed-x">
+        <div class="card-header u-color-light--bg dw-mod">
+            <h3><i class="fa fa-home"></i> @Translate("Billing address")</h3>
+        </div>
+        <div class="card u-color-light--bg dw-mod">
+            @if (!Dynamicweb.Core.Converter.ToBoolean(GetGlobalValue("Global:Extranet.UserName")) || GetLoop("ValidationErrors").Count > 0)
+            {
+                //When the user is not signed in, or there are form errors, give the possibility to either sign in or create address
+                if (!Dynamicweb.Core.Converter.ToBoolean(GetGlobalValue("Global:Extranet.UserName")))
+                {
+                    <label class="btn btn--secondary btn--full dw-mod more" for="SignInModalTrigger">@Translate("Already a customer?")</label>
+                }
+                <div class="form__field-group dw-mod">
+                    <label for="EcomOrderCustomerCompany">@Translate("Company")</label>
+                    <input type="text" class="u-full-width" name="EcomOrderCustomerCompany" id="EcomOrderCustomerCompany" value="@GetString("Ecom:Order.Customer.Company")" />
+                    <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderCustomerCompany.ErrorMessage")</div>
+                </div>
+
+                <div class="form__field-group dw-mod">
+                    <label for="EcomOrderCustomerName">@Translate("Name")</label>
+                    <input type="text" class="u-full-width" name="EcomOrderCustomerName" id="EcomOrderCustomerName" value="@GetString("Ecom:Order.Customer.Name")" />
+                    <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderCustomerName.ErrorMessage")</div>
+                </div>
+
+                <div class="form__fields-collection form__fields-collection--2-3">
+                    <div class="form__field-group dw-mod">
+                        <label for="EcomOrderCustomerPhone">@Translate("Phone")</label>
+                        <input type="tel" class="u-full-width" name="EcomOrderCustomerPhone" id="EcomOrderCustomerPhone" value="@GetString("Ecom:Order.Customer.Phone")" />
+                        <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderCustomerPhone.ErrorMessage")</div>
+                    </div>
+
+                    <div class="form__field-group dw-mod">
+                        <label for="EcomOrderCustomerEmail">@Translate("Email")</label>
+                        <input type="email" class="u-full-width" name="EcomOrderCustomerEmail" id="EcomOrderCustomerEmail" value="@GetString("Ecom:Order.Customer.Email")" />
+                        <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderCustomerEmail.ErrorMessage")</div>
+                    </div>
+                </div>
+                <div class="form__field-group dw-mod">
+                    <label for="EcomOrderCustomerAddress">@Translate("Address")</label>
+                    <input type="text" class="u-full-width" name="EcomOrderCustomerAddress" id="EcomOrderCustomerAddress" value="@GetString("Ecom:Order.Customer.Address")" />
+                    <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderCustomerAddress.ErrorMessage")</div>
+                </div>
+
+                <div class="form__fields-collection form__fields-collection--2-3">
+                    <div class="form__field-group dw-mod">
+                        <label for="EcomOrderCustomerZip">@Translate("Zip code")</label>
+                        <input type="text" class="u-full-width" name="EcomOrderCustomerZip" id="EcomOrderCustomerZip" value="@GetString("Ecom:Order.Customer.Zip")" />
+                        <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderCustomerZip.ErrorMessage")</div>
+                    </div>
+
+                    <div class="form__field-group dw-mod">
+                        <label for="EcomOrderCustomerCity">@Translate("City")</label>
+                        <input type="text" class="u-full-width" name="EcomOrderCustomerCity" id="EcomOrderCustomerCity" value="@GetString("Ecom:Order.Customer.City")" />
+                        <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderCustomerCity.ErrorMessage")</div>
+                    </div>
+                </div>
+
+                <div class="form__field-group dw-mod">
+                    <label for="EcomOrderCustomerCountry">@Translate("Country")</label>
+                    <select class="u-full-width" name="EcomOrderCustomerCountry" id="EcomOrderCustomerCountry" onchange="document.getElementById('OrderSubmit').submit()">
+                        @foreach (LoopItem country2 in GetLoop("Countries"))
+                        {
+                            string selected = GetString("Ecom:Order.Customer.Country.Code") == country2.GetString("Ecom:Country.Code2") ? "selected" : "";
+                            <option value="@country2.GetString("Ecom:Country.Code2")" @selected>@country2.GetString("Ecom:Country.Name")</option>
+                        }
+                    </select>
+                    <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderCustomerCountry.ErrorMessage")</div>
+                </div>
+            }
+            else
+            {
+                //When the user is signed in, show static address fields
+                <table class="table table--clean table--condensed">
+                    @if (!String.IsNullOrEmpty(GetString("Ecom:Order.Customer.Company")))
+                    {
+                        <tr>
+                            <td class="u-bold">@Translate("Company")</td>
+                            <td><input type="text" name="EcomOrderCustomerCompany" id="EcomOrderCustomerCompany" value="@GetString("Ecom:Order.Customer.Company")" readonly /></td>
+                        </tr>
+                    }
+                    <tr>
+                        <td class="u-bold">@Translate("Name")</td>
+                        <td><input type="text" name="EcomOrderCustomerName" id="EcomOrderCustomerName" value="@GetString("Ecom:Order.Customer.Name")" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td class="u-bold">@Translate("Phone")</td>
+                        <td><input type="text" name="EcomOrderCustomerPhone" id="EcomOrderCustomerPhone" value="@GetString("Ecom:Order.Customer.Phone")" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td class="u-bold">@Translate("Email")</td>
+                        <td><input type="text" name="EcomOrderCustomerEmail" id="EcomOrderCustomerEmail" value="@GetString("Ecom:Order.Customer.Email")" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td class="u-bold">@Translate("Address")</td>
+                        <td><input type="text" name="EcomOrderCustomerAddress" id="EcomOrderCustomerAddress" value="@GetString("Ecom:Order.Customer.Address")" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td class="u-bold">@Translate("Zip code")</td>
+                        <td><input type="text" name="EcomOrderCustomerZip" id="EcomOrderCustomerZip" value="@GetString("Ecom:Order.Customer.Zip")" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td class="u-bold">@Translate("City")</td>
+                        <td><input type="text" name="EcomOrderCustomerCity" id="EcomOrderCustomerCity" value="@GetString("Ecom:Order.Customer.City")" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td class="u-bold">@Translate("Country")</td>
+                        <td>
+                            @foreach (LoopItem country in GetLoop("Countries"))
+                            {
+                                if (GetString("Ecom:Order.Customer.Country") == country.GetString("Ecom:Country.Code2") || GetString("Ecom:Order.Customer.Country.Code") == country.GetString("Ecom:Country.Code2"))
+                                {
+                                    <input type="hidden" name="EcomOrderCustomerCountry" id="EcomOrderCustomerCountry" value="@country.GetString("Ecom:Country.Code2")" />
+                                    <input type="text" value="@country.GetString("Ecom:Country.Name")" readonly />
+                                }
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                </table>
+
+                <a href="@editProfileLink" class="btn btn--secondary btn--full u-no-margin dw-mod">@Translate("Edit profile")</a>
+            }
+        </div>
+    </div>
+}
+
+        @helper ShippingAddress()
+        {
+string manageAddresses = "/Default.aspx?ID=" + GetPageIdByNavigationTag("CustomerProfile").ToString() + "&Action=ManageAddresses";
+int cartAddressesFeedPageId = GetPageIdByNavigationTag("CartAddressesFeed");
+
+    <div class="grid__col-12 grid__col--bleed-x">
+        <input type="checkbox" id="AlternateAddressBlock" class="expand-trigger js-remember-state" />
+
+        <div class="expand-container dw-mod">
+            <div class="grid__col--bleed">
+                <div class="card-header u-color-light--bg dw-mod">
+                    <h3 class="more">
+                        <label for="AlternateAddressBlock" class="expand-container__btn dw-mod more">
+                            <i class="fa fa-map-marker"></i> @Translate("Shipping address")
+                        </label>
+                    </h3>
+                    <h3 class="less">
+                        <label for="AlternateAddressBlock" class="expand-container__btn dw-mod less">
+                            <i class="fa fa-map-marker"></i> @Translate("Shipping address")
+                        </label>
+                    </h3>
+                </div>
+
+                <div class="card u-color-light--bg expand-container__content dw-mod">
+                    @if (GetLoop("UserManagement:User.UserAddresses").Count > 0)
+                    {
+                        <div class="grid">
+                            <div class="grid__col-xs-10 grid__col--bleed">
+                                <select id="DeliveryAddressSelector" class="u-full-width" onchange="Dynamo.UpdateContent('DeliveryAddressFields', '/Default.aspx?ID=@cartAddressesFeedPageId&AddressId=' + this.value);">
+                                    <option value="-1">@Translate("Select saved address")</option>
+
+                                    @foreach (LoopItem address in GetLoop("UserManagement:User.UserAddresses"))
+                                    {
+                                        string description = Truncate(address.GetString("UserManagement:User.UserAddress.Description"), 25);
+                                        string userAddress = Truncate(address.GetString("UserManagement:User.UserAddress.Address"), 20);
+
+                                        <option value="@address.GetString("UserManagement:User.UserAddress.ID")">@description (@userAddress)</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="grid__col-xs-2 grid__col--bleed">
+                                <a href="@manageAddresses" id="ManageAddressButton" class="btn btn--primary dw-mod btn--condensed u-no-margin" title="@Translate("Add new address", "Add new address")"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    }
+
+                    @if (Dynamicweb.Core.Converter.ToBoolean(GetGlobalValue("Global:Extranet.UserName")) && GetLoop("UserManagement:User.UserAddresses").Count > 0)
+                    {
+                        <div class="js-ajax-container" id="DeliveryAddressFields" data-template="DeliveryAddressFieldsTemplate" data-no-result-template="NoAddressTemplate" data-json-feed="/Default.aspx?ID=@cartAddressesFeedPageId&AddressId=0" data-preloader="minimal"></div>
+                    }
+                    else
+                    {
+                        <div class="form__field-group dw-mod">
+                            <label for="EcomOrderDeliveryCompany">@Translate("Company")</label>
+                            <input type="text" class="u-full-width" name="EcomOrderDeliveryCompany" id="EcomOrderDeliveryCompany" value="@GetString("Ecom:Order.Delivery.Company")" />
+                            <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryCompany.ErrorMessage")</div>
+                        </div>
+
+                        <div class="form__field-group dw-mod">
+                            <label for="EcomOrderDeliveryName">@Translate("Name")</label>
+                            <input type="text" class="u-full-width" name="EcomOrderDeliveryName" id="EcomOrderDeliveryName" value="@GetString("Ecom:Order.Delivery.Name")" />
+                            <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryName.ErrorMessage")</div>
+                        </div>
+
+                        <div class="form__fields-collection form__fields-collection--2-3">
+                            <div class="form__field-group dw-mod">
+                                <label for="EcomOrderDeliveryPhone">@Translate("Phone")</label>
+                                <input type="tel" class="u-full-width" name="EcomOrderDeliveryPhone" id="EcomOrderDeliveryPhone" value="@GetString("Ecom:Order.Delivery.Phone")" />
+                                <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryPhone.ErrorMessage")</div>
+                            </div>
+
+                            <div class="form__field-group dw-mod">
+                                <label for="EcomOrderDeliveryEmail">@Translate("Email")</label>
+                                <input type="email" class="u-full-width" name="EcomOrderDeliveryEmail" id="EcomOrderDeliveryEmail" value="@GetString("Ecom:Order.Delivery.Email")" />
+                                <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryEmail.ErrorMessage")</div>
+                            </div>
+                        </div>
+
+                        <div class="form__field-group dw-mod">
+                            <label for="EcomOrderDeliveryAddress">@Translate("Address")</label>
+                            <input type="text" class="u-full-width" name="EcomOrderDeliveryAddress" id="EcomOrderDeliveryAddress" value="@GetString("Ecom:Order.Delivery.Address")" />
+                            <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryAddress.ErrorMessage")</div>
+                        </div>
+
+                        <div class="form__fields-collection form__fields-collection--2-3">
+                            <div class="form__field-group dw-mod">
+                                <label for="EcomOrderDeliveryZip">@Translate("Zip")</label>
+                                <input type="text" class="u-full-width" name="EcomOrderDeliveryZip" id="EcomOrderDeliveryZip" value="@GetString("Ecom:Order.Delivery.Zip")" />
+                                <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryZip.ErrorMessage")</div>
+                            </div>
+
+                            <div class="form__field-group dw-mod">
+                                <label for="EcomOrderDeliveryCity">@Translate("City")</label>
+                                <input type="text" class="u-full-width" name="EcomOrderDeliveryCity" id="EcomOrderDeliveryCity" value="@GetString("Ecom:Order.Delivery.City")" />
+                                <div class="field-error dw-mod">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryCity.ErrorMessage")</div>
+                            </div>
+                        </div>
+
+                        <div class="form__field-group dw-mod">
+                            <label for="EcomOrderDeliveryCountry">@Translate("Country")</label>
+                            <select class="u-full-width" name="EcomOrderDeliveryCountry" id="EcomOrderDeliveryCountry" onchange="document.getElementById('OrderSubmit').submit()">
+                                @{
+                                    foreach (LoopItem country in GetLoop("Countries"))
+                                    {
+                                        string selected = GetString("Ecom:Order.Delivery.Country.Code") == country.GetString("Ecom:Country.Code2") ? "selected" : "";
+                                        <option value="@country.GetString("Ecom:Country.Code2")" @selected>@country.GetString("Ecom:Country.Name")</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+        @helper Payment()
+        {
+string cardHeightClass = Pageview.Device.ToString() != "Tablet" ? "u-full-height" : "";
+
+    <div class="grid__col-auto">
+        <div class="card-header u-color-light--bg dw-mod">
+            <h3><i class="fa fa-money"></i> @Translate("Payment")</h3>
+        </div>
+        <div class="card u-color-light--bg @cardHeightClass dw-mod">
+            <div id="SavedCardData" data-template="SavedCardDataTemplate"></div>
+            <div id="PaymentMethods" data-template="PaymentItem"></div>
+            <div id="SavedCardsBlock" data-template="SavedCardsBlockTemplate"></div>
+        </div>
+    </div>
+}
+
+        @helper Shipping()
+        {
+string cardHeightClass = Pageview.Device.ToString() != "Tablet" ? "u-full-height" : "";
+
+    <div class="grid__col-auto">
+        <div class="card-header u-color-light--bg dw-mod">
+            <h3><i class="fa fa-truck"></i> @Translate("Shipping")</h3>
+        </div>
+        <div class="card u-color-light--bg @cardHeightClass dw-mod">
+            <div id="ShippingMethods" data-template="ShippingItem"></div>
+        </div>
+    </div>
+}
+
+        @helper Order(int cartOrderlinesFeedPageId)
+        {
+    <div class="grid__col-12 u-no-padding--xs">
+        <div class="js-ajax-container" id="Cart" data-template="CartContent" data-cart-id="@cartOrderlinesFeedPageId" data-json-feed="/Default.aspx?ID=@cartOrderlinesFeedPageId" data-no-result-template="EmptyCart" data-preloader="overlay"></div>
+    </div>
+}
+
+        @* Templates for addresses *@
+        <script id="DeliveryAddressFieldsTemplate" type="text/x-template">
+            <div class="form__field-group dw-mod">
+                <label for="EcomOrderDeliveryCompany">@Translate("Company")</label>
+                <input type="text" class="u-full-width" name="EcomOrderDeliveryCompany" id="EcomOrderDeliveryCompany" value="{{company}}" />
+                <div class="field-error dw-mod {{isSavedAddress}}">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryCompany.ErrorMessage")</div>
+            </div>
+
+            <div class="form__field-group dw-mod">
+                <label for="EcomOrderDeliveryName">@Translate("Name")</label>
+                <input type="text" class="u-full-width" name="EcomOrderDeliveryName" id="EcomOrderDeliveryName" value="{{name}}" />
+                <div class="field-error dw-mod {{isSavedAddress}}">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryName.ErrorMessage")</div>
+            </div>
+
+            <div class="form__fields-collection form__fields-collection--2-3">
+                <div class="form__field-group dw-mod">
+                    <label for="EcomOrderDeliveryPhone">@Translate("Phone")</label>
+                    <input type="tel" class="u-full-width" name="EcomOrderDeliveryPhone" id="EcomOrderDeliveryPhone" value="{{phone}}" />
+                    <div class="field-error dw-mod {{isSavedAddress}}">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryPhone.ErrorMessage")</div>
+                </div>
+
+                <div class="form__field-group dw-mod">
+                    <label for="EcomOrderDeliveryEmail">@Translate("Email")</label>
+                    <input type="email" class="u-full-width" name="EcomOrderDeliveryEmail" id="EcomOrderDeliveryEmail" value="{{email}}" />
+                    <div class="field-error dw-mod {{isSavedAddress}}">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryEmail.ErrorMessage")</div>
+                </div>
+            </div>
+            <div c
+                 lass="form__field-group dw-mod">
+                <label for="EcomOrderDeliveryAddress">@Translate("Address")</label>
+                <input type="text" class="u-full-width" name="EcomOrderDeliveryAddress" id="EcomOrderDeliveryAddress" value="{{address}}" />
+                <div class="field-error dw-mod {{isSavedAddress}}">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryAddress.ErrorMessage")</div>
+            </div>
+
+            <div class="form__fields-collection form__fields-collection--2-3">
+                <div class="form__field-group dw-mod">
+                    <label for="EcomOrderDeliveryZip">@Translate("Zip")</label>
+                    <input type="text" class="u-full-width" name="EcomOrderDeliveryZip" id="EcomOrderDeliveryZip" value="{{zip}}" />
+                    <div class="field-error dw-mod {{isSavedAddress}}">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryZip.ErrorMessage")</div>
+                </div>
+
+                <div class="form__field-group dw-mod">
+                    <label for="EcomOrderDeliveryCity">@Translate("City")</label>
+                    <input type="text" class="u-full-width" name="EcomOrderDeliveryCity" id="EcomOrderDeliveryCity" value="{{city}}" />
+                    <div class="field-error dw-mod {{isSavedAddress}}">@GetString("Ecom:Cart.ValidationError.EcomOrderDeliveryCity.ErrorMessage")</div>
+                </div>
+            </div>
+
+            <div class="form__field-group dw-mod">
+                <label for="Country">@Translate("Country")</label>
+                <select class="u-full-width" name="EcomOrderDeliveryCountry" id="Country" data-template="CountryTemplate" onchange="document.getElementById('OrderSubmit').submit()" data-countryCode="{{countryCode}}"></select>
+            </div>
+        </script>
+
+        <script id="CountryTemplate" type="text/x-template">
+            <option value="{{id}}" {{selected}}>{{name}}</option>
+        </script>
+
+        <script id="NoAddressTemplate" type="text/x-template">
+            @Translate("No address found")
+        </script>
+
+        @* Template for when the cart is empty *@
+        <script id="EmptyCart" type="text/x-template">
+            @Translate("You have no items in the cart")
+        </script>
+
+        @* Template for the cart *@
+        <script id="CartContent" type="text/x-template">
+            <div class="header">
+                <h3 style="text-align:center"> @Translate("Review order")</h3>
+            </div>
+            <div class="card u-color-light--bg u-no-padding--xs dw-mod">
+                <div class="grid__col--line-top {{isempty}}">
+                    <table class="table cart-table dw-mod">
+                        <tbody id="OrderLines"></tbody>
+                    </table>
+                </div>
+                <div class="grid grid--justify-end">
+                    <div class="grid__col grid__col--line-top">
+                        <div class="grid__cell {{hideSubTotal}}">
+                            <div class="cart-summary__subtotals u-pull--right dw-mod">{{subtotalprice}}</div>
+                            <div class="cart-summary__subtotals u-pull--left dw-mod">@Translate("Subtotal")</div>
+                        </div>
+
+                        <div class="grid__cell">
+                            <div class="cart-summary__info u-pull--right dw-mod">{{shippingfee}}</div>
+                            <div class="cart-summary__info u-pull--left dw-mod">@Translate("Delivery:")</div>
+                        </div>
+
+                        <div class="grid__cell">
+                            <div class="cart-summary__info u-pull--right dw-mod">{{totalvat}}</div>
+                            <div class="cart-summary__info u-pull--left dw-mod">@Translate("VAT:")</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid--justify-end">
+                    <div class="grid__col grid__col--line-top">
+                        <div class="grid__cell">
+                            <div class="cart-summary__totals u-pull--right dw-mod">{{totalprice}}</div>
+                            <div class="cart-summary__totals u-pull--left dw-mod">@Translate("Total")</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="grid__col-12 grid__col--line-top"></div>
+                </div>
+
+                <div class="grid__cell u-padding--xs">
+                    @* // Comments
+                        @if (!Converter.ToBoolean(Pageview.Area.Item["HideComment"]))
+                        {
+                            <textarea rows="3" class="u-full-width" placeholder="@Translate("Enter comment")" name="EcomOrderCustomerComment" id="EcomOrderCustomerComment">{{comment}}</textarea>
+                        }
+                        @if (GetBoolean("Ecom:Cart.UseNewsletterSubscription"))
+                        {
+                            <label>
+                                <input type="hidden" name="EcomOrderSubscribeToNewsletter" />
+                                <input type="checkbox" name="EcomOrderSubscribeToNewsletter" id="EcomOrderSubscribeToNewsletter">
+                                @Translate("Subscribe to newsletter")
+                            </label>
+                        }*@
+                    <label>
+                        <input type="checkbox" name="EcomOrderCustomerAccepted" id="EcomOrderCustomerAccepted" onchange="Cart.EnableCheckoutButton()">
+                        @Translate("I accept the terms and conditions of this website")
+                    </label>
+                </div>
+
+                <div class="grid">
+                    <div class="grid__col-12 grid__col--line-top"></div>
+                </div>
+
+                <div class="grid__cell-footer">
+                    <div class="grid__cell u-padding--xs">
+                        <div class="u-pull--right">
+                            <button type="submit" class="btn btn--primary btn--condensed dw-mod u-pull--right u-no-margin disabled" name="@GetString("CartV2.NextStepButtonName")" id="@GetString("CartV2.NextStepButtonName")" disabled>@Translate("Go to checkout")</button>
+                        </div>
+                        <div class="u-pull--left">
+                            <button type="button" class="btn btn--secondary btn--condensed dw-mod u-pull--left u-no-margin" onclick="Cart.EmptyCart(event);">@Translate("Empty cart")</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        @* Template for the orderlines *@
+        <script id="CartOrderline" type="text/x-template">
+            <tr id="Orderline{{id}}" class="{{isempty}}">
+                <td class="cart-table__image u-hidden-xs u-hidden-xxs dw-mod"><div class="{{hideimage}}"><img src="/Admin/Public/GetImage.ashx?width=60&height=60&crop=5&Compression=75&image={{image}}"></div></td>
+                <td>
+                    <div>
+                        <img src="/Admin/Public/GetImage.ashx?width=60&height=60&crop=5&Compression=75&image={{image}}" />
+                    </div>
+                </td>
+                <td width="55%" title="{{name}} {{variantname}}">
+                    <a href="{{link}}" class="u-color-inherit">{{name}}</a>
+                    <div>#{{productnumber}}</div>
+                    <div>{{variantname}}</div>
+                   @* <div>{{unitname}}</div>*@
+                    <div>
+                        <input class="u-w80px u-no-margin" id="Quantity_{{orderLineId}}" type="number" min="1" onchange="Cart.UpdateQuantity('Cart', '/Default.aspx?ID=@cartOrderlinesFeedPageId', '&CartCmd=UpdateOrderlines&QuantityOrderLine{{orderLineId}}=' + this.value + '&EcomOrderCustomerComment=' + document.getElementById('EcomOrderCustomerComment').value + '&EcomOrderCustomerAccepted=' + (document.getElementById('EcomOrderCustomerAccepted').checked ? true : '') + '&redirect=false', true);" name='QuantityOrderLine{{orderLineId}}' value="{{quantity}}">
+                        <button type="button" class="btn btn--clean btn--condensed u-no-margin" onclick="Cart.UpdateCart('Cart', '/Default.aspx?ID=@cartOrderlinesFeedPageId', '&CartCmd=DelOrderLine&key={{orderLineId}}', true);">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+
+                </td>
+                <td class="u-ta-right" style="vertical-align:bottom">{{unitprice}}</td>
+            </tr>
+            <tr class="{{hideBomItems}}">
+                <td colspan="6" class="u-no-padding">
+                    <table class="u-no-margin u-color-light-gray--bg"><tbody id="BomItems" data-template="CartBomItem"></tbody></table>
+                </td>
+            </tr>
+        </script>
+
+
+
+        <script id="CartOrderlineDiscount" type="text/x-template">
+            <tr class="table__row--no-border">
+                <td class="cart-table__image u-hidden-xs u-hidden-xxs dw-mod">&nbsp;</td>
+                <td width="15%">{{name}}</td>
+           
+                <td class="u-hidden-xs u-hidden-xxs">&nbsp;</td>    
+                 <td id="empty_cell" width="35%"></td>
+                <td class="cart-table__price u-ta-right" >{{totalprice}}</td>
+            </tr>
+        </script>
+
+        <script id="unitOption" type="text/x-template">
+            <div class="dropdown__item dw-mod" onclick="Cart.UpdateCart('Cart', '/Default.aspx?ID=@cartOrderlinesFeedPageId', '&CartCmd=UpdateOrderlines&UnitOrderLine{{orderLineId}}=' + this.value)" value="{{value}}">{{name}}</div>
+        </script>
+
+        <script id="CartBomItem" type="text/x-template">
+            <tr>
+                <td class="cart-table__image u-hidden-xs u-hidden-xxs dw-mod"><img src="/Admin/Public/GetImage.ashx?width=120&height=120&crop=5&Compression=75&image={{image}}"></td>
+                <td title="{{name}} {{variantname}}">
+                    <a href="{{link}}" class="mini-cart-orderlines__name dw-mod">{{name}}</a>
+                    <div>#{{productnumber}}</div>
+                    <div>{{variantname}}</div>
+                    <div>{{unitname}}</div>
+                </td>
+                <td class="u-hidden-xs u-hidden-xxs">&nbsp;</td>
+                <td>{{quantity}}</td>
+                <td class="u-pull--right">&nbsp;</td>
+            </tr>
+        </script>
+
+        @* Templates for Payment and Shipping *@
+        <script id="PaymentItem" type="text/x-template">
+            <div>
+                <input class="expand-trigger expand-trigger--visible u-no-margin u-margin-bottom" onclick="Cart.DeselectRadioGroup('EcomCartSavedCardID'); document.getElementById('OrderSubmit').submit()" type="radio" name="EcomCartPaymethodID" id="EcomCartPaymethodID_{{id}}" value="{{id}}" {{selected}} />
+                <label for="EcomCartPaymethodID_{{id}}" class="u-inline u-margin-bottom">{{name}}</label>
+                <div class="expand-container dw-mod {{supportSavedCards}}">
+                    <div class="u-border-top u-border-bottom u-padding u-margin-bottom show">
+                        <div class="form__field-group">
+                            <input type="checkbox" class="u-margin-bottom" name="EcomOrderSavedCardCreate" id="EcomOrderSavedCardCreate_{{id}}" value="true" {{cardIsSaved}} />
+                            <label for="EcomOrderSavedCardCreate_{{id}}">@Translate("Save used card")</label>
+                        </div>
+                        <div>
+                            <input type="text" class="u-full-width u-no-margin" onkeyup="document.getElementById('MySavedCardName').value = this.value;" placeholder="@Translate("Saved card name")" value="{{savedCardName}}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <script id="SavedCardDataTemplate" type="text/x-template">
+            <input type="hidden" name="EcomOrderSavedCardName" id="MySavedCardName" value="{{savedCardName}}" />
+        </script>
+
+        <script id="SavedCardsBlockTemplate" type="text/x-template">
+            <div class="u-bold u-margin-top">@Translate("Pay with a saved card")</div>
+            <div id="SavedCards" data-template="SavedCardItem"></div>
+        </script>
+
+        <script id="SavedCardItem" type="text/x-template">
+            <div>
+                <input class="u-no-margin u-margin-bottom" onclick="Cart.DeselectRadioGroup('EcomCartPaymethodID'); document.getElementById('OrderSubmit').submit()" type="radio" name="EcomCartSavedCardID" value="{{id}}" {{selected}} />
+                <label for="EcomCartSavedCardID" class="u-inline u-margin-bottom">{{name}}</label>
+            </div>
+        </script>
+
+        <script id="ShippingItem" type="text/x-template">
+            <label for="EcomCartShippingmethodID_{{id}}">
+                <input onclick="document.getElementById('OrderSubmit').submit()" type="radio" class="u-no-margin" name="EcomCartShippingmethodID" id="EcomCartShippingmethodID_{{id}}" value="{{id}}" {{selected}} />
+                {{name}}
+            </label>
+            <div class="{{hasShippingProvider}}">
+                <div id="shippingProviderContent" data-template="ShippingProviderContentTemplate" class="parcel-shop-address dw-mod"></div>
+                <label for="ParcelShopsModalTrigger" class="btn btn--secondary btn--full dw-mod">@Translate("Change parcel shop")</label>
+            </div>
+        </script>
+
+        @* Templates for the shipping providers *@
+        <script id="ShippingProviderContentTemplate" type="text/x-template">
+            <ul class="list list--clean dw-mod" id="SelectedParcelShop" data-template="SingleParcelShopTemplate"></ul>
+        </script>
+
+        <script id="SingleParcelShopTemplate" type="text/x-template">
+            <li data-number="{{number}}" data-lat="{{latitude}}" data-lng="{{longitude}}">
+                <label for="{{fieldPrefix}}ParcelShopNumber_{{number}}" class="u-hidden">
+                    <input type="radio" class="u-no-margin" name="{{fieldPrefix}}ParcelShopNumber" value="{{number}}" id="{{fieldPrefix}}SelectedParcelShopNumber_{{number}}" {{selected}} onclick="document.getElementById('OrderSubmit').submit()" />
+                </label>
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <span class="u-bold">{{company}}, </span>
+                    <span>{{address}} </span>
+                    <span>{{city}} </span>
+                    <span>{{countryCode}} </span>
+                </div>
+            </li>
+        </script>
+
+        <script id="ParcelShopsTemplate" type="text/x-template">
+            <li data-number="{{number}}" data-lat="{{latitude}}" data-lng="{{longitude}}">
+                <label for="{{fieldPrefix}}ParcelShopNumber_{{number}}">
+                    <input type="radio" class="u-no-margin" name="{{fieldPrefix}}ParcelShopNumber" value="{{number}}" id="{{fieldPrefix}}ParcelShopNumber_{{number}}" {{selected}} onclick="document.getElementById('OrderSubmit').submit()" />
+                    <span class="u-inline-block u-margin-left">
+                        <span class="u-bold">{{company}}, </span>
+                        <span class="u-block">{{address}}, {{city}}</span>
+                        <span class="u-block">{{countryCode}} </span>
+                    </span>
+                </label>
+            </li>
+            <li class="list__seperator"></li>
+        </script>
+
+        @functions {
+            string Truncate(string str, int count)
+            {
+                return str.Substring(0, Math.Min(str.Length, count));
+            }
+        }
+
+        @if (Dynamicweb.Core.Converter.ToBoolean(GetGlobalValue("Global:Extranet.UserName")) && GetLoop("UserManagement:User.UserAddresses").Count > 0)
+        {
+            <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            document.getElementById("DeliveryAddressFields").addEventListener('contentLoaded', function (e) {
+                if (e.srcElement.name == "EcomOrderDeliveryCountry") {
+                    e.srcElement.value = e.srcElement.getAttribute("data-countryCode");
+                }
+            }, false);
+        });
+            </script>
+        }

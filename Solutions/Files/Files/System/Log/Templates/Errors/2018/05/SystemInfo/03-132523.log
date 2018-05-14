@@ -1,0 +1,680 @@
+2018-05-03 13:25:23.5469|ERROR|Templates|Error compiling razor template
+RazorEngine.Templating.TemplateCompilationException: Unable to compile template. The name 'Truncate' does not exist in the current context
+
+Other compilation errors may have occurred. Check the Errors property for more information.
+   at RazorEngine.Compilation.DirectCompilerServiceBase.CompileType(TypeContext context)
+   at RazorEngine.Templating.TemplateService.CreateTemplateType(String razorTemplate, Type modelType)
+   at RazorEngine.Templating.TemplateService.GetTemplate[T](String razorTemplate, Object model, String cacheName)
+   at RazorEngine.Templating.TemplateService.GetTemplate(String razorTemplate, Object model, String cacheName)
+   at RazorEngine.Templating.TemplateService.Parse(String razorTemplate, Object model, DynamicViewBag viewBag, String cacheName)
+   at RazorEngine.Razor.Parse[T](String razorTemplate, T model, String cacheName)
+   at Dynamicweb.Rendering.Template.RenderRazorTemplate()
+Error compiling template "Designs/Rapido/eCom7/CartV2/Step/Cart.cshtml"
+Line 783: The name 'Truncate' does not exist in the current context
+Line 784: The name 'Truncate' does not exist in the current context
+<hr/>
+<div class='template-code'>
+<span class='line-number'>  1</span>	@inherits Dynamicweb.Rendering.RazorTemplateBase&lt;Dynamicweb.Rendering.RazorTemplateModel&lt;Dynamicweb.Rendering.Template&gt;&gt;
+<span class='line-number'>  2</span>	
+<span class='line-number'>  3</span>	@using Dynamicweb.Extensibility
+<span class='line-number'>  4</span>	@using Dynamicweb.Content
+<span class='line-number'>  5</span>	@using Dynamicweb.Core
+<span class='line-number'>  6</span>	@using System
+<span class='line-number'>  7</span>	
+<span class='line-number'>  8</span>	@{ 
+<span class='line-number'>  9</span>	    string pageId = GetGlobalValue(&quot;Global:Page.ID&quot;);
+<span class='line-number'> 10</span>	    int cartOrderlinesFeedPageId = GetPageIdByNavigationTag(&quot;CartOrderlinesFeed&quot;);
+<span class='line-number'> 11</span>	}
+<span class='line-number'> 12</span>	
+<span class='line-number'> 13</span>	@* Escape the container and section *@
+<span class='line-number'> 14</span>	&lt;/div&gt;
+<span class='line-number'> 15</span>	&lt;/section&gt;
+<span class='line-number'> 16</span>	@* ----------------------------------- *@
+<span class='line-number'> 17</span>	
+<span class='line-number'> 18</span>	&lt;section class=&quot;multiple-paragraphs-container u-color-light-gray--bg&quot;&gt;
+<span class='line-number'> 19</span>	    &lt;div class=&quot;center-container center-container--with-background-image dw-mod&quot;&gt;
+<span class='line-number'> 20</span>	        &lt;div class=&quot;paragraph-container&quot;&gt;
+<span class='line-number'> 21</span>	            &lt;form name=&quot;ordersubmit&quot; id=&quot;OrderSubmit&quot; method=&quot;post&quot; action=&quot;/Default.aspx?ID=@pageId&quot; autocomplete=&quot;off&quot;&gt;
+<span class='line-number'> 22</span>	                &lt;!-- Trigger for the pacel shops modal --&gt;
+<span class='line-number'> 23</span>	                &lt;input type=&quot;checkbox&quot; id=&quot;ParcelShopsModalTrigger&quot; class=&quot;modal-trigger&quot; /&gt;
+<span class='line-number'> 24</span>	
+<span class='line-number'> 25</span>	                &lt;!-- Login modal --&gt;
+<span class='line-number'> 26</span>	                &lt;div class=&quot;modal-container&quot;&gt;
+<span class='line-number'> 27</span>	                    &lt;label for=&quot;ParcelShopsModalTrigger&quot; id=&quot;ParcelShopsModalOverlay&quot; class=&quot;modal-overlay&quot;&gt;&lt;/label&gt;
+<span class='line-number'> 28</span>	                    &lt;div class=&quot;modal modal--sm&quot; id=&quot;ParcelShopsModal&quot;&gt;
+<span class='line-number'> 29</span>	                        &lt;div class=&quot;modal__header&quot;&gt;
+<span class='line-number'> 30</span>	                            &lt;h2&gt;@Translate(&quot;Choose a parcel shop&quot;)&lt;/h2&gt;
+<span class='line-number'> 31</span>	                        &lt;/div&gt;
+<span class='line-number'> 32</span>	                        &lt;div class=&quot;modal__body&quot;&gt;
+<span class='line-number'> 33</span>	                            &lt;ul class=&quot;list list--clean dw-mod&quot; id=&quot;ParcelShops&quot; data-template=&quot;ParcelShopsTemplate&quot;&gt;&lt;/ul&gt;
+<span class='line-number'> 34</span>	                        &lt;/div&gt;
+<span class='line-number'> 35</span>	                    &lt;/div&gt;
+<span class='line-number'> 36</span>	                &lt;/div&gt;
+<span class='line-number'> 37</span>	
+<span class='line-number'> 38</span>	                &lt;div class=&quot;paragraph-container__grid--bleed-x paragraph-container__grid--bleed-y&quot;&gt;
+<span class='line-number'> 39</span>	                    &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'> 40</span>	                        @* The informations *@
+<span class='line-number'> 41</span>	                        &lt;div class=&quot;grid__col-md-4 grid__col-sm-4&quot;&gt;
+<span class='line-number'> 42</span>	                            &lt;div class=&quot;grid grid--direction-column&quot;&gt;
+<span class='line-number'> 43</span>	                                @* Address *@
+<span class='line-number'> 44</span>	                                @CustomerAddress()
+<span class='line-number'> 45</span>	                            
+<span class='line-number'> 46</span>	                                @* Alternate addresses *@
+<span class='line-number'> 47</span>	                                @ShippingAddress()
+<span class='line-number'> 48</span>	                            &lt;/div&gt;
+<span class='line-number'> 49</span>	                        &lt;/div&gt;
+<span class='line-number'> 50</span>	
+<span class='line-number'> 51</span>	                        &lt;div class=&quot;grid__col-md-8 grid__col-sm-8 grid__col--bleed-x&quot;&gt;
+<span class='line-number'> 52</span>	                            &lt;div class=&quot;grid__cell&quot;&gt;
+<span class='line-number'> 53</span>	                                &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'> 54</span>	                                    @* Payment *@
+<span class='line-number'> 55</span>	                                    @if (!Converter.ToBoolean(Pageview.Area.Item[&quot;HidePayment&quot;])) {
+<span class='line-number'> 56</span>	                                        @Payment()
+<span class='line-number'> 57</span>	                                    }
+<span class='line-number'> 58</span>	                
+<span class='line-number'> 59</span>	                                    @* Shipping *@
+<span class='line-number'> 60</span>	                                    @if (!Converter.ToBoolean(Pageview.Area.Item[&quot;HideShipping&quot;])) {
+<span class='line-number'> 61</span>	                                        @Shipping()
+<span class='line-number'> 62</span>	                                    }
+<span class='line-number'> 63</span>	                                &lt;/div&gt;
+<span class='line-number'> 64</span>	
+<span class='line-number'> 65</span>	                                &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'> 66</span>	                                    @* The cart *@
+<span class='line-number'> 67</span>	                                    @Order(cartOrderlinesFeedPageId)
+<span class='line-number'> 68</span>	                                &lt;/div&gt;
+<span class='line-number'> 69</span>	                            &lt;/div&gt;
+<span class='line-number'> 70</span>	                        &lt;/div&gt;
+<span class='line-number'> 71</span>	                    &lt;/div&gt;
+<span class='line-number'> 72</span>	                &lt;/div&gt;
+<span class='line-number'> 73</span>	            &lt;/form&gt;
+<span class='line-number'> 74</span>	        &lt;/div&gt;
+<span class='line-number'> 75</span>	    &lt;/div&gt;
+<span class='line-number'> 76</span>	&lt;/section&gt;
+<span class='line-number'> 77</span>	
+<span class='line-number'> 78</span>	@* Re-enter the container and section *@
+<span class='line-number'> 79</span>	&lt;section class=&quot;content-container center-container dw-mod&quot;&gt;
+<span class='line-number'> 80</span>	&lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'> 81</span>	@* ----------------------------------- *@
+<span class='line-number'> 82</span>	
+<span class='line-number'> 83</span>	
+<span class='line-number'> 84</span>	@helper CustomerAddress() {
+<span class='line-number'> 85</span>	    string editProfileLink = &quot;/Default.aspx?ID=&quot; + GetPageIdByNavigationTag(&quot;CustomerProfile&quot;).ToString();
+<span class='line-number'> 86</span>	
+<span class='line-number'> 87</span>	    &lt;div class=&quot;grid__col-12 grid__col--bleed-x&quot;&gt;
+<span class='line-number'> 88</span>	        &lt;div class=&quot;card-header u-color-light--bg dw-mod&quot;&gt;
+<span class='line-number'> 89</span>	            &lt;h3&gt;&lt;i class=&quot;fa fa-home&quot;&gt;&lt;/i&gt; @Translate(&quot;Billing address&quot;)&lt;/h3&gt;
+<span class='line-number'> 90</span>	        &lt;/div&gt;
+<span class='line-number'> 91</span>	        &lt;div class=&quot;card u-color-light--bg dw-mod&quot;&gt;
+<span class='line-number'> 92</span>	            @if (!Dynamicweb.Core.Converter.ToBoolean(GetGlobalValue(&quot;Global:Extranet.UserName&quot;)) || GetLoop(&quot;ValidationErrors&quot;).Count &gt; 0)
+<span class='line-number'> 93</span>	            {
+<span class='line-number'> 94</span>	                //When the user is not signed in, or there are form errors, give the possibility to either sign in or create address
+<span class='line-number'> 95</span>	                if (!Dynamicweb.Core.Converter.ToBoolean(GetGlobalValue(&quot;Global:Extranet.UserName&quot;)))
+<span class='line-number'> 96</span>	                {
+<span class='line-number'> 97</span>	                    &lt;label class=&quot;btn btn--secondary btn--full dw-mod more&quot; for=&quot;SignInModalTrigger&quot;&gt;@Translate(&quot;Already a customer?&quot;)&lt;/label&gt;
+<span class='line-number'> 98</span>	                }
+<span class='line-number'> 99</span>	                &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>100</span>	                    &lt;label for=&quot;EcomOrderCustomerCompany&quot;&gt;@Translate(&quot;Company&quot;)&lt;/label&gt;
+<span class='line-number'>101</span>	                    &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderCustomerCompany&quot; id=&quot;EcomOrderCustomerCompany&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Company&quot;)&quot; /&gt;
+<span class='line-number'>102</span>	                    &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderCustomerCompany.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>103</span>	                &lt;/div&gt;
+<span class='line-number'>104</span>	
+<span class='line-number'>105</span>	                &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>106</span>	                    &lt;label for=&quot;EcomOrderCustomerName&quot;&gt;@Translate(&quot;Name&quot;)&lt;/label&gt;
+<span class='line-number'>107</span>	                    &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderCustomerName&quot; id=&quot;EcomOrderCustomerName&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Name&quot;)&quot; /&gt;
+<span class='line-number'>108</span>	                    &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderCustomerName.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>109</span>	                &lt;/div&gt;
+<span class='line-number'>110</span>	
+<span class='line-number'>111</span>	                &lt;div class=&quot;form__fields-collection form__fields-collection--2-3&quot;&gt;
+<span class='line-number'>112</span>	                    &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>113</span>	                       &lt;label for=&quot;EcomOrderCustomerPhone&quot;&gt;@Translate(&quot;Phone&quot;)&lt;/label&gt;
+<span class='line-number'>114</span>	                        &lt;input type=&quot;tel&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderCustomerPhone&quot; id=&quot;EcomOrderCustomerPhone&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Phone&quot;)&quot; /&gt;
+<span class='line-number'>115</span>	                        &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderCustomerPhone.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>116</span>	                    &lt;/div&gt;
+<span class='line-number'>117</span>	                    
+<span class='line-number'>118</span>	                    &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>119</span>	                        &lt;label for=&quot;EcomOrderCustomerEmail&quot;&gt;@Translate(&quot;Email&quot;)&lt;/label&gt;
+<span class='line-number'>120</span>	                        &lt;input type=&quot;email&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderCustomerEmail&quot; id=&quot;EcomOrderCustomerEmail&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Email&quot;)&quot; /&gt;
+<span class='line-number'>121</span>	                        &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderCustomerEmail.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>122</span>	                    &lt;/div&gt;
+<span class='line-number'>123</span>	                &lt;/div&gt;
+<span class='line-number'>124</span>	                &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>125</span>	                    &lt;label for=&quot;EcomOrderCustomerAddress&quot;&gt;@Translate(&quot;Address&quot;)&lt;/label&gt;
+<span class='line-number'>126</span>	                    &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderCustomerAddress&quot; id=&quot;EcomOrderCustomerAddress&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Address&quot;)&quot; /&gt;
+<span class='line-number'>127</span>	                    &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderCustomerAddress.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>128</span>	                &lt;/div&gt;
+<span class='line-number'>129</span>	
+<span class='line-number'>130</span>	                &lt;div class=&quot;form__fields-collection form__fields-collection--2-3&quot;&gt;
+<span class='line-number'>131</span>	                    &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>132</span>	                        &lt;label for=&quot;EcomOrderCustomerZip&quot;&gt;@Translate(&quot;Zip code&quot;)&lt;/label&gt;
+<span class='line-number'>133</span>	                        &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderCustomerZip&quot; id=&quot;EcomOrderCustomerZip&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Zip&quot;)&quot; /&gt;
+<span class='line-number'>134</span>	                        &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderCustomerZip.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>135</span>	                    &lt;/div&gt;
+<span class='line-number'>136</span>	                    
+<span class='line-number'>137</span>	                    &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>138</span>	                        &lt;label for=&quot;EcomOrderCustomerCity&quot;&gt;@Translate(&quot;City&quot;)&lt;/label&gt;
+<span class='line-number'>139</span>	                        &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderCustomerCity&quot; id=&quot;EcomOrderCustomerCity&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.City&quot;)&quot; /&gt;
+<span class='line-number'>140</span>	                        &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderCustomerCity.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>141</span>	                    &lt;/div&gt;
+<span class='line-number'>142</span>	                &lt;/div&gt;
+<span class='line-number'>143</span>	
+<span class='line-number'>144</span>	                &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>145</span>	                    &lt;label for=&quot;EcomOrderCustomerCountry&quot;&gt;@Translate(&quot;Country&quot;)&lt;/label&gt;
+<span class='line-number'>146</span>	                    &lt;select class=&quot;u-full-width&quot; name=&quot;EcomOrderCustomerCountry&quot; id=&quot;EcomOrderCustomerCountry&quot; onchange=&quot;document.getElementById(&#39;OrderSubmit&#39;).submit()&quot;&gt;
+<span class='line-number'>147</span>	                        @foreach (LoopItem country2 in GetLoop(&quot;Countries&quot;))
+<span class='line-number'>148</span>	                        {
+<span class='line-number'>149</span>	                            string selected = GetString(&quot;Ecom:Order.Customer.Country.Code&quot;) == country2.GetString(&quot;Ecom:Country.Code2&quot;) ? &quot;selected&quot; : &quot;&quot;;
+<span class='line-number'>150</span>	                            &lt;option value=&quot;@country2.GetString(&quot;Ecom:Country.Code2&quot;)&quot; @selected&gt;@country2.GetString(&quot;Ecom:Country.Name&quot;)&lt;/option&gt;
+<span class='line-number'>151</span>	                        }
+<span class='line-number'>152</span>	                    &lt;/select&gt;
+<span class='line-number'>153</span>	                    &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderCustomerCountry.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>154</span>	                &lt;/div&gt;
+<span class='line-number'>155</span>	            }
+<span class='line-number'>156</span>	            else
+<span class='line-number'>157</span>	            {
+<span class='line-number'>158</span>	                //When the user is signed in, show static address fields
+<span class='line-number'>159</span>	                &lt;table class=&quot;table table--clean table--condensed&quot;&gt;
+<span class='line-number'>160</span>	                    @if (!String.IsNullOrEmpty(GetString(&quot;Ecom:Order.Customer.Company&quot;)))
+<span class='line-number'>161</span>	                    {
+<span class='line-number'>162</span>	                        &lt;tr&gt;
+<span class='line-number'>163</span>	                            &lt;td class=&quot;u-bold&quot;&gt;@Translate(&quot;Company&quot;)&lt;/td&gt;
+<span class='line-number'>164</span>	                            &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;EcomOrderCustomerCompany&quot; id=&quot;EcomOrderCustomerCompany&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Company&quot;)&quot; readonly /&gt;&lt;/td&gt;
+<span class='line-number'>165</span>	                        &lt;/tr&gt;
+<span class='line-number'>166</span>	                    }
+<span class='line-number'>167</span>	                    &lt;tr&gt;
+<span class='line-number'>168</span>	                        &lt;td class=&quot;u-bold&quot;&gt;@Translate(&quot;Name&quot;)&lt;/td&gt;
+<span class='line-number'>169</span>	                        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;EcomOrderCustomerName&quot; id=&quot;EcomOrderCustomerName&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Name&quot;)&quot; readonly /&gt;&lt;/td&gt;
+<span class='line-number'>170</span>	                    &lt;/tr&gt;
+<span class='line-number'>171</span>	                    &lt;tr&gt;
+<span class='line-number'>172</span>	                        &lt;td class=&quot;u-bold&quot;&gt;@Translate(&quot;Phone&quot;)&lt;/td&gt;
+<span class='line-number'>173</span>	                        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;EcomOrderCustomerPhone&quot; id=&quot;EcomOrderCustomerPhone&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Phone&quot;)&quot; readonly /&gt;&lt;/td&gt;
+<span class='line-number'>174</span>	                    &lt;/tr&gt;
+<span class='line-number'>175</span>	                    &lt;tr&gt;
+<span class='line-number'>176</span>	                        &lt;td class=&quot;u-bold&quot;&gt;@Translate(&quot;Email&quot;)&lt;/td&gt;
+<span class='line-number'>177</span>	                        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;EcomOrderCustomerEmail&quot; id=&quot;EcomOrderCustomerEmail&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Email&quot;)&quot; readonly /&gt;&lt;/td&gt;
+<span class='line-number'>178</span>	                    &lt;/tr&gt;
+<span class='line-number'>179</span>	                    &lt;tr&gt;
+<span class='line-number'>180</span>	                        &lt;td class=&quot;u-bold&quot;&gt;@Translate(&quot;Address&quot;)&lt;/td&gt;
+<span class='line-number'>181</span>	                        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;EcomOrderCustomerAddress&quot; id=&quot;EcomOrderCustomerAddress&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Address&quot;)&quot; readonly /&gt;&lt;/td&gt;
+<span class='line-number'>182</span>	                    &lt;/tr&gt;
+<span class='line-number'>183</span>	                    &lt;tr&gt;
+<span class='line-number'>184</span>	                        &lt;td class=&quot;u-bold&quot;&gt;@Translate(&quot;Zip code&quot;)&lt;/td&gt;
+<span class='line-number'>185</span>	                        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;EcomOrderCustomerZip&quot; id=&quot;EcomOrderCustomerZip&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.Zip&quot;)&quot; readonly /&gt;&lt;/td&gt;
+<span class='line-number'>186</span>	                    &lt;/tr&gt;
+<span class='line-number'>187</span>	                    &lt;tr&gt;
+<span class='line-number'>188</span>	                        &lt;td class=&quot;u-bold&quot;&gt;@Translate(&quot;City&quot;)&lt;/td&gt;
+<span class='line-number'>189</span>	                        &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;EcomOrderCustomerCity&quot; id=&quot;EcomOrderCustomerCity&quot; value=&quot;@GetString(&quot;Ecom:Order.Customer.City&quot;)&quot; readonly /&gt;&lt;/td&gt;
+<span class='line-number'>190</span>	                    &lt;/tr&gt;
+<span class='line-number'>191</span>	                    &lt;tr&gt;
+<span class='line-number'>192</span>	                        &lt;td class=&quot;u-bold&quot;&gt;@Translate(&quot;Country&quot;)&lt;/td&gt;
+<span class='line-number'>193</span>	                        &lt;td&gt;
+<span class='line-number'>194</span>	                            @foreach (LoopItem country in GetLoop(&quot;Countries&quot;))
+<span class='line-number'>195</span>	                            {
+<span class='line-number'>196</span>	                                if (GetString(&quot;Ecom:Order.Customer.Country&quot;) == country.GetString(&quot;Ecom:Country.Code2&quot;) || GetString(&quot;Ecom:Order.Customer.Country.Code&quot;) == country.GetString(&quot;Ecom:Country.Code2&quot;))
+<span class='line-number'>197</span>	                                {
+<span class='line-number'>198</span>	                                    &lt;input type=&quot;hidden&quot; name=&quot;EcomOrderCustomerCountry&quot; id=&quot;EcomOrderCustomerCountry&quot; value=&quot;@country.GetString(&quot;Ecom:Country.Code2&quot;)&quot; /&gt;
+<span class='line-number'>199</span>	                                    &lt;input type=&quot;text&quot; value=&quot;@country.GetString(&quot;Ecom:Country.Name&quot;)&quot; readonly /&gt;
+<span class='line-number'>200</span>	                                }
+<span class='line-number'>201</span>	                            }
+<span class='line-number'>202</span>	                        &lt;/td&gt;
+<span class='line-number'>203</span>	                    &lt;/tr&gt;
+<span class='line-number'>204</span>	                    &lt;tr&gt;
+<span class='line-number'>205</span>	                        &lt;td colspan=&quot;2&quot;&gt;&amp;nbsp;&lt;/td&gt;
+<span class='line-number'>206</span>	                    &lt;/tr&gt;
+<span class='line-number'>207</span>	                &lt;/table&gt;
+<span class='line-number'>208</span>	
+<span class='line-number'>209</span>	                &lt;a href=&quot;@editProfileLink&quot; class=&quot;btn btn--secondary btn--full u-no-margin dw-mod&quot;&gt;@Translate(&quot;Edit profile&quot;)&lt;/a&gt;
+<span class='line-number'>210</span>	            }
+<span class='line-number'>211</span>	        &lt;/div&gt;
+<span class='line-number'>212</span>	    &lt;/div&gt;
+<span class='line-number'>213</span>	}
+<span class='line-number'>214</span>	
+<span class='line-number'>215</span>	@helper ShippingAddress() {
+<span class='line-number'>216</span>	    string manageAddresses = &quot;/Default.aspx?ID=&quot; + GetPageIdByNavigationTag(&quot;CustomerProfile&quot;).ToString() + &quot;&amp;Action=ManageAddresses&quot;;
+<span class='line-number'>217</span>	    int cartAddressesFeedPageId = GetPageIdByNavigationTag(&quot;CartAddressesFeed&quot;);
+<span class='line-number'>218</span>	
+<span class='line-number'>219</span>	    &lt;div class=&quot;grid__col-12 grid__col--bleed-x&quot;&gt;
+<span class='line-number'>220</span>	        &lt;input type=&quot;checkbox&quot; id=&quot;AlternateAddressBlock&quot; class=&quot;expand-trigger js-remember-state&quot; /&gt;
+<span class='line-number'>221</span>	
+<span class='line-number'>222</span>	        &lt;div class=&quot;expand-container dw-mod&quot;&gt;
+<span class='line-number'>223</span>	            &lt;div class=&quot;grid__col--bleed&quot;&gt;
+<span class='line-number'>224</span>	                &lt;div class=&quot;card-header u-color-light--bg dw-mod&quot;&gt;
+<span class='line-number'>225</span>	                    &lt;h3 class=&quot;more&quot;&gt;
+<span class='line-number'>226</span>	                        &lt;label for=&quot;AlternateAddressBlock&quot; class=&quot;expand-container__btn dw-mod more&quot;&gt;
+<span class='line-number'>227</span>	                            &lt;i class=&quot;fa fa-map-marker&quot;&gt;&lt;/i&gt; @Translate(&quot;Shipping address&quot;)
+<span class='line-number'>228</span>	                        &lt;/label&gt;
+<span class='line-number'>229</span>	                    &lt;/h3&gt;
+<span class='line-number'>230</span>	                    &lt;h3 class=&quot;less&quot;&gt;
+<span class='line-number'>231</span>	                        &lt;label for=&quot;AlternateAddressBlock&quot; class=&quot;expand-container__btn dw-mod less&quot;&gt;
+<span class='line-number'>232</span>	                            &lt;i class=&quot;fa fa-map-marker&quot;&gt;&lt;/i&gt; @Translate(&quot;Shipping address&quot;)
+<span class='line-number'>233</span>	                        &lt;/label&gt;
+<span class='line-number'>234</span>	                    &lt;/h3&gt;
+<span class='line-number'>235</span>	                &lt;/div&gt;
+<span class='line-number'>236</span>	
+<span class='line-number'>237</span>	                &lt;div class=&quot;card u-color-light--bg expand-container__content dw-mod&quot;&gt;
+<span class='line-number'>238</span>	                    @if (GetLoop(&quot;UserManagement:User.UserAddresses&quot;).Count &gt; 0)
+<span class='line-number'>239</span>	                    {
+<span class='line-number'>240</span>	                    &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'>241</span>	                        &lt;div class=&quot;grid__col-xs-10 grid__col--bleed&quot;&gt;
+<span class='line-number'>242</span>	                            &lt;select id=&quot;DeliveryAddressSelector&quot; class=&quot;u-full-width&quot; onchange=&quot;Dynamo.UpdateContent(&#39;DeliveryAddressFields&#39;, &#39;/Default.aspx?ID=@cartAddressesFeedPageId&amp;AddressId=&#39; + this.value);&quot;&gt;
+<span class='line-number'>243</span>	                                &lt;option value=&quot;-1&quot;&gt;@Translate(&quot;Select saved address&quot;)&lt;/option&gt;
+<span class='line-number'>244</span>	                                
+<span class='line-number'>245</span>	                                @foreach (LoopItem address in GetLoop(&quot;UserManagement:User.UserAddresses&quot;))
+<span class='line-number'>246</span>	                                {
+<span class='line-number'>247</span>	                                    string description = Truncate(address.GetString(&quot;UserManagement:User.UserAddress.Description&quot;), 25);
+<span class='line-number'>248</span>	                                    string userAddress = Truncate(address.GetString(&quot;UserManagement:User.UserAddress.Address&quot;), 20);
+<span class='line-number'>249</span>	
+<span class='line-number'>250</span>	                                    &lt;option value=&quot;@address.GetString(&quot;UserManagement:User.UserAddress.ID&quot;)&quot;&gt;@description (@userAddress)&lt;/option&gt;
+<span class='line-number'>251</span>	                                }
+<span class='line-number'>252</span>	                            &lt;/select&gt;
+<span class='line-number'>253</span>	                        &lt;/div&gt;
+<span class='line-number'>254</span>	                        &lt;div class=&quot;grid__col-xs-2 grid__col--bleed&quot;&gt;
+<span class='line-number'>255</span>	                            &lt;a href=&quot;@manageAddresses&quot; id=&quot;ManageAddressButton&quot; class=&quot;btn btn--primary dw-mod btn--condensed u-no-margin&quot; title=&quot;@Translate(&quot;Add new address&quot;, &quot;Add new address&quot;)&quot;&gt;&lt;i class=&quot;fa fa-plus&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+<span class='line-number'>256</span>	                        &lt;/div&gt;
+<span class='line-number'>257</span>	                    &lt;/div&gt;
+<span class='line-number'>258</span>	                    }
+<span class='line-number'>259</span>	
+<span class='line-number'>260</span>	                    @if (Dynamicweb.Core.Converter.ToBoolean(GetGlobalValue(&quot;Global:Extranet.UserName&quot;)) &amp;&amp; GetLoop(&quot;UserManagement:User.UserAddresses&quot;).Count &gt; 0)
+<span class='line-number'>261</span>	                    {
+<span class='line-number'>262</span>	                        &lt;div class=&quot;js-ajax-container&quot; id=&quot;DeliveryAddressFields&quot; data-template=&quot;DeliveryAddressFieldsTemplate&quot; data-no-result-template=&quot;NoAddressTemplate&quot; data-json-feed=&quot;/Default.aspx?ID=@cartAddressesFeedPageId&amp;AddressId=0&quot; data-preloader=&quot;minimal&quot;&gt;&lt;/div&gt;
+<span class='line-number'>263</span>	                    }
+<span class='line-number'>264</span>	                    else
+<span class='line-number'>265</span>	                    {
+<span class='line-number'>266</span>	                        &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>267</span>	                            &lt;label for=&quot;EcomOrderDeliveryCompany&quot;&gt;@Translate(&quot;Company&quot;)&lt;/label&gt;
+<span class='line-number'>268</span>	                            &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryCompany&quot; id=&quot;EcomOrderDeliveryCompany&quot; value=&quot;@GetString(&quot;Ecom:Order.Delivery.Company&quot;)&quot; /&gt;
+<span class='line-number'>269</span>	                            &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryCompany.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>270</span>	                        &lt;/div&gt;
+<span class='line-number'>271</span>	
+<span class='line-number'>272</span>	                        &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>273</span>	                            &lt;label for=&quot;EcomOrderDeliveryName&quot;&gt;@Translate(&quot;Name&quot;)&lt;/label&gt;
+<span class='line-number'>274</span>	                            &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryName&quot; id=&quot;EcomOrderDeliveryName&quot; value=&quot;@GetString(&quot;Ecom:Order.Delivery.Name&quot;)&quot; /&gt;
+<span class='line-number'>275</span>	                            &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryName.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>276</span>	                        &lt;/div&gt;
+<span class='line-number'>277</span>	
+<span class='line-number'>278</span>	                        &lt;div class=&quot;form__fields-collection form__fields-collection--2-3&quot;&gt;
+<span class='line-number'>279</span>	                            &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>280</span>	                                &lt;label for=&quot;EcomOrderDeliveryPhone&quot;&gt;@Translate(&quot;Phone&quot;)&lt;/label&gt;
+<span class='line-number'>281</span>	                                &lt;input type=&quot;tel&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryPhone&quot; id=&quot;EcomOrderDeliveryPhone&quot; value=&quot;@GetString(&quot;Ecom:Order.Delivery.Phone&quot;)&quot; /&gt;
+<span class='line-number'>282</span>	                                &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryPhone.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>283</span>	                            &lt;/div&gt;
+<span class='line-number'>284</span>	
+<span class='line-number'>285</span>	                            &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>286</span>	                                &lt;label for=&quot;EcomOrderDeliveryEmail&quot;&gt;@Translate(&quot;Email&quot;)&lt;/label&gt;
+<span class='line-number'>287</span>	                                &lt;input type=&quot;email&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryEmail&quot; id=&quot;EcomOrderDeliveryEmail&quot; value=&quot;@GetString(&quot;Ecom:Order.Delivery.Email&quot;)&quot; /&gt;
+<span class='line-number'>288</span>	                                &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryEmail.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>289</span>	                            &lt;/div&gt;
+<span class='line-number'>290</span>	                        &lt;/div&gt;
+<span class='line-number'>291</span>	
+<span class='line-number'>292</span>	                        &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>293</span>	                            &lt;label for=&quot;EcomOrderDeliveryAddress&quot;&gt;@Translate(&quot;Address&quot;)&lt;/label&gt;
+<span class='line-number'>294</span>	                            &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryAddress&quot; id=&quot;EcomOrderDeliveryAddress&quot; value=&quot;@GetString(&quot;Ecom:Order.Delivery.Address&quot;)&quot; /&gt;
+<span class='line-number'>295</span>	                            &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryAddress.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>296</span>	                        &lt;/div&gt;
+<span class='line-number'>297</span>	
+<span class='line-number'>298</span>	                        &lt;div class=&quot;form__fields-collection form__fields-collection--2-3&quot;&gt;
+<span class='line-number'>299</span>	                            &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>300</span>	                                &lt;label for=&quot;EcomOrderDeliveryZip&quot;&gt;@Translate(&quot;Zip&quot;)&lt;/label&gt;
+<span class='line-number'>301</span>	                                &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryZip&quot; id=&quot;EcomOrderDeliveryZip&quot; value=&quot;@GetString(&quot;Ecom:Order.Delivery.Zip&quot;)&quot; /&gt;
+<span class='line-number'>302</span>	                                &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryZip.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>303</span>	                            &lt;/div&gt;
+<span class='line-number'>304</span>	
+<span class='line-number'>305</span>	                            &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>306</span>	                                &lt;label for=&quot;EcomOrderDeliveryCity&quot;&gt;@Translate(&quot;City&quot;)&lt;/label&gt;
+<span class='line-number'>307</span>	                                &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryCity&quot; id=&quot;EcomOrderDeliveryCity&quot; value=&quot;@GetString(&quot;Ecom:Order.Delivery.City&quot;)&quot; /&gt;
+<span class='line-number'>308</span>	                                &lt;div class=&quot;field-error dw-mod&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryCity.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>309</span>	                            &lt;/div&gt;
+<span class='line-number'>310</span>	                        &lt;/div&gt;
+<span class='line-number'>311</span>	
+<span class='line-number'>312</span>	                        &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>313</span>	                            &lt;label for=&quot;EcomOrderDeliveryCountry&quot;&gt;@Translate(&quot;Country&quot;)&lt;/label&gt;
+<span class='line-number'>314</span>	                            &lt;select class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryCountry&quot; id=&quot;EcomOrderDeliveryCountry&quot; onchange=&quot;document.getElementById(&#39;OrderSubmit&#39;).submit()&quot;&gt;
+<span class='line-number'>315</span>	                                @{
+<span class='line-number'>316</span>	                                    foreach (LoopItem country in GetLoop(&quot;Countries&quot;))
+<span class='line-number'>317</span>	                                    {
+<span class='line-number'>318</span>	                                        string selected = GetString(&quot;Ecom:Order.Delivery.Country.Code&quot;) == country.GetString(&quot;Ecom:Country.Code2&quot;) ? &quot;selected&quot; : &quot;&quot;;
+<span class='line-number'>319</span>	                                        &lt;option value=&quot;@country.GetString(&quot;Ecom:Country.Code2&quot;)&quot; @selected&gt;@country.GetString(&quot;Ecom:Country.Name&quot;)&lt;/option&gt;
+<span class='line-number'>320</span>	                                    }
+<span class='line-number'>321</span>	                                }
+<span class='line-number'>322</span>	                            &lt;/select&gt;
+<span class='line-number'>323</span>	                        &lt;/div&gt;
+<span class='line-number'>324</span>	                    }
+<span class='line-number'>325</span>	                &lt;/div&gt;
+<span class='line-number'>326</span>	            &lt;/div&gt;
+<span class='line-number'>327</span>	        &lt;/div&gt;
+<span class='line-number'>328</span>	    &lt;/div&gt;
+<span class='line-number'>329</span>	}
+<span class='line-number'>330</span>	
+<span class='line-number'>331</span>	@helper Payment() {
+<span class='line-number'>332</span>	    string cardHeightClass = Pageview.Device.ToString() != &quot;Tablet&quot; ? &quot;u-full-height&quot; : &quot;&quot;;
+<span class='line-number'>333</span>	
+<span class='line-number'>334</span>	    &lt;div class=&quot;grid__col-auto&quot;&gt;
+<span class='line-number'>335</span>	        &lt;div class=&quot;card-header u-color-light--bg dw-mod&quot;&gt;
+<span class='line-number'>336</span>	            &lt;h3&gt;&lt;i class=&quot;fa fa-money&quot;&gt;&lt;/i&gt; @Translate(&quot;Payment&quot;)&lt;/h3&gt;
+<span class='line-number'>337</span>	        &lt;/div&gt;
+<span class='line-number'>338</span>	        &lt;div class=&quot;card u-color-light--bg @cardHeightClass dw-mod&quot;&gt;
+<span class='line-number'>339</span>	            &lt;div id=&quot;SavedCardData&quot; data-template=&quot;SavedCardDataTemplate&quot;&gt;&lt;/div&gt;
+<span class='line-number'>340</span>	            &lt;div id=&quot;PaymentMethods&quot; data-template=&quot;PaymentItem&quot;&gt;&lt;/div&gt;
+<span class='line-number'>341</span>	            &lt;div id=&quot;SavedCardsBlock&quot; data-template=&quot;SavedCardsBlockTemplate&quot;&gt;&lt;/div&gt;
+<span class='line-number'>342</span>	        &lt;/div&gt;
+<span class='line-number'>343</span>	    &lt;/div&gt;
+<span class='line-number'>344</span>	}
+<span class='line-number'>345</span>	
+<span class='line-number'>346</span>	@helper Shipping() {
+<span class='line-number'>347</span>	    string cardHeightClass = Pageview.Device.ToString() != &quot;Tablet&quot; ? &quot;u-full-height&quot; : &quot;&quot;;
+<span class='line-number'>348</span>	
+<span class='line-number'>349</span>	    &lt;div class=&quot;grid__col-auto&quot;&gt;
+<span class='line-number'>350</span>	        &lt;div class=&quot;card-header u-color-light--bg dw-mod&quot;&gt;
+<span class='line-number'>351</span>	            &lt;h3&gt;&lt;i class=&quot;fa fa-truck&quot;&gt;&lt;/i&gt; @Translate(&quot;Shipping&quot;)&lt;/h3&gt;
+<span class='line-number'>352</span>	        &lt;/div&gt;
+<span class='line-number'>353</span>	        &lt;div class=&quot;card u-color-light--bg @cardHeightClass dw-mod&quot;&gt;
+<span class='line-number'>354</span>	            &lt;div id=&quot;ShippingMethods&quot; data-template=&quot;ShippingItem&quot;&gt;&lt;/div&gt;
+<span class='line-number'>355</span>	        &lt;/div&gt;
+<span class='line-number'>356</span>	    &lt;/div&gt;
+<span class='line-number'>357</span>	}
+<span class='line-number'>358</span>	
+<span class='line-number'>359</span>	@helper Order(int cartOrderlinesFeedPageId) {
+<span class='line-number'>360</span>	    &lt;div class=&quot;grid__col-12 u-no-padding--xs&quot;&gt;
+<span class='line-number'>361</span>	        &lt;div class=&quot;js-ajax-container&quot; id=&quot;Cart&quot; data-template=&quot;CartContent&quot; data-cart-id=&quot;@cartOrderlinesFeedPageId&quot; data-json-feed=&quot;/Default.aspx?ID=@cartOrderlinesFeedPageId&quot; data-no-result-template=&quot;EmptyCart&quot; data-preloader=&quot;overlay&quot;&gt;&lt;/div&gt;
+<span class='line-number'>362</span>	    &lt;/div&gt;
+<span class='line-number'>363</span>	}
+<span class='line-number'>364</span>	
+<span class='line-number'>365</span>	@* Templates for addresses *@
+<span class='line-number'>366</span>	&lt;script id=&quot;DeliveryAddressFieldsTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>367</span>	    &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>368</span>	        &lt;label for=&quot;EcomOrderDeliveryCompany&quot;&gt;@Translate(&quot;Company&quot;)&lt;/label&gt;
+<span class='line-number'>369</span>	        &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryCompany&quot; id=&quot;EcomOrderDeliveryCompany&quot; value=&quot;{{company}}&quot; /&gt; 
+<span class='line-number'>370</span>	        &lt;div class=&quot;field-error dw-mod {{isSavedAddress}}&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryCompany.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>371</span>	    &lt;/div&gt;
+<span class='line-number'>372</span>	          
+<span class='line-number'>373</span>	    &lt;div class=&quot;form__field-group dw-mod&quot;&gt;                      
+<span class='line-number'>374</span>	        &lt;label for=&quot;EcomOrderDeliveryName&quot;&gt;@Translate(&quot;Name&quot;)&lt;/label&gt;
+<span class='line-number'>375</span>	        &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryName&quot; id=&quot;EcomOrderDeliveryName&quot; value=&quot;{{name}}&quot; /&gt;
+<span class='line-number'>376</span>	        &lt;div class=&quot;field-error dw-mod {{isSavedAddress}}&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryName.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>377</span>	    &lt;/div&gt;
+<span class='line-number'>378</span>	    
+<span class='line-number'>379</span>	    &lt;div class=&quot;form__fields-collection form__fields-collection--2-3&quot;&gt;
+<span class='line-number'>380</span>	        &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>381</span>	            &lt;label for=&quot;EcomOrderDeliveryPhone&quot;&gt;@Translate(&quot;Phone&quot;)&lt;/label&gt;
+<span class='line-number'>382</span>	            &lt;input type=&quot;tel&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryPhone&quot; id=&quot;EcomOrderDeliveryPhone&quot; value=&quot;{{phone}}&quot; /&gt;
+<span class='line-number'>383</span>	            &lt;div class=&quot;field-error dw-mod {{isSavedAddress}}&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryPhone.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>384</span>	        &lt;/div&gt;
+<span class='line-number'>385</span>	        
+<span class='line-number'>386</span>	        &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>387</span>	            &lt;label for=&quot;EcomOrderDeliveryEmail&quot;&gt;@Translate(&quot;Email&quot;)&lt;/label&gt;
+<span class='line-number'>388</span>	            &lt;input type=&quot;email&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryEmail&quot; id=&quot;EcomOrderDeliveryEmail&quot; value=&quot;{{email}}&quot; /&gt;
+<span class='line-number'>389</span>	            &lt;div class=&quot;field-error dw-mod {{isSavedAddress}}&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryEmail.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>390</span>	        &lt;/div&gt;
+<span class='line-number'>391</span>	    &lt;/div&gt;
+<span class='line-number'>392</span>	    &lt;div c
+<span class='line-number'>393</span>	         lass=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>394</span>	        &lt;label for=&quot;EcomOrderDeliveryAddress&quot;&gt;@Translate(&quot;Address&quot;)&lt;/label&gt;
+<span class='line-number'>395</span>	        &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryAddress&quot; id=&quot;EcomOrderDeliveryAddress&quot; value=&quot;{{address}}&quot; /&gt;
+<span class='line-number'>396</span>	        &lt;div class=&quot;field-error dw-mod {{isSavedAddress}}&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryAddress.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>397</span>	    &lt;/div&gt;
+<span class='line-number'>398</span>	    
+<span class='line-number'>399</span>	    &lt;div class=&quot;form__fields-collection form__fields-collection--2-3&quot;&gt;
+<span class='line-number'>400</span>	        &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>401</span>	            &lt;label for=&quot;EcomOrderDeliveryZip&quot;&gt;@Translate(&quot;Zip&quot;)&lt;/label&gt;
+<span class='line-number'>402</span>	            &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryZip&quot; id=&quot;EcomOrderDeliveryZip&quot; value=&quot;{{zip}}&quot; /&gt;
+<span class='line-number'>403</span>	            &lt;div class=&quot;field-error dw-mod {{isSavedAddress}}&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryZip.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>404</span>	        &lt;/div&gt;
+<span class='line-number'>405</span>	        
+<span class='line-number'>406</span>	        &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>407</span>	            &lt;label for=&quot;EcomOrderDeliveryCity&quot;&gt;@Translate(&quot;City&quot;)&lt;/label&gt;
+<span class='line-number'>408</span>	            &lt;input type=&quot;text&quot; class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryCity&quot; id=&quot;EcomOrderDeliveryCity&quot; value=&quot;{{city}}&quot; /&gt;
+<span class='line-number'>409</span>	            &lt;div class=&quot;field-error dw-mod {{isSavedAddress}}&quot;&gt;@GetString(&quot;Ecom:Cart.ValidationError.EcomOrderDeliveryCity.ErrorMessage&quot;)&lt;/div&gt;
+<span class='line-number'>410</span>	        &lt;/div&gt;
+<span class='line-number'>411</span>	    &lt;/div&gt; 
+<span class='line-number'>412</span>	    
+<span class='line-number'>413</span>	    &lt;div class=&quot;form__field-group dw-mod&quot;&gt;
+<span class='line-number'>414</span>	        &lt;label for=&quot;Country&quot;&gt;@Translate(&quot;Country&quot;)&lt;/label&gt;
+<span class='line-number'>415</span>	        &lt;select class=&quot;u-full-width&quot; name=&quot;EcomOrderDeliveryCountry&quot; id=&quot;Country&quot; data-template=&quot;CountryTemplate&quot; onchange=&quot;document.getElementById(&#39;OrderSubmit&#39;).submit()&quot; data-countryCode=&quot;{{countryCode}}&quot;&gt;&lt;/select&gt;
+<span class='line-number'>416</span>	    &lt;/div&gt;
+<span class='line-number'>417</span>	&lt;/script&gt;
+<span class='line-number'>418</span>	
+<span class='line-number'>419</span>	&lt;script id=&quot;CountryTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>420</span>	    &lt;option value=&quot;{{id}}&quot; {{selected}}&gt;{{name}}&lt;/option&gt;
+<span class='line-number'>421</span>	&lt;/script&gt;
+<span class='line-number'>422</span>	
+<span class='line-number'>423</span>	&lt;script id=&quot;NoAddressTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>424</span>	     @Translate(&quot;No address found&quot;)
+<span class='line-number'>425</span>	&lt;/script&gt;
+<span class='line-number'>426</span>	
+<span class='line-number'>427</span>	@* Template for when the cart is empty *@
+<span class='line-number'>428</span>	&lt;script id=&quot;EmptyCart&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>429</span>	    @Translate(&quot;You have no items in the cart&quot;)
+<span class='line-number'>430</span>	&lt;/script&gt;
+<span class='line-number'>431</span>	
+<span class='line-number'>432</span>	@* Template for the cart *@
+<span class='line-number'>433</span>	&lt;script id=&quot;CartContent&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>434</span>	    &lt;div class=&quot;card-header u-color-light--bg dw-mod&quot;&gt;
+<span class='line-number'>435</span>	        &lt;h3&gt;&lt;i class=&quot;fa fa-list-ul&quot;&gt;&lt;/i&gt; @Translate(&quot;Review order&quot;) ({{numberofproducts}})&lt;/h3&gt;
+<span class='line-number'>436</span>	    &lt;/div&gt;
+<span class='line-number'>437</span>	    &lt;div class=&quot;card u-color-light--bg u-no-padding--xs dw-mod&quot;&gt;
+<span class='line-number'>438</span>	        &lt;div class=&quot;{{isempty}}&quot;&gt;
+<span class='line-number'>439</span>	            &lt;table class=&quot;table cart-table dw-mod&quot;&gt;
+<span class='line-number'>440</span>	                &lt;tbody id=&quot;OrderLines&quot;&gt;&lt;/tbody&gt;
+<span class='line-number'>441</span>	            &lt;/table&gt;
+<span class='line-number'>442</span>	        &lt;/div&gt;
+<span class='line-number'>443</span>	        &lt;div class=&quot;grid grid--justify-end&quot;&gt;
+<span class='line-number'>444</span>	            &lt;div class=&quot;grid__col-sm-6 grid__col--line-bottom&quot;&gt;
+<span class='line-number'>445</span>	                &lt;div class=&quot;grid__cell&quot;&gt;
+<span class='line-number'>446</span>	                    &lt;div class=&quot;cart-summary__info u-pull--right dw-mod&quot;&gt;{{totalvat}}&lt;/div&gt;
+<span class='line-number'>447</span>	                    &lt;div class=&quot;cart-summary__info u-pull--left dw-mod&quot;&gt;@Translate(&quot;VAT&quot;)&lt;/div&gt;
+<span class='line-number'>448</span>	                &lt;/div&gt;
+<span class='line-number'>449</span>	                &lt;div class=&quot;grid__cell&quot;&gt;
+<span class='line-number'>450</span>	                    &lt;div class=&quot;cart-summary__info u-pull--right dw-mod&quot;&gt;{{paymentfee}}&lt;/div&gt;
+<span class='line-number'>451</span>	                    &lt;div class=&quot;cart-summary__info u-pull--left dw-mod&quot;&gt;&lt;i class=&quot;fa fa-money&quot;&gt;&lt;/i&gt; {{paymentmethod}}&lt;/div&gt;
+<span class='line-number'>452</span>	                &lt;/div&gt;
+<span class='line-number'>453</span>	                &lt;div class=&quot;grid__cell&quot;&gt;
+<span class='line-number'>454</span>	                    &lt;div class=&quot;cart-summary__info u-pull--right dw-mod&quot;&gt;{{shippingfee}}&lt;/div&gt;
+<span class='line-number'>455</span>	                    &lt;div class=&quot;cart-summary__info u-pull--left dw-mod&quot;&gt;&lt;i class=&quot;fa fa-truck&quot;&gt;&lt;/i&gt; {{shippingmethod}}&lt;/div&gt;
+<span class='line-number'>456</span>	                &lt;/div&gt;
+<span class='line-number'>457</span>	            &lt;/div&gt;
+<span class='line-number'>458</span>	        &lt;/div&gt;
+<span class='line-number'>459</span>	
+<span class='line-number'>460</span>	        &lt;div class=&quot;grid grid--justify-end&quot;&gt;
+<span class='line-number'>461</span>	            &lt;div class=&quot;grid__col-sm-6&quot;&gt;
+<span class='line-number'>462</span>	                &lt;div class=&quot;grid__cell&quot;&gt;
+<span class='line-number'>463</span>	                    &lt;div class=&quot;cart-summary__totals u-pull--right dw-mod&quot;&gt;{{totalprice}}&lt;/div&gt;
+<span class='line-number'>464</span>	                    &lt;div class=&quot;cart-summary__totals u-pull--left dw-mod&quot;&gt;@Translate(&quot;Total&quot;)&lt;/div&gt;
+<span class='line-number'>465</span>	                &lt;/div&gt;
+<span class='line-number'>466</span>	            &lt;/div&gt;
+<span class='line-number'>467</span>	        &lt;/div&gt;
+<span class='line-number'>468</span>	
+<span class='line-number'>469</span>	        &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'>470</span>	            &lt;div class=&quot;grid__col-12 grid__col--line-top&quot;&gt;&lt;/div&gt;
+<span class='line-number'>471</span>	        &lt;/div&gt;
+<span class='line-number'>472</span>	
+<span class='line-number'>473</span>	        &lt;div class=&quot;grid__cell u-padding--xs&quot;&gt;
+<span class='line-number'>474</span>	            @* Comments *@
+<span class='line-number'>475</span>	            @if (!Converter.ToBoolean(Pageview.Area.Item[&quot;HideComment&quot;]))
+<span class='line-number'>476</span>	            {
+<span class='line-number'>477</span>	                &lt;textarea rows=&quot;3&quot; class=&quot;u-full-width&quot; placeholder=&quot;@Translate(&quot;Enter comment&quot;)&quot; name=&quot;EcomOrderCustomerComment&quot; id=&quot;EcomOrderCustomerComment&quot;&gt;{{comment}}&lt;/textarea&gt;
+<span class='line-number'>478</span>	            }
+<span class='line-number'>479</span>	            @if (GetBoolean(&quot;Ecom:Cart.UseNewsletterSubscription&quot;))
+<span class='line-number'>480</span>	            {
+<span class='line-number'>481</span>	                &lt;label&gt;
+<span class='line-number'>482</span>	                    &lt;input type=&quot;hidden&quot; name=&quot;EcomOrderSubscribeToNewsletter&quot; /&gt;
+<span class='line-number'>483</span>	                    &lt;input type=&quot;checkbox&quot; name=&quot;EcomOrderSubscribeToNewsletter&quot; id=&quot;EcomOrderSubscribeToNewsletter&quot;&gt;
+<span class='line-number'>484</span>	                    @Translate(&quot;Subscribe to newsletter&quot;)
+<span class='line-number'>485</span>	                &lt;/label&gt;
+<span class='line-number'>486</span>	            }
+<span class='line-number'>487</span>	            &lt;label&gt;
+<span class='line-number'>488</span>	                &lt;input type=&quot;checkbox&quot; name=&quot;EcomOrderCustomerAccepted&quot; id=&quot;EcomOrderCustomerAccepted&quot; onchange=&quot;Cart.EnableCheckoutButton()&quot;&gt;
+<span class='line-number'>489</span>	                @Translate(&quot;I accept the terms and conditions of this website&quot;)
+<span class='line-number'>490</span>	            &lt;/label&gt;
+<span class='line-number'>491</span>	        &lt;/div&gt;
+<span class='line-number'>492</span>	
+<span class='line-number'>493</span>	        &lt;div class=&quot;grid&quot;&gt;
+<span class='line-number'>494</span>	            &lt;div class=&quot;grid__col-12 grid__col--line-top&quot;&gt;&lt;/div&gt;
+<span class='line-number'>495</span>	        &lt;/div&gt;
+<span class='line-number'>496</span>	
+<span class='line-number'>497</span>	        &lt;div class=&quot;grid__cell-footer&quot;&gt;
+<span class='line-number'>498</span>	            &lt;div class=&quot;grid__cell u-padding--xs&quot;&gt;
+<span class='line-number'>499</span>	                &lt;div class=&quot;u-pull--right&quot;&gt;
+<span class='line-number'>500</span>	                    &lt;button type=&quot;submit&quot; class=&quot;btn btn--primary btn--condensed dw-mod u-pull--right u-no-margin disabled&quot; name=&quot;@GetString(&quot;CartV2.NextStepButtonName&quot;)&quot; id=&quot;@GetString(&quot;CartV2.NextStepButtonName&quot;)&quot; disabled&gt;@Translate(&quot;Go to checkout&quot;)&lt;/button&gt;
+<span class='line-number'>501</span>	                &lt;/div&gt;
+<span class='line-number'>502</span>	                &lt;div class=&quot;u-pull--left&quot;&gt;
+<span class='line-number'>503</span>	                    &lt;button type=&quot;button&quot; class=&quot;btn btn--secondary btn--condensed dw-mod u-pull--left u-no-margin&quot; onclick=&quot;Cart.EmptyCart(event);&quot;&gt;@Translate(&quot;Empty cart&quot;)&lt;/button&gt;
+<span class='line-number'>504</span>	                &lt;/div&gt;
+<span class='line-number'>505</span>	            &lt;/div&gt;
+<span class='line-number'>506</span>	        &lt;/div&gt;
+<span class='line-number'>507</span>	    &lt;/div&gt;
+<span class='line-number'>508</span>	&lt;/script&gt;
+<span class='line-number'>509</span>	
+<span class='line-number'>510</span>	@* Template for the orderlines *@
+<span class='line-number'>511</span>	&lt;script id=&quot;CartOrderline&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>512</span>	    &lt;tr id=&quot;Orderline{{id}}&quot; class=&quot;{{isempty}}&quot;&gt;
+<span class='line-number'>513</span>	        &lt;td class=&quot;cart-table__image u-hidden-xs u-hidden-xxs dw-mod&quot;&gt;&lt;div class=&quot;{{hideimage}}&quot;&gt;&lt;img src=&quot;/Admin/Public/GetImage.ashx?width=60&amp;height=60&amp;crop=5&amp;Compression=75&amp;image={{image}}&quot;&gt;&lt;/div&gt;&lt;/td&gt;
+<span class='line-number'>514</span>	        &lt;td title=&quot;{{name}} {{variantname}}&quot;&gt;
+<span class='line-number'>515</span>	            &lt;a href=&quot;{{link}}&quot; class=&quot;u-color-inherit&quot;&gt;{{name}}&lt;/a&gt;
+<span class='line-number'>516</span>	            &lt;div&gt;#{{productnumber}}&lt;/div&gt;
+<span class='line-number'>517</span>	            &lt;div&gt;{{variantname}}&lt;/div&gt; 
+<span class='line-number'>518</span>	            &lt;div&gt;{{unitname}}&lt;/div&gt;
+<span class='line-number'>519</span>	        &lt;/td&gt;
+<span class='line-number'>520</span>	        &lt;td class=&quot;u-ta-right u-hidden-xs u-hidden-xxs&quot;&gt;{{unitprice}}&lt;/td&gt;
+<span class='line-number'>521</span>	        &lt;td class=&quot;u-ta-right&quot; width=&quot;80&quot;&gt;&lt;input class=&quot;u-w80px u-no-margin&quot; id=&quot;Quantity_{{orderLineId}}&quot; type=&quot;number&quot; min=&quot;1&quot; onchange=&quot;Cart.UpdateQuantity(&#39;Cart&#39;, &#39;/Default.aspx?ID=@cartOrderlinesFeedPageId&#39;, &#39;&amp;CartCmd=UpdateOrderlines&amp;QuantityOrderLine{{orderLineId}}=&#39; + this.value + &#39;&amp;EcomOrderCustomerComment=&#39; + document.getElementById(&#39;EcomOrderCustomerComment&#39;).value + &#39;&amp;EcomOrderCustomerAccepted=&#39; + (document.getElementById(&#39;EcomOrderCustomerAccepted&#39;).checked ? true : &#39;&#39;) + &#39;&amp;redirect=false&#39;, true);&quot; name=&#39;QuantityOrderLine{{orderLineId}}&#39; value=&quot;{{quantity}}&quot;&gt;&lt;/td&gt;
+<span class='line-number'>522</span>	        &lt;td class=&quot;u-ta-left&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn--clean btn--condensed u-no-margin&quot; onclick=&quot;Cart.UpdateCart(&#39;Cart&#39;, &#39;/Default.aspx?ID=@cartOrderlinesFeedPageId&#39;, &#39;&amp;CartCmd=DelOrderLine&amp;key={{orderLineId}}&#39;, true);&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/td&gt;
+<span class='line-number'>523</span>	        &lt;td class=&quot;u-ta-right&quot;&gt;{{totalprice}}&lt;/td&gt;
+<span class='line-number'>524</span>	    &lt;/tr&gt;
+<span class='line-number'>525</span>	    &lt;tr class=&quot;{{hideBomItems}}&quot;&gt;
+<span class='line-number'>526</span>	        &lt;td colspan=&quot;6&quot; class=&quot;u-no-padding&quot;&gt;
+<span class='line-number'>527</span>	            &lt;table class=&quot;u-no-margin u-color-light-gray--bg&quot;&gt;&lt;tbody id=&quot;BomItems&quot; data-template=&quot;CartBomItem&quot;&gt;&lt;/tbody&gt;&lt;/table&gt;
+<span class='line-number'>528</span>	        &lt;/td&gt;
+<span class='line-number'>529</span>	    &lt;/tr&gt;
+<span class='line-number'>530</span>	&lt;/script&gt;
+<span class='line-number'>531</span>	
+<span class='line-number'>532</span>	&lt;script id=&quot;CartOrderlineDiscount&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>533</span>	    &lt;tr class=&quot;table__row--no-border&quot;&gt;
+<span class='line-number'>534</span>	        &lt;td class=&quot;cart-table__image u-hidden-xs u-hidden-xxs dw-mod&quot;&gt;&amp;nbsp;&lt;/td&gt;
+<span class='line-number'>535</span>	        &lt;td&gt;{{name}}&lt;/td&gt;
+<span class='line-number'>536</span>	        &lt;td class=&quot;u-hidden-xs u-hidden-xxs&quot;&gt;&amp;nbsp;&lt;/td&gt;
+<span class='line-number'>537</span>	        &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+<span class='line-number'>538</span>	        &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+<span class='line-number'>539</span>	        &lt;td class=&quot;cart-table__price u-ta-right dw-mod&quot;&gt;{{totalprice}}&lt;/td&gt;
+<span class='line-number'>540</span>	    &lt;/tr&gt;
+<span class='line-number'>541</span>	&lt;/script&gt;
+<span class='line-number'>542</span>	
+<span class='line-number'>543</span>	&lt;script id=&quot;unitOption&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>544</span>	    &lt;div class=&quot;dropdown__item dw-mod&quot; onclick=&quot;Cart.UpdateCart(&#39;Cart&#39;, &#39;/Default.aspx?ID=@cartOrderlinesFeedPageId&#39;, &#39;&amp;CartCmd=UpdateOrderlines&amp;UnitOrderLine{{orderLineId}}=&#39; + this.value)&quot; value=&quot;{{value}}&quot;&gt;{{name}}&lt;/div&gt;
+<span class='line-number'>545</span>	&lt;/script&gt;
+<span class='line-number'>546</span>	
+<span class='line-number'>547</span>	&lt;script id=&quot;CartBomItem&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>548</span>	    &lt;tr&gt;
+<span class='line-number'>549</span>	        &lt;td class=&quot;cart-table__image u-hidden-xs u-hidden-xxs dw-mod&quot;&gt;&lt;img src=&quot;/Admin/Public/GetImage.ashx?width=120&amp;height=120&amp;crop=5&amp;Compression=75&amp;image={{image}}&quot;&gt;&lt;/td&gt;
+<span class='line-number'>550</span>	        &lt;td title=&quot;{{name}} {{variantname}}&quot;&gt;
+<span class='line-number'>551</span>	            &lt;a href=&quot;{{link}}&quot; class=&quot;mini-cart-orderlines__name dw-mod&quot;&gt;{{name}}&lt;/a&gt;
+<span class='line-number'>552</span>	            &lt;div&gt;#{{productnumber}}&lt;/div&gt;
+<span class='line-number'>553</span>	            &lt;div&gt;{{variantname}}&lt;/div&gt; 
+<span class='line-number'>554</span>	            &lt;div&gt;{{unitname}}&lt;/div&gt;
+<span class='line-number'>555</span>	        &lt;/td&gt;
+<span class='line-number'>556</span>	        &lt;td class=&quot;u-hidden-xs u-hidden-xxs&quot;&gt;&amp;nbsp;&lt;/td&gt;
+<span class='line-number'>557</span>	        &lt;td&gt;{{quantity}}&lt;/td&gt;
+<span class='line-number'>558</span>	        &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+<span class='line-number'>559</span>	        &lt;td class=&quot;cart-table__price u-ta-right dw-mod&quot;&gt;&amp;nbsp;&lt;/td&gt;
+<span class='line-number'>560</span>	    &lt;/tr&gt;
+<span class='line-number'>561</span>	&lt;/script&gt;
+<span class='line-number'>562</span>	
+<span class='line-number'>563</span>	@* Templates for Payment and Shipping *@
+<span class='line-number'>564</span>	&lt;script id=&quot;PaymentItem&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>565</span>	    &lt;div&gt;
+<span class='line-number'>566</span>	        &lt;input class=&quot;expand-trigger expand-trigger--visible u-no-margin u-margin-bottom&quot; onclick=&quot;Cart.DeselectRadioGroup(&#39;EcomCartSavedCardID&#39;); document.getElementById(&#39;OrderSubmit&#39;).submit()&quot; type=&quot;radio&quot; name=&quot;EcomCartPaymethodID&quot; id=&quot;EcomCartPaymethodID_{{id}}&quot; value=&quot;{{id}}&quot; {{selected}} /&gt;
+<span class='line-number'>567</span>	        &lt;label for=&quot;EcomCartPaymethodID_{{id}}&quot; class=&quot;u-inline u-margin-bottom&quot;&gt;{{name}}&lt;/label&gt;
+<span class='line-number'>568</span>	        &lt;div class=&quot;expand-container dw-mod {{supportSavedCards}}&quot;&gt;
+<span class='line-number'>569</span>	            &lt;div class=&quot;u-border-top u-border-bottom u-padding u-margin-bottom show&quot;&gt;
+<span class='line-number'>570</span>	                &lt;div class=&quot;form__field-group&quot;&gt;
+<span class='line-number'>571</span>	                    &lt;input type=&quot;checkbox&quot; class=&quot;u-margin-bottom&quot; name=&quot;EcomOrderSavedCardCreate&quot; id=&quot;EcomOrderSavedCardCreate_{{id}}&quot; value=&quot;true&quot; {{cardIsSaved}} /&gt;
+<span class='line-number'>572</span>	                    &lt;label for=&quot;EcomOrderSavedCardCreate_{{id}}&quot;&gt;@Translate(&quot;Save used card&quot;)&lt;/label&gt;
+<span class='line-number'>573</span>	                &lt;/div&gt;
+<span class='line-number'>574</span>	                &lt;div&gt;
+<span class='line-number'>575</span>	                    &lt;input type=&quot;text&quot; class=&quot;u-full-width u-no-margin&quot; onkeyup=&quot;document.getElementById(&#39;MySavedCardName&#39;).value = this.value;&quot; placeholder=&quot;@Translate(&quot;Saved card name&quot;)&quot; value=&quot;{{savedCardName}}&quot; /&gt;
+<span class='line-number'>576</span>	                &lt;/div&gt;
+<span class='line-number'>577</span>	            &lt;/div&gt;
+<span class='line-number'>578</span>	        &lt;/div&gt;
+<span class='line-number'>579</span>	    &lt;/div&gt;
+<span class='line-number'>580</span>	&lt;/script&gt;
+<span class='line-number'>581</span>	
+<span class='line-number'>582</span>	&lt;script id=&quot;SavedCardDataTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>583</span>	    &lt;input type=&quot;hidden&quot; name=&quot;EcomOrderSavedCardName&quot; id=&quot;MySavedCardName&quot; value=&quot;{{savedCardName}}&quot; /&gt;
+<span class='line-number'>584</span>	&lt;/script&gt;
+<span class='line-number'>585</span>	
+<span class='line-number'>586</span>	&lt;script id=&quot;SavedCardsBlockTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>587</span>	    &lt;div class=&quot;u-bold u-margin-top&quot;&gt;@Translate(&quot;Pay with a saved card&quot;)&lt;/div&gt;
+<span class='line-number'>588</span>	    &lt;div id=&quot;SavedCards&quot; data-template=&quot;SavedCardItem&quot;&gt;&lt;/div&gt;
+<span class='line-number'>589</span>	&lt;/script&gt;
+<span class='line-number'>590</span>	
+<span class='line-number'>591</span>	&lt;script id=&quot;SavedCardItem&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>592</span>	    &lt;div&gt;
+<span class='line-number'>593</span>	        &lt;input class=&quot;u-no-margin u-margin-bottom&quot; onclick=&quot;Cart.DeselectRadioGroup(&#39;EcomCartPaymethodID&#39;); document.getElementById(&#39;OrderSubmit&#39;).submit()&quot; type=&quot;radio&quot; name=&quot;EcomCartSavedCardID&quot; value=&quot;{{id}}&quot; {{selected}} /&gt;
+<span class='line-number'>594</span>	        &lt;label for=&quot;EcomCartSavedCardID&quot; class=&quot;u-inline u-margin-bottom&quot;&gt;{{name}}&lt;/label&gt;
+<span class='line-number'>595</span>	    &lt;/div&gt;
+<span class='line-number'>596</span>	&lt;/script&gt;
+<span class='line-number'>597</span>	
+<span class='line-number'>598</span>	&lt;script id=&quot;ShippingItem&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>599</span>	    &lt;label for=&quot;EcomCartShippingmethodID_{{id}}&quot;&gt;
+<span class='line-number'>600</span>	        &lt;input onclick=&quot;document.getElementById(&#39;OrderSubmit&#39;).submit()&quot; type=&quot;radio&quot; class=&quot;u-no-margin&quot; name=&quot;EcomCartShippingmethodID&quot; id=&quot;EcomCartShippingmethodID_{{id}}&quot; value=&quot;{{id}}&quot; {{selected}} /&gt;
+<span class='line-number'>601</span>	        {{name}}
+<span class='line-number'>602</span>	    &lt;/label&gt;
+<span class='line-number'>603</span>	    &lt;div class=&quot;{{hasShippingProvider}}&quot;&gt;
+<span class='line-number'>604</span>	       &lt;div id=&quot;shippingProviderContent&quot; data-template=&quot;ShippingProviderContentTemplate&quot; class=&quot;parcel-shop-address dw-mod&quot;&gt;&lt;/div&gt;
+<span class='line-number'>605</span>	       &lt;label for=&quot;ParcelShopsModalTrigger&quot; class=&quot;btn btn--secondary btn--full dw-mod&quot;&gt;@Translate(&quot;Change parcel shop&quot;)&lt;/label&gt;
+<span class='line-number'>606</span>	    &lt;/div&gt;
+<span class='line-number'>607</span>	&lt;/script&gt;
+<span class='line-number'>608</span>	@*
+<span class='line-number'>609</span>	// Templates for the shipping providers 
+<span class='line-number'>610</span>	&lt;script id=&quot;ShippingProviderContentTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>611</span>	    &lt;ul class=&quot;list list--clean dw-mod&quot; id=&quot;SelectedParcelShop&quot; data-template=&quot;SingleParcelShopTemplate&quot;&gt;&lt;/ul&gt;
+<span class='line-number'>612</span>	&lt;/script&gt;
+<span class='line-number'>613</span>	
+<span class='line-number'>614</span>	&lt;script id=&quot;SingleParcelShopTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>615</span>	    &lt;li data-number=&quot;{{number}}&quot; data-lat=&quot;{{latitude}}&quot; data-lng=&quot;{{longitude}}&quot;&gt;
+<span class='line-number'>616</span>			&lt;label for=&quot;{{fieldPrefix}}ParcelShopNumber_{{number}}&quot; class=&quot;u-hidden&quot;&gt;
+<span class='line-number'>617</span>	            &lt;input type=&quot;radio&quot; class=&quot;u-no-margin&quot; name=&quot;{{fieldPrefix}}ParcelShopNumber&quot; value=&quot;{{number}}&quot; id=&quot;{{fieldPrefix}}SelectedParcelShopNumber_{{number}}&quot; {{selected}} onclick=&quot;document.getElementById(&#39;OrderSubmit&#39;).submit()&quot; /&gt;
+<span class='line-number'>618</span>			&lt;/label&gt;
+<span class='line-number'>619</span>	        &lt;div&gt;
+<span class='line-number'>620</span>	            &lt;i class=&quot;fa fa-map-marker&quot;&gt;&lt;/i&gt;
+<span class='line-number'>621</span>	            &lt;span class=&quot;u-bold&quot;&gt;{{company}}, &lt;/span&gt;
+<span class='line-number'>622</span>				&lt;span&gt;{{address}} &lt;/span&gt;
+<span class='line-number'>623</span>				&lt;span&gt;{{city}} &lt;/span&gt;
+<span class='line-number'>624</span>				&lt;span&gt;{{countryCode}} &lt;/span&gt;
+<span class='line-number'>625</span>	        &lt;/div&gt;
+<span class='line-number'>626</span>		&lt;/li&gt;
+<span class='line-number'>627</span>	&lt;/script&gt;
+<span class='line-number'>628</span>	
+<span class='line-number'>629</span>	&lt;script id=&quot;ParcelShopsTemplate&quot; type=&quot;text/x-template&quot;&gt;
+<span class='line-number'>630</span>	    &lt;li data-number=&quot;{{number}}&quot; data-lat=&quot;{{latitude}}&quot; data-lng=&quot;{{longitude}}&quot;&gt;
+<span class='line-number'>631</span>			&lt;label for=&quot;{{fieldPrefix}}ParcelShopNumber_{{number}}&quot;&gt;
+<span class='line-number'>632</span>	            &lt;input type=&quot;radio&quot; class=&quot;u-no-margin&quot; name=&quot;{{fieldPrefix}}ParcelShopNumber&quot; value=&quot;{{number}}&quot; id=&quot;{{fieldPrefix}}ParcelShopNumber_{{number}}&quot; {{selected}} onclick=&quot;document.getElementById(&#39;OrderSubmit&#39;).submit()&quot; /&gt;
+<span class='line-number'>633</span>	            &lt;span class=&quot;u-inline-block u-margin-left&quot;&gt;
+<span class='line-number'>634</span>	                &lt;span class=&quot;u-bold&quot;&gt;{{company}}, &lt;/span&gt;
+<span class='line-number'>635</span>				&lt;span class=&quot;u-block&quot;&gt;{{address}}, {{city}}&lt;/span&gt;
+<span class='line-number'>636</span>				&lt;span class=&quot;u-block&quot;&gt;{{countryCode}} &lt;/span&gt;
+<span class='line-number'>637</span>	            &lt;/span&gt;
+<span class='line-number'>638</span>	        &lt;/label&gt;
+<span class='line-number'>639</span>		&lt;/li&gt;
+<span class='line-number'>640</span>	    &lt;li class=&quot;list__seperator&quot;&gt;&lt;/li&gt;
+<span class='line-number'>641</span>	&lt;/script&gt;
+<span class='line-number'>642</span>	
+<span class='line-number'>643</span>	@functions {
+<span class='line-number'>644</span>	    string Truncate(string str, int count)
+<span class='line-number'>645</span>	    {
+<span class='line-number'>646</span>	        return str.Substring(0, Math.Min(str.Length, count));
+<span class='line-number'>647</span>	    }
+<span class='line-number'>648</span>	}
+<span class='line-number'>649</span>	
+<span class='line-number'>650</span>	@if (Dynamicweb.Core.Converter.ToBoolean(GetGlobalValue(&quot;Global:Extranet.UserName&quot;)) &amp;&amp; GetLoop(&quot;UserManagement:User.UserAddresses&quot;).Count &gt; 0)
+<span class='line-number'>651</span>	{
+<span class='line-number'>652</span>	    &lt;script&gt;
+<span class='line-number'>653</span>	        document.addEventListener(&quot;DOMContentLoaded&quot;, function (event) {
+<span class='line-number'>654</span>	            document.getElementById(&quot;DeliveryAddressFields&quot;).addEventListener(&#39;contentLoaded&#39;, function (e) {
+<span class='line-number'>655</span>	                if (e.srcElement.name == &quot;EcomOrderDeliveryCountry&quot;) {
+<span class='line-number'>656</span>	                    e.srcElement.value = e.srcElement.getAttribute(&quot;data-countryCode&quot;);
+<span class='line-number'>657</span>	                }
+<span class='line-number'>658</span>	            }, false);
+<span class='line-number'>659</span>	        });
+<span class='line-number'>660</span>	    &lt;/script&gt;
+<span class='line-number'>661</span>	}
+<span class='line-number'>662</span>	    *@
+</div>
+

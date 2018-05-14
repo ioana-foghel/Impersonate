@@ -1,0 +1,18 @@
+2018-05-02 17:47:28.656: Running.
+2018-05-02 17:47:28.656: Fetching build definition.
+2018-05-02 17:47:28.656: Fetched build definition. 'Dynamicweb.Content.Files.FileIndexBuilder'.
+2018-05-02 17:47:28.656: Creating index writer.
+2018-05-02 17:47:28.656: Created index writer: 'Dynamicweb.Indexing.Lucene.LuceneIndexWriter'.
+2018-05-02 17:47:28.656: Starting build process.
+2018-05-02 17:47:28.664: Dynamicweb.Content.Files.FileIndexBuilder building using Dynamicweb.Indexing.Lucene.LuceneIndexWriter
+2018-05-02 17:47:28.664: Opening index writer.
+2018-05-02 17:47:28.664: Opened index writer to overwrite index
+2018-05-02 17:47:28.664: Recursive: 'True'
+2018-05-02 17:47:28.664: Start folder: 'DigitalAssets'
+2018-05-02 17:47:28.664: SkipMetadata: 'False'
+2018-05-02 17:47:28.664: Starting processing files.
+2018-05-02 17:47:28.664: File index builder experienced a fatal error.. System.Exception: Directory 'E:\impersonate\Solutions\Files\Files\DigitalAssets' does not exist.    at Dynamicweb.Content.Files.FileIndexBuilder.ProcessFiles()    at Dynamicweb.Content.Files.FileIndexBuilder.Build(IIndexWriter writer, Tracker tracker)
+2018-05-02 17:47:28.664: File index builder experienced a fatal error.
+2018-05-02 17:47:28.664: Failed.
+2018-05-02 17:47:28.664: Closing index writer.
+2018-05-02 17:47:28.680: Closed index writer.

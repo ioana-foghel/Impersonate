@@ -1,0 +1,27 @@
+//Responsive images
+
+.layered-image {
+    position: relative;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0; 
+        margin: auto;
+    }
+} 
+
+.layered-image:before {
+  position: relative;
+  display: block;
+  content: "";
+  padding-top: 200px;
+} 
+
+.layered-image--tinted:before {
+    content: "";
+    background-color: @white;
+    opacity: 0.6;
+} 

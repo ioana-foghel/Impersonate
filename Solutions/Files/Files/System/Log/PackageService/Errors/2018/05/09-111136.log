@@ -1,0 +1,27 @@
+2018-05-09 11:11:36.5781|ERROR|PackageService|IPackageService - 
+Dynamicweb.Extensibility.Providers.ActivationException: IPackageService -  ---> System.ComponentModel.Composition.CompositionException: The composition produced a single composition error. The root cause is provided below. Review the CompositionException.Errors property for more detailed information.
+
+1) File 'E:\impersonate\Solutions\Files\Files\System\Packages\NuGet.config' does not exist.
+
+Resulting in: An exception occurred while trying to create an instance of type 'Dynamicweb.Packaging.PackageService'.
+
+Resulting in: Cannot activate part 'Dynamicweb.Packaging.PackageService'.
+Element: Dynamicweb.Packaging.PackageService -->  Dynamicweb.Packaging.PackageService -->  DirectoryCatalog (Path="E:\impersonate\Applications\Application (9.4.10)\bin")
+
+Resulting in: Cannot get export 'Dynamicweb.Packaging.IPackageService (ContractName="Dynamicweb.Packaging.IPackageService")' from part 'Dynamicweb.Packaging.PackageService'.
+Element: Dynamicweb.Packaging.IPackageService (ContractName="Dynamicweb.Packaging.IPackageService") -->  Dynamicweb.Packaging.PackageService -->  DirectoryCatalog (Path="E:\impersonate\Applications\Application (9.4.10)\bin")
+
+   at System.ComponentModel.Composition.Hosting.CompositionServices.GetExportedValueFromComposedPart(ImportEngine engine, ComposablePart part, ExportDefinition definition)
+   at System.ComponentModel.Composition.Hosting.CatalogExportProvider.GetExportedValue(CatalogPart part, ExportDefinition export, Boolean isSharedPart)
+   at System.ComponentModel.Composition.Primitives.Export.get_Value()
+   at System.ComponentModel.Composition.ExportServices.GetCastedExportedValue[T](Export export)
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at Dynamicweb.Extensibility.Providers.MefServiceLocator.<>c__DisplayClass2_0.<DoGetInstance>b__0(Lazy`1 inst)
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at Dynamicweb.Extensibility.Providers.MefServiceLocator.DoGetInstance(Type serviceType, String key)
+   at Dynamicweb.Extensibility.Providers.ServiceLocator.GetInstance(Type serviceType, String key)
+   --- End of inner exception stack trace ---
+   at Dynamicweb.Extensibility.Providers.ServiceLocator.GetInstance(Type serviceType, String key)
+   at Dynamicweb.Extensibility.Providers.ServiceLocator.GetInstance[TService]()
+   at Dynamicweb.Admin.PackageListInstalled.Page_Init(Object sender, EventArgs e)

@@ -1,0 +1,90 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using Dynamicweb.Modules.UserManagement;
+
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using System
+
+@{
+    string siteurl = GetGlobalValue("Global:Request.Url").ToString();
+    int ImpersonationFeed = GetPageIdByNavigationTag("UsersFeed");
+    Pageview.Meta.Title = Translate("Manage Accounts");
+}
+
+<div class="paragraph-container grid__col-x">
+    @if (string.IsNullOrWhiteSpace(GetGlobalValue("Global:Extranet.SecondaryUser.UserID")))
+    {
+        <div class="grid__cell">
+            <h3  style="text-align:center">@Translate("Customers you can impersonate")</h3>
+            <div>
+                <input type="text" class="u-full-width" placeholder="@Translate("Search customer")" name="q" onkeyup="Dynamo.UpdateContent('searchUsersResultsHeader', '/Default.aspx?ID=@ImpersonationFeed&q=' + this.value);">
+            </div>
+        </div>
+        <div id="searchUsersResultsHeader" class="js-ajax-container" data-template="SearchUsersResult" data-json-feed="/Default.aspx?ID=@ImpersonationFeed" data-preloader="minimal"></div>
+
+        <script id="SearchUsersResult" type="text/x-template">
+          
+            <div id="Users" data-template="User"></div>
+            
+            <div id="Paginations" data-template="Pagination"></div>
+        </script>
+
+        <script id="Pagination" type="text/x-template">
+            <div class="grid__col--line-top {{hidePagination}}">
+                <div class="grid__cell">
+                    <span class="u-pull--left">
+                        <span>@Translate("Page") {{current}} @Translate("of")  {{total}}</span>
+                    </span>
+                    <div class="u-pull--right">
+                        <button class="pager__btn {{prevDisabled}} dw-mod" onclick="Dynamo.UpdateContent('searchUsersResultsHeader', '{{prevPage}}')" {{prevDisabled}}>
+                            <span><i class="fa fa-angle-left"></i></span> 
+                        </button> 
+                        <ul class="pager" id="Buttons"></ul>
+                        <button class="pager__btn {{nextDisabled}} dw-mod" onclick="Dynamo.UpdateContent('searchUsersResultsHeader', '{{nextPage}}')" {{nextDisabled}}>
+                            <span><i class="fa fa-angle-right"></i></span>
+                        </button> 
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <script id="PaginationEllipsis" type="text/x-template">
+            <li class="pager__btn disabled dw-mod"><span>…</span></li>
+        </script>
+
+        <script id="PaginationCurrentPage" type="text/x-template">
+            <li class="pager__btn pager__btn--current dw-mod"><span>{{text}}</span></li>
+        </script>
+
+        <script id="PaginationLink" type="text/x-template">
+            <li class="pager__btn dw-mod" onclick="Dynamo.UpdateContent('searchUsersResultsHeader', '{{link}}' )"><span>{{text}}</span></li>
+        </script>
+        
+        <script id="User" type="text/x-template">
+            <form method="post" class="grid__col--line-top u-no-margin" name="account{{id}}">
+                <input type="hidden" id="DWExtranetSecondaryUserSelector" name="DWExtranetSecondaryUserSelector" value="{{id}}" />
+                <div class="grid__cell">
+                    <div class="u-pull--left">
+                        <div><b>{{userName}}</b></div>
+                        <div>{{email}}</div>
+                    </div>
+                    <input type="submit" class="btn btn--secondary dw-mod u-pull--right u-no-margin" tabindex="3" value="@Translate("Impersonate")" />
+                </div>
+            </form>
+        </script>
+    }
+    else
+    {
+        string stopImpersonateTranslation = Translate("Stop impersonation", "Stop impersonation");
+            <div class="grid__col-x paragraph-container">
+                <div class="grid__cell">
+                    <h3 style="text-align:center">@Translate("Stop Impersonation")</h3>
+                    <div class="u-no-margin">@Translate("You are now logged in as a customer!")</div>
+                    <div class="u-margin-bottom">@Translate("Stop impersonating when you want to log in as another user", "Stop impersonating when you want to log in as another user")</div>
+                    <form method="post" class="u-pull--right u-no-margin">
+                        <input type="submit" class="btn btn--secondary dw-mod u-no-margin" name="DwExtranetRemoveSecondaryUser" value="@stopImpersonateTranslation">
+                    </form>
+                </div>
+            </div>
+            }
+</div>

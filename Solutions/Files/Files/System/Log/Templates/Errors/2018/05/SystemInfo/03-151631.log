@@ -1,0 +1,15 @@
+2018-05-03 15:16:31.3879|ERROR|Templates|Error in razor template
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at CompiledRazorTemplates.Dynamic.acfdbebadfcadf.Execute()
+   at RazorEngine.Templating.TemplateBase.RazorEngine.Templating.ITemplate.Run(ExecuteContext context)
+   at RazorEngine.Templating.TemplateService.Run(ITemplate template, DynamicViewBag viewBag)
+   at RazorEngine.Templating.TemplateService.Parse(String razorTemplate, Object model, DynamicViewBag viewBag, String cacheName)
+   at RazorEngine.Razor.Parse[T](String razorTemplate, T model, String cacheName)
+   at Dynamicweb.Rendering.Template.RenderRazorTemplate()
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at CompiledRazorTemplates.Dynamic.acfdbebadfcadf.Execute()
+   at RazorEngine.Templating.TemplateBase.RazorEngine.Templating.ITemplate.Run(ExecuteContext context)
+   at RazorEngine.Templating.TemplateService.Run(ITemplate template, DynamicViewBag viewBag)
+   at RazorEngine.Templating.TemplateService.Parse(String razorTemplate, Object model, DynamicViewBag viewBag, String cacheName)
+   at RazorEngine.Razor.Parse[T](String razorTemplate, T model, String cacheName)
+   at Dynamicweb.Rendering.Template.RenderRazorTemplate()

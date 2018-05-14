@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Status>
+  <StartTime Ticks="636608800516501680" Humanized="2018-05-02 17:47:31" />
+  <EndTime Ticks="636608800516701702" Humanized="2018-05-02 17:47:31" />
+  <Runtime>28</Runtime>
+  <Count>0</Count>
+  <TotalCount>0</TotalCount>
+  <State>Failed</State>
+  <Fail>
+    <Reason>File index builder experienced a fatal error.</Reason>
+    <ExceptionMessage>Directory 'E:\impersonate\Solutions\Files\Files\DigitalAssets' does not exist.</ExceptionMessage>
+    <ExceptionStackTrace>   at Dynamicweb.Content.Files.FileIndexBuilder.ProcessFiles()
+   at Dynamicweb.Content.Files.FileIndexBuilder.Build(IIndexWriter writer, Tracker tracker)</ExceptionStackTrace>
+  </Fail>
+  <LogInformation>Closed index writer.</LogInformation>
+  <Meta>
+    <Build>Files</Build>
+  </Meta>
+</Status>

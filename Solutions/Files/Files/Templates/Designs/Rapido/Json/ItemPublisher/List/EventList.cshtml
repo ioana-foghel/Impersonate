@@ -1,0 +1,115 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Web;
+@using System.Linq;
+
+@{ 
+    string selectedEventType = HttpContext.Current.Request.QueryString.Get("EventType");
+    int signUpForEventPageId = GetPageIdByNavigationTag("SignUpForEventPage");
+}
+
+@functions {
+
+    public class Event
+    {
+        public string id { get; set; }
+        public string date { get; set; }
+        public string title { get; set; }
+        public string type { get; set; }
+        public string signUpLink { get; set; }
+        public string cost { get; set; }
+        public string location { get; set; }
+        public string link { get; set; }
+    }
+
+    public class EventType
+    {
+        public string id { get; set; }
+        public string title { get; set; }
+    }
+
+    public class Month
+    {
+        public string name { get; set; }
+        public List<Event> Events { get; set; }
+    }
+
+    public class Root
+    {
+        public List<Month> Months { get; set; }
+        public string selectedEventType { get; set;  }
+        public List<EventType> EventTypes { get; set; }
+    }
+}
+
+@{
+    List<Root> feedObject = new List<Root>();
+
+    Root feedRoot = new Root();
+
+    feedRoot.selectedEventType = String.IsNullOrEmpty(selectedEventType) ? Translate("All") : selectedEventType;
+    feedRoot.EventTypes = new List<EventType>();
+
+    EventType eventTypeObjectAll = new EventType();
+    eventTypeObjectAll.id = "";
+    eventTypeObjectAll.title = Translate("All");
+
+    feedRoot.EventTypes.Add(eventTypeObjectAll);
+
+    var eventTypeField = GetLoop("ItemPublisher:ItemType.Fields").FirstOrDefault((field) => field.GetString("ItemPublisher:ItemType.Field.SystemName") == "EventType");
+
+    foreach (var eventType in eventTypeField.GetLoop("ItemPublisher:ItemType.Field.Options"))
+    {
+        EventType eventTypeObject = new EventType();
+        eventTypeObject.id = eventType.GetString("ItemPublisher:ItemType.Field.Option.Value");
+        eventTypeObject.title = eventType.GetString("ItemPublisher:ItemType.Field.Option.Label");
+
+        feedRoot.EventTypes.Add(eventTypeObject);
+
+        if (selectedEventType == eventTypeObject.id)
+        {
+            feedRoot.selectedEventType = eventTypeObject.title;
+        }
+    }
+
+    feedRoot.Months = new List<Month>();
+
+    var months = GetLoop("ItemPublisher:Items.List").GroupBy(x => x.GetDate("ItemPublisher:Item.DateAndTime").Month).ToDictionary(y => y.Key, z => z.ToList());
+    foreach (var month in months)
+    {
+        Month monthObject = new Month();
+        monthObject.name = new DateTime(2010, month.Key, 1).ToString("MMMM", System.Globalization.CultureInfo.CurrentCulture);
+        monthObject.Events = new List<Event>();
+        foreach (var eventInfo in month.Value)
+        {
+            Event eventObject = new Event();
+            eventObject.id = eventInfo.GetString("ItemPublisher:Item.Field.Id");
+            eventObject.title = eventInfo.GetString("ItemPublisher:Item.Title");
+            eventObject.date = eventInfo.GetDate("ItemPublisher:Item.DateAndTime").ToString("MMM. dd");
+            eventObject.type = feedRoot.EventTypes.FirstOrDefault(x => x.id == eventInfo.GetString("ItemPublisher:Item.EventType")).title;
+            eventObject.cost = eventInfo.GetString("ItemPublisher:Item.ParticipationFee");
+            eventObject.location = eventInfo.GetString("ItemPublisher:Item.Location");
+            eventObject.link = "/Default.aspx?ID=" + eventInfo.GetString("ItemPublisher:Item.Field.PageId");
+            
+            string signUpLink = "";
+
+            if (eventInfo.GetString("ItemPublisher:Item.SignUp") == "External")
+            {
+                signUpLink = eventInfo.GetString("ItemPublisher:Item.SignUpLink");
+            }
+            else
+            {
+                signUpLink = "/Default.aspx?Id=" + signUpForEventPageId + "&eventId=" + eventObject.id + "&eventName=" + HttpUtility.UrlEncode(eventObject.title);
+            }
+            eventObject.signUpLink = signUpLink;
+
+
+            monthObject.Events.Add(eventObject);
+        }
+        feedRoot.Months.Add(monthObject);
+    }
+
+    feedObject.Add(feedRoot);
+    string jsonFeed = Newtonsoft.Json.JsonConvert.SerializeObject(feedObject);
+}
+
+@jsonFeed

@@ -1,0 +1,9 @@
+2018-05-09 11:11:55.307: Running.
+2018-05-09 11:11:55.307: Fetching build definition.
+2018-05-09 11:11:55.313: Fetched build definition. 'Dynamicweb.Content.ContentIndexBuilder'.
+2018-05-09 11:11:55.313: Creating index writer.
+2018-05-09 11:11:55.313: Created index writer: 'Dynamicweb.Indexing.Lucene.LuceneIndexWriter'.
+2018-05-09 11:11:55.313: Starting build process.
+2018-05-09 11:11:56.332: BuildIndex failed.. Lucene.Net.Store.LockObtainFailedException: Lock obtain timed out: NativeFSLock@E:\impersonate\Solutions\Files\Files\System\Indexes\Content\Content builder\ContentIndex\write.lock    at Lucene.Net.Store.Lock.Obtain(Int64 lockWaitTimeout)    at Lucene.Net.Index.IndexWriter.Init(Directory d, Analyzer a, Boolean create, IndexDeletionPolicy deletionPolicy, Int32 maxFieldLength, IndexingChain indexingChain, IndexCommit commit)    at Lucene.Net.Index.IndexWriter..ctor(Directory d, Analyzer a, Boolean create, MaxFieldLength mfl)    at Dynamicweb.Indexing.Lucene.LuceneIndexWriter.Open(Boolean openForAppend)    at Dynamicweb.Content.ContentIndexBuilder.Build(IIndexWriter writer, Tracker tracker)    at Dynamicweb.Indexing.Index.Build(String instance, String name, Tracker tracker)    at Dynamicweb.Indexing.IndexService.<>c__DisplayClass14_0.<BuildIndex>b__0(Tracker tracker)
+2018-05-09 11:11:56.332: BuildIndex failed.
+2018-05-09 11:11:56.332: Failed.

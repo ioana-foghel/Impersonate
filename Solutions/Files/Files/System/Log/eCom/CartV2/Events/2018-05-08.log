@@ -1,0 +1,431 @@
+2018-05-08 09:40:23.4306|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 09:40:23.4711|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 09:40:23.4891|INFO|eCom/CartV2/Events|Order CART728: Setting currency rate to 750
+2018-05-08 09:40:23.4930|INFO|eCom/CartV2/Events|Order CART728: Setting currency name to Euro
+2018-05-08 09:40:23.4930|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 09:40:23.5381|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 09:40:23.5381|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 09:40:23.5381|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 09:40:23.5381|INFO|eCom/CartV2/Events|Order CART728: No fields saved to the order
+2018-05-08 09:40:23.6246|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 09:40:23.6246|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 09:40:27.9046|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 09:40:27.9046|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 09:40:27.9237|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 09:40:27.9852|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 09:40:27.9852|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 09:40:27.9902|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 09:40:28.0472|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 09:40:28.0472|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 09:40:28.3704|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 09:40:28.3704|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 09:40:28.3844|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 09:40:28.4485|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 09:40:28.4485|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 09:40:28.4485|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 09:40:28.4705|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 09:40:28.4705|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 09:40:49.1897|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 09:40:49.1897|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 09:40:49.3167|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 09:40:49.3588|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 09:40:49.3588|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 09:40:49.3665|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 09:40:49.3665|INFO|eCom/CartV2/Events|Order CART728: No fields saved to the order
+2018-05-08 09:40:49.5273|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 09:40:49.5273|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 09:40:53.1631|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 09:40:53.1631|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 09:40:53.1631|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 09:40:53.2189|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 09:40:53.2189|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 09:40:53.2259|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 09:40:53.3289|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 09:40:53.3289|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 09:40:53.4493|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 09:40:53.4493|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 09:40:53.4653|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 09:40:53.5143|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 09:40:53.5143|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 09:40:53.5233|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 09:40:53.6134|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 09:40:53.6154|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 09:54:20.2230|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 09:54:20.2230|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 09:54:20.2410|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 09:54:20.2830|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 09:54:20.2830|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 09:54:20.2900|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 09:54:20.2900|INFO|eCom/CartV2/Events|Order CART728: No fields saved to the order
+2018-05-08 09:54:20.4069|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 09:54:20.4069|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 09:54:24.0471|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 09:54:24.0471|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 09:54:24.0601|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 09:54:24.1134|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 09:54:24.1168|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 09:54:24.1168|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 09:54:24.3277|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 09:54:24.3277|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 09:54:24.4548|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 09:54:24.4548|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 09:54:24.4769|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 09:54:24.5229|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 09:54:24.5229|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 09:54:24.5229|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 09:54:24.6360|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 09:54:24.6360|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 09:55:18.1085|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 09:55:18.1085|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 09:55:18.1286|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 09:55:18.1983|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 09:55:18.1983|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 09:55:18.1983|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 09:55:18.3173|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 09:55:18.3211|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 09:55:18.5368|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 09:55:18.5368|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 09:55:18.5748|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 09:55:18.6929|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 09:55:18.6959|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 09:55:18.6959|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 09:55:18.8637|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 09:55:18.8667|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:06:54.0967|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:06:54.0967|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:06:54.1041|INFO|eCom/CartV2/Events|Order CART728: Setting user details from the user with id 23 and username 'ioana'
+2018-05-08 12:06:54.1041|INFO|eCom/CartV2/Events|Order CART728: Impersonation type: replace user
+2018-05-08 12:06:54.2160|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:06:54.2790|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:06:54.2790|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:06:54.2790|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:06:54.4238|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:06:54.4238|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:06:54.7779|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:06:54.7779|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:06:54.7939|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:06:54.8539|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:06:54.8539|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:06:54.8539|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:06:54.9577|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:06:54.9597|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:07:17.3414|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:07:17.3414|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:07:17.3524|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:07:17.4075|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:07:17.4075|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:07:17.4125|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:07:17.4875|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:07:17.4908|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:07:17.6803|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:07:17.6803|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:07:17.7284|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:07:17.7640|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:07:17.7640|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:07:17.7750|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:07:17.8420|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:07:17.8420|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:33:50.2883|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:33:50.2883|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:33:50.3113|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:33:50.3534|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:33:50.3534|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:33:50.3534|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:33:50.3534|INFO|eCom/CartV2/Events|Order CART728: No fields saved to the order
+2018-05-08 12:33:50.4817|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:33:50.4817|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:34:21.6980|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:34:21.6980|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:34:21.7159|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:34:21.7610|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:34:21.7610|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:34:21.7610|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:34:21.7713|INFO|eCom/CartV2/Events|Order CART728: No fields saved to the order
+2018-05-08 12:34:21.8803|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:34:21.8843|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:34:25.9447|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:34:25.9447|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:34:25.9447|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:34:26.0004|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:34:26.0004|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:34:26.0004|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:34:26.0679|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:34:26.0709|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:34:26.1868|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:34:26.1868|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:34:26.2068|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:34:26.2429|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:34:26.2429|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:34:26.2429|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:34:26.3850|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:34:26.3850|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:34:56.6958|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:34:56.6958|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:34:56.7165|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:34:56.7757|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:34:56.7757|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:34:56.7757|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:34:56.8849|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:34:56.8849|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:34:57.0777|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:34:57.0777|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:34:57.0957|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:34:57.2238|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:34:57.2278|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:34:57.2278|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:34:57.3719|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:34:57.3819|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:35:22.2292|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:35:22.2292|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:35:22.2473|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:35:22.2874|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:35:22.2874|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:35:22.2874|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:35:22.3823|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:35:22.3823|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:35:22.7355|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:35:22.7355|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:35:22.7475|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:35:22.8092|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:35:22.8092|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:35:22.8092|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:35:22.8762|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:35:22.8762|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:35:44.4152|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:35:44.4152|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:35:44.4282|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:35:44.4448|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:35:44.4448|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:35:44.4448|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:35:44.4878|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:35:44.4902|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:35:44.6627|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:35:44.6627|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:35:44.7476|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:35:44.8036|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:35:44.8036|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:35:44.8186|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:35:44.8977|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:35:44.8977|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:35:57.8766|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:35:57.8766|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:35:57.8957|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:35:57.9125|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:35:57.9125|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:35:57.9125|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:35:57.9125|INFO|eCom/CartV2/Events|Order CART728: No fields saved to the order
+2018-05-08 12:35:58.0146|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:35:58.0146|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:01.7365|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:01.7365|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:01.7705|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:36:01.8635|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:01.8765|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:36:01.8826|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:02.0527|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:02.0527|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:02.2238|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:02.2248|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:02.3299|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:36:02.4570|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:02.4640|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:36:02.4770|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:02.6921|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:02.6981|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:08.5470|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:08.5470|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:08.5670|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:36:08.6120|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:08.6160|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:08.7256|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:08.7256|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:08.8035|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:08.8035|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:08.8185|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:36:08.8636|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:08.8678|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:36:08.8678|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:08.9621|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:08.9621|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:09.3197|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:09.3197|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:09.3197|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:36:09.3466|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:09.3466|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:36:09.3516|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:09.3874|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:09.3874|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:09.5002|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:09.5002|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:09.5292|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:36:09.5533|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:09.5533|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:36:09.5533|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:09.6243|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:09.6243|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:23.2320|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:23.2320|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:23.2487|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:36:23.2667|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:23.2667|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:36:23.2716|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:23.2716|INFO|eCom/CartV2/Events|Order CART728: No fields saved to the order
+2018-05-08 12:36:23.3547|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:23.3547|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:27.2605|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:27.2605|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:27.2795|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:36:27.2975|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:27.2975|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:36:27.3024|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:27.3414|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:27.3414|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:27.4655|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:27.4655|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:27.4946|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:36:27.5306|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:27.5306|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:36:27.5376|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:27.5996|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:27.5996|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:41.4787|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:41.4787|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:41.4990|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:36:41.5178|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:41.5178|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:36:41.5228|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:41.5228|INFO|eCom/CartV2/Events|Order CART728: No fields saved to the order
+2018-05-08 12:36:41.7145|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:41.7145|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:45.6997|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:45.6997|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:45.7136|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:36:45.7315|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:45.7315|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:36:45.7315|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:45.7777|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:45.7777|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:36:45.8958|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:36:45.8978|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:36:45.9288|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:36:45.9699|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:36:45.9759|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:36:45.9759|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:36:46.0479|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:36:46.0479|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:37:22.7497|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:37:22.7497|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:37:22.7747|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:37:22.8187|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:37:22.8187|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:37:22.8187|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:37:22.8187|INFO|eCom/CartV2/Events|Order CART728: No fields saved to the order
+2018-05-08 12:37:22.9438|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:37:22.9438|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:37:30.6667|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:37:30.6667|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:37:30.6877|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:37:30.7327|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:37:30.7327|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:37:30.7327|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:37:30.8266|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:37:30.8266|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:37:30.9496|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:37:30.9496|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:37:30.9917|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:37:31.0317|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:37:31.0367|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:37:31.0367|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:37:31.1348|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:37:31.1348|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:37:55.9403|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:37:55.9403|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:37:55.9614|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 12:37:55.9804|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:37:55.9804|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:37:55.9804|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:37:56.0273|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:37:56.0273|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 12:37:56.1456|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 12:37:56.1466|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 12:37:56.1876|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 12:37:56.2276|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 12:37:56.2276|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 12:37:56.2276|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 12:37:56.2947|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 12:37:56.2947|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 14:42:25.5046|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 14:42:25.5046|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 14:42:25.5166|INFO|eCom/CartV2/Events|Order CART728: Setting user details from the user with id 23 and username 'ioana'
+2018-05-08 14:42:25.5166|INFO|eCom/CartV2/Events|Order CART728: Impersonation type: replace user
+2018-05-08 14:42:25.6987|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 14:42:25.7567|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 14:42:25.7567|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 14:42:25.7675|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 14:42:25.9066|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 14:42:25.9066|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 14:42:26.1023|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 14:42:26.1023|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 14:42:26.1303|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 14:42:26.4470|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 14:42:26.4470|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 14:42:26.4565|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 14:42:26.6026|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 14:42:26.6026|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 14:44:43.1051|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 14:44:43.1051|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 14:44:43.1377|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 14:44:43.2240|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 14:44:43.2240|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 14:44:43.2240|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 14:44:43.3583|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 14:44:43.3623|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 14:44:46.7465|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 14:44:46.7465|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 14:44:46.7745|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 14:44:46.8776|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 14:44:46.8776|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 14:44:46.8776|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 14:44:47.0230|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 14:44:47.0230|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 14:47:10.2178|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 14:47:10.2188|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 14:47:10.2466|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 14:47:10.3074|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 14:47:10.3074|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 14:47:10.3149|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 14:47:10.4241|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 14:47:10.4241|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 14:47:10.6399|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 14:47:10.6399|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 14:47:10.6744|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 14:47:10.8020|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 14:47:10.8020|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 14:47:10.8020|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 14:47:11.1596|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 14:47:11.1596|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 15:10:59.8304|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 15:10:59.8304|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 15:10:59.8564|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 15:10:59.9041|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 15:10:59.9081|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 15:10:59.9081|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 15:10:59.9081|INFO|eCom/CartV2/Events|Order CART728: No fields saved to the order
+2018-05-08 15:11:00.0435|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 15:11:00.0468|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 15:43:45.2279|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 15:43:45.2279|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 15:43:45.2594|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to SHOP1
+2018-05-08 15:43:45.3436|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 15:43:45.3436|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 15:43:45.3436|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 15:43:45.4866|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 15:43:45.4866|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0
+2018-05-08 15:43:45.6482|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-08 15:43:45.6482|INFO|eCom/CartV2/Events|Order CART728: Getting order from Context.Cart: CART728
+2018-05-08 15:43:45.6802|INFO|eCom/CartV2/Events|Order CART728: Setting shop id to 
+2018-05-08 15:43:45.7903|INFO|eCom/CartV2/Events|Order CART728: Previous step: 0
+2018-05-08 15:43:45.7903|INFO|eCom/CartV2/Events|Order CART728: Order is not complete, next step is the first step: 0
+2018-05-08 15:43:45.8003|INFO|eCom/CartV2/Events|Order CART728: Next step: 0
+2018-05-08 15:43:45.9805|INFO|eCom/CartV2/Events|Order CART728: Render step: 0
+2018-05-08 15:43:45.9805|INFO|eCom/CartV2/Events|Order CART728: Rendering step 0

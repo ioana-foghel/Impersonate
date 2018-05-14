@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Task Type="Dynamicweb.Indexing.Tasks.IndexBuilderTaskProvider, Dynamicweb.Indexing" Start="2018-05-07 13.00.00" Repeat="60">
+  <Parameters>
+    <Index>Users.index</Index>
+    <Build>Users</Build>
+  </Parameters>
+</Task>

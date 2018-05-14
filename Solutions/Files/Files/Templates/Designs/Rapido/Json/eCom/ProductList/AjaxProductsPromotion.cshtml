@@ -1,0 +1,45 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Web;
+
+@functions {
+    string AddSpaceAfterCurrency(string str)
+    {
+        return str.Insert(str.IndexOfAny("0123456789-".ToCharArray()), " ");
+    }
+
+    public class Product
+    {
+        public string id { get; set; }
+        public string name { get; set; }
+        public string number { get; set; }
+        public string price { get; set; }
+        public string discount { get; set; }
+        public string onSale { get; set; }
+        public string link { get; set; }
+        public string image { get; set; }
+        public string noImage { get; set; }
+    }
+}
+
+@{
+    List<Product> feedObject = new List<Product>();
+
+    foreach (LoopItem product in GetLoop("Products"))
+    {
+        Product productObject = new Product();
+        productObject.id = product.GetString("Ecom:Product.ID");
+        productObject.name = product.GetString("Ecom:Product.Name");
+        productObject.number = product.GetString("Ecom:Product.Number");
+        productObject.discount = product.GetString("Ecom:Product.Discount.Price.PriceWithVATFormatted") != product.GetString("Ecom:Product.Price.PriceWithVATFormatted") ? AddSpaceAfterCurrency(product.GetString("Ecom:Product.Price.PriceWithVATFormatted")) : "";
+        productObject.price = AddSpaceAfterCurrency(product.GetString("Ecom:Product.Discount.Price.PriceWithVATFormatted") != product.GetString("Ecom:Product.Price.PriceWithVATFormatted") ? product.GetString("Ecom:Product.Discount.Price.PriceWithVATFormatted") : product.GetString("Ecom:Product.Price.PriceWithVATFormatted"));
+        productObject.onSale = product.GetString("Ecom:Product.Discount.Price.PriceWithVATFormatted") == product.GetString("Ecom:Product.Price.PriceWithVATFormatted") ? "u-hidden" : "";
+        productObject.link = "/" + product.GetString("Ecom:Product.LinkGroup.Clean") + (!String.IsNullOrEmpty(product.GetString("Ecom:Product.VariantID")) ? "&VariantID=" + product.GetString("Ecom:Product.VariantID") : "");
+        productObject.image = product.GetString("Ecom:Product.ImageLarge.Default.Clean");
+        productObject.noImage = string.IsNullOrEmpty(product.GetString("Ecom:Product.ImageLarge.Default.Clean")) ? "u-hidden" : "";
+        feedObject.Add(productObject);
+    }
+
+    string jsonFeed = Newtonsoft.Json.JsonConvert.SerializeObject(feedObject);
+}
+
+@jsonFeed

@@ -1,0 +1,56 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Web;
+
+@functions {
+    public class File
+    {
+        public string path { get; set; }
+        public string name { get; set; }
+        public int size { get; set; }
+        public bool selected { get; set; }
+        public string listIcon { get; set; }
+        public string buttonAction { get; set; }
+
+        public string template { get; set; }
+        public string groupId { get; set; }
+        public string searchParameter { get; set; }
+    }
+}
+
+@{
+    string searchParameter = !String.IsNullOrEmpty(HttpContext.Current.Request["Search"]) ? HttpContext.Current.Request.QueryString.Get("Search") : "";
+    string groupId = !String.IsNullOrEmpty(HttpContext.Current.Request["GroupID"]) ? HttpContext.Current.Request.QueryString.Get("GroupID") : "";
+    string template = !String.IsNullOrEmpty(HttpContext.Current.Request["Template"]) ? HttpContext.Current.Request.QueryString.Get("Template") : "SearchContentTemplate";
+
+    //Reads the selected files from Session
+    string filesFeed = Newtonsoft.Json.JsonConvert.SerializeObject(HttpContext.Current.Session["PIM_Files"]);
+    var selectedFiles = Newtonsoft.Json.JsonConvert.DeserializeObject<List<File>>(filesFeed);
+
+    List<File> filesFeedObject = new List<File>();
+
+    foreach (var result in GetLoop("QueryResultItem"))
+    {
+        var resultProperties = result.GetLoop("Properties").ToDictionary(x => x.GetString("Name"), y => y.GetString("Value"));
+
+        File fileObject = new File();
+        fileObject.template = template;
+        fileObject.path = "Files" + resultProperties["DirectoryRelativePath"] + "/" + resultProperties["FileName"];
+        fileObject.name = resultProperties["FileName"];
+        fileObject.size = Dynamicweb.Core.Converter.ToInt32(resultProperties["FileSize"]) / 1024;
+        fileObject.selected = selectedFiles != null ? selectedFiles.Any(file => file.path == fileObject.path) : false;
+        fileObject.listIcon = fileObject.selected ? "fa-minus" : "fa-plus";
+        fileObject.buttonAction = fileObject.selected ? "RemoveFilePath" : "AddFilePath";
+
+        filesFeedObject.Add(fileObject);
+    }
+
+    File searchMoreObject = new File();
+    searchMoreObject.template = "SearchMore";
+    searchMoreObject.searchParameter = searchParameter;
+    searchMoreObject.groupId = groupId;
+    filesFeedObject.Add(searchMoreObject);
+
+    string jsonFeed = Newtonsoft.Json.JsonConvert.SerializeObject(filesFeedObject);
+}
+
+@jsonFeed

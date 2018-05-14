@@ -1,0 +1,187 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Web;
+@using System.Collections;
+@using System.Linq;
+
+@functions {
+    public class File
+    {
+        public string path { get; set; }
+        public string name { get; set; }
+        public string extension { get; set; }
+        public int size { get; set; }
+        public string lastWriteTime { get; set; }
+        public bool selected { get; set; }
+        public string listIcon { get; set; }
+        public string buttonAction { get; set; }
+    }
+
+    public class Root
+    {
+        public Root()
+        {
+            FilesList = new List<File>();
+        }
+
+        public int currentPage { get; set; }
+        public int totalPages { get; set; }
+        public int pageSize { get; set; }
+        //public int filesCount { get; set; }
+        public string nextdisabled { get; set; }
+        public List<File> FilesList { get; set; }
+        //public int totalFiles { get; set; }
+        public List<FacetGroup> FacetGroups { get; set; }
+        public List<FacetSelection> FacetSelections { get; set; }
+    }
+
+    public class FacetSelection
+    {
+        public string template { get; set; }
+        public string group { get; set; }
+        public string name { get; set; }
+        public string value { get; set; }
+        public string queryParameter { get; set; }
+    }
+
+    public class FacetOption
+    {
+        public string template { get; set; }
+        public string name { get; set; }
+        public string value { get; set; }
+        public string queryParameter { get; set; }
+        public string currency { get; set; }
+        public string weight { get; set; }
+        public string label { get; set; }
+        public string count { get; set; }
+        public string disabled { get; set; }
+        public string selected { get; set; }
+    }
+
+    public class FacetGroup
+    {
+        public string counter { get; set; }
+        public string name { get; set; }
+        public List<FacetOption> FacetOptions { get; set; }
+    }
+}
+
+@{
+    List<Root> feedObject = new List<Root>();
+
+    Root feedRoot = new Root();
+
+    feedRoot.currentPage = GetInteger("DwPaging.CurrentPage");
+    feedRoot.totalPages = GetInteger("DwPaging.PageCount");
+    feedRoot.pageSize = GetInteger("Ecom:ProductList.PageSize");
+    //feedRoot.filesCount = GetString("Ecom:ProductList.PageProdCnt");
+    feedRoot.nextdisabled = string.IsNullOrWhiteSpace(GetString("DwPaging.NextPageLink")) ? "disabled" : "";
+
+    //Reads the selected files from Session
+    string filesFeed = Newtonsoft.Json.JsonConvert.SerializeObject(HttpContext.Current.Session["PIM_Files"]);
+    var selectedFiles = Newtonsoft.Json.JsonConvert.DeserializeObject<List<File>>(filesFeed);
+
+    foreach (var result in GetLoop("QueryResultItem"))
+    {
+        var resultProperties = result.GetLoop("Properties").ToDictionary(x => x.GetString("Name"), y => y.GetString("Value"));
+
+        File fileObject = new File();
+        fileObject.path = "Files" + resultProperties["DirectoryRelativePath"] + "/" + resultProperties["FileName"];
+        fileObject.name = resultProperties["FileName"];
+        fileObject.extension = resultProperties["Extension"];
+        fileObject.lastWriteTime = resultProperties["LastWriteTime"];
+        fileObject.size = Dynamicweb.Core.Converter.ToInt32(resultProperties["FileSize"]) / 1024;
+        fileObject.selected = selectedFiles != null ? selectedFiles.Any(file => file.path == fileObject.path) : false;
+        fileObject.listIcon = fileObject.selected ? "fa-minus" : "fa-plus";
+        fileObject.buttonAction = fileObject.selected ? "RemoveFilePath" : "AddFilePath";
+
+        feedRoot.FilesList.Add(fileObject);
+    }
+
+    feedRoot.FacetGroups = new List<FacetGroup>();
+
+    foreach (LoopItem facetGroup in GetLoop("FacetGroups"))
+    {
+        foreach (LoopItem facetItem in facetGroup.GetLoop("Facets"))
+        {
+            if (facetItem.GetInteger("Facet.OptionWithResultCount") > 0 && facetItem.GetInteger("Facet.OptionResultTotalCount") > 0)
+            {
+                FacetGroup facetGroupObject = new FacetGroup();
+                facetGroupObject.counter = facetItem.GetString("Facets.LoopCounter");
+                facetGroupObject.name = facetItem.GetString("Facet.Name");
+                facetGroupObject.FacetOptions = new List<FacetOption>();
+
+                foreach (LoopItem facetOption in facetItem.GetLoop("FacetOptions"))
+                {
+                    string facetName = facetOption.GetString("FacetOption.Name");
+
+                    if (facetName == "True")
+                    {
+                        facetName = Translate("Yes");
+                    }
+
+                    if (facetName == "False")
+                    {
+                        facetName = Translate("No");
+                    }
+
+                    FacetOption facetOptionObject = new FacetOption();
+                    facetOptionObject.template = facetItem.GetString("Facet.RenderType");
+                    facetOptionObject.name = facetName;
+                    facetOptionObject.count = facetOption.GetString("FacetOption.Count");
+                    facetOptionObject.label = facetOption.GetString("FacetOption.Label");
+                    facetOptionObject.value = facetOption.GetString("FacetOption.Value");
+                    facetOptionObject.queryParameter = facetItem.GetString("Facet.QueryParameter");
+                    facetOptionObject.disabled = facetOption.GetInteger("FacetOption.Count") == 0 ? "disabled" : "";
+                    facetOptionObject.selected = facetOption.GetBoolean("FacetOption.Selected") ? "checked" : "";
+                    facetGroupObject.FacetOptions.Add(facetOptionObject);
+                }
+
+                feedRoot.FacetGroups.Add(facetGroupObject);
+            }
+        }
+    }
+
+    feedRoot.FacetSelections = new List<FacetSelection>();
+
+    int facetSelectionCount = 0;
+
+    foreach (LoopItem facetGroup in GetLoop("FacetGroups"))
+    {
+        foreach (LoopItem facetItem in facetGroup.GetLoop("Facets"))
+        {
+            if (facetItem.GetInteger("Facet.OptionWithResultCount") > 0 && facetItem.GetInteger("Facet.OptionResultTotalCount") > 0)
+            {
+                foreach (LoopItem facetOption in facetItem.GetLoop("FacetOptions"))
+                {
+                    if (facetOption.GetBoolean("FacetOption.Selected"))
+                    {
+                        FacetSelection facetSelectionObject = new FacetSelection();
+                        facetSelectionObject.template = "SelectedFilter";
+                        facetSelectionObject.group = facetItem.GetString("Facet.Name");
+                        facetSelectionObject.name = facetOption.GetString("FacetOption.Name");
+                        facetSelectionObject.value = facetOption.GetString("FacetOption.Value");
+                        facetSelectionObject.queryParameter = facetItem.GetString("Facet.QueryParameter");
+                        feedRoot.FacetSelections.Add(facetSelectionObject);
+
+                        facetSelectionCount++;
+                    }
+                }
+            }
+        }
+    }
+
+    if (facetSelectionCount > 2)
+    {
+        FacetSelection facetAllObject = new FacetSelection();
+        facetAllObject.template = "ResetFilters";
+        feedRoot.FacetSelections.Insert(0, facetAllObject);
+    }
+
+    //feedRoot.totalUsersOnPage = feedRoot.Users.Count;
+
+    feedObject.Add(feedRoot);
+
+    string jsonFeed = Newtonsoft.Json.JsonConvert.SerializeObject(feedObject);
+}
+
+@jsonFeed

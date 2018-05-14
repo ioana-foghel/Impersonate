@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Status>
+  <StartTime Ticks="636613034607960386" Humanized="2018-05-07 15:24:20" />
+  <EndTime Ticks="636613034609041212" Humanized="2018-05-07 15:24:20" />
+  <Runtime>109</Runtime>
+  <Count>0</Count>
+  <TotalCount>0</TotalCount>
+  <State>Failed</State>
+  <Fail>
+    <Reason>BuildIndex failed.</Reason>
+    <ExceptionMessage>The conversion of a varchar data type to a datetime data type resulted in an out-of-range value.</ExceptionMessage>
+    <ExceptionStackTrace>   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean&amp; moreRows)
+   at System.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean&amp; more)
+   at System.Data.SqlClient.SqlDataReader.Read()
+   at System.Data.Common.DataAdapter.FillLoadDataRow(SchemaMapping mapping)
+   at System.Data.Common.DataAdapter.FillFromReader(DataSet dataset, DataTable datatable, String srcTable, DataReaderContainer dataReader, Int32 startRecord, Int32 maxRecords, DataColumn parentChapterColumn, Object parentChapterValue)
+   at System.Data.Common.DataAdapter.Fill(DataSet dataSet, String srcTable, IDataReader dataReader, Int32 startRecord, Int32 maxRecords)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   at Dynamicweb.Content.ContentIndexBuilder.LoadParagraphs()
+   at Dynamicweb.Content.ContentIndexBuilder.Build(IIndexWriter writer, Tracker tracker)
+   at Dynamicweb.Indexing.Index.Build(String instance, String name, Tracker tracker)
+   at Dynamicweb.Indexing.IndexService.&lt;&gt;c__DisplayClass14_0.&lt;BuildIndex&gt;b__0(Tracker tracker)</ExceptionStackTrace>
+  </Fail>
+  <LogInformation>Failed.</LogInformation>
+  <Meta>
+    <Build>Content builder</Build>
+  </Meta>
+</Status>

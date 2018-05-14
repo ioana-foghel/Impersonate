@@ -1,0 +1,11 @@
+2018-05-09 17:42:35.6937|ERROR|Templates|Additional System info has been logged|Error compiling razor template
+RazorEngine.Templating.TemplateCompilationException: Unable to compile template. The name 'uniqueId' does not exist in the current context
+
+Other compilation errors may have occurred. Check the Errors property for more information.
+   at RazorEngine.Compilation.DirectCompilerServiceBase.CompileType(TypeContext context)
+   at RazorEngine.Templating.TemplateService.CreateTemplateType(String razorTemplate, Type modelType)
+   at RazorEngine.Templating.TemplateService.GetTemplate[T](String razorTemplate, Object model, String cacheName)
+   at RazorEngine.Templating.TemplateService.GetTemplate(String razorTemplate, Object model, String cacheName)
+   at RazorEngine.Templating.TemplateService.Parse(String razorTemplate, Object model, DynamicViewBag viewBag, String cacheName)
+   at RazorEngine.Razor.Parse[T](String razorTemplate, T model, String cacheName)
+   at Dynamicweb.Rendering.Template.RenderRazorTemplate()

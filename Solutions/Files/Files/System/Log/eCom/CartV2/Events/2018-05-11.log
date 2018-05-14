@@ -1,0 +1,18 @@
+2018-05-11 14:34:26.8462|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-11 14:34:26.9100|INFO|eCom/CartV2/Events|Order CART732: Getting order from Context.Cart: CART732
+2018-05-11 14:34:26.9229|INFO|eCom/CartV2/Events|Order CART732: Setting user details from the user with id 23 and username 'ioana'
+2018-05-11 14:34:26.9229|INFO|eCom/CartV2/Events|Order CART732: Impersonation type: replace user
+2018-05-11 14:34:27.0149|INFO|eCom/CartV2/Events|Order CART732: Setting shop id to 
+2018-05-11 14:34:27.0869|INFO|eCom/CartV2/Events|Order CART732: Previous step: 0
+2018-05-11 14:34:27.0969|INFO|eCom/CartV2/Events|Order CART732: Order is not complete, next step is the first step: 0
+2018-05-11 14:34:27.0969|INFO|eCom/CartV2/Events|Order CART732: Next step: 0
+2018-05-11 14:34:27.3075|INFO|eCom/CartV2/Events|Order CART732: Render step: 0
+2018-05-11 14:34:27.3075|INFO|eCom/CartV2/Events|Order CART732: Rendering step 0
+2018-05-11 14:34:30.0268|INFO|eCom/CartV2/Events|Order <No order>: CartV2 frontend visited.
+2018-05-11 14:34:30.0268|INFO|eCom/CartV2/Events|Order CART732: Getting order from Context.Cart: CART732
+2018-05-11 14:34:30.0268|INFO|eCom/CartV2/Events|Order CART732: Setting shop id to SHOP1
+2018-05-11 14:34:30.1039|INFO|eCom/CartV2/Events|Order CART732: Previous step: 0
+2018-05-11 14:34:30.1039|INFO|eCom/CartV2/Events|Order CART732: Order is not complete, next step is the first step: 0
+2018-05-11 14:34:30.1039|INFO|eCom/CartV2/Events|Order CART732: Next step: 0
+2018-05-11 14:34:30.2170|INFO|eCom/CartV2/Events|Order CART732: Render step: 0
+2018-05-11 14:34:30.2170|INFO|eCom/CartV2/Events|Order CART732: Rendering step 0

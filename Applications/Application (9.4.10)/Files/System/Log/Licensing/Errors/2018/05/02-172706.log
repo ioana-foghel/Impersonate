@@ -1,0 +1,96 @@
+2018-05-02 17:27:06.6761|ERROR|Licensing|Installation:GetInstallationXml System data
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Dynamicweb.Content.Management.Installation.GetInstallationXml()
+2018-05-02 17:27:06.7801|ERROR|Licensing|Installation:GetInstallationXml System disk consumption
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Last[TSource](IEnumerable`1 source)
+   at Dynamicweb.Configuration.ConfigurationManager.SetValue[T](String key, T value)
+   at Dynamicweb.Content.Management.Installation.GetInstallationXml()
+2018-05-02 17:27:06.8281|ERROR|Licensing|Installation:GetInstallationXml SolutionStatistics
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user ''.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Dynamicweb.Data.DatabaseConnectionProvider.CreateConnection()
+   at Dynamicweb.Data.Database.CreateConnection()
+   at Dynamicweb.Data.Database.CreateDataReader(CommandBuilder commandBuilder, IDbConnection connection, IDbTransaction transaction, Int32 commandTimeout)
+   at Dynamicweb.Content.Management.SolutionStatistics.get_MaxNumberOfVisits()
+   at Dynamicweb.Content.Management.Installation.GetInstallationXml()
+ClientConnectionId:85c34533-e727-439b-a6d4-1673abfc266d
+Error Number:18456,State:1,Class:14
+2018-05-02 17:27:06.8801|ERROR|Licensing|Installation:GetInstallationXml SolutionStatistics 2
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user ''.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Dynamicweb.Data.DatabaseConnectionProvider.CreateConnection()
+   at Dynamicweb.Data.Database.CreateConnection()
+   at Dynamicweb.Data.Database.CreateDataReader(CommandBuilder commandBuilder, IDbConnection connection, IDbTransaction transaction, Int32 commandTimeout)
+   at Dynamicweb.Content.Management.SolutionStatistics.get_InstalledModules()
+   at Dynamicweb.Content.Management.Installation.GetInstallationXml()
+ClientConnectionId:85c34533-e727-439b-a6d4-1673abfc266d
+Error Number:18456,State:1,Class:14
+2018-05-02 17:27:06.9201|ERROR|Licensing|Installation:GetInstallationXml System data
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user ''.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Dynamicweb.Data.DatabaseConnectionProvider.CreateConnection()
+   at Dynamicweb.Data.Database.CreateConnection()
+   at Dynamicweb.Data.Database.CreateDataReader(String sql, IDbConnection connection, IDbTransaction transaction, Int32 commandTimeout, Dictionary`2 sqlParams)
+   at Dynamicweb.Security.SystemTools.Login.GetCustomModules()
+   at Dynamicweb.Security.Authorization.UserHasAccess(String key, String value)
+   at Dynamicweb.Content.Management.Solution.GetInstalledSolutionSettings()
+   at Dynamicweb.Content.Management.Solution.GetCMSSolutionDescription()
+   at Dynamicweb.Content.Management.Installation.GetInstallationXml()
+ClientConnectionId:85c34533-e727-439b-a6d4-1673abfc266d
+Error Number:18456,State:1,Class:14
+2018-05-02 17:27:06.9201|ERROR|Licensing|Installation:GetInstallationXml System disk consumption
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Last[TSource](IEnumerable`1 source)
+   at Dynamicweb.Configuration.ConfigurationManager.SetValue[T](String key, T value)
+   at Dynamicweb.Content.Management.Installation.GetInstallationXml()
+2018-05-02 17:27:06.9201|ERROR|Licensing|Installation:GetInstallationXml SolutionStatistics
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user ''.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Dynamicweb.Data.DatabaseConnectionProvider.CreateConnection()
+   at Dynamicweb.Data.Database.CreateConnection()
+   at Dynamicweb.Data.Database.CreateDataReader(CommandBuilder commandBuilder, IDbConnection connection, IDbTransaction transaction, Int32 commandTimeout)
+   at Dynamicweb.Content.Management.SolutionStatistics.get_MaxNumberOfVisits()
+   at Dynamicweb.Content.Management.Installation.GetInstallationXml()
+ClientConnectionId:85c34533-e727-439b-a6d4-1673abfc266d
+Error Number:18456,State:1,Class:14
+2018-05-02 17:27:06.9201|ERROR|Licensing|Installation:GetInstallationXml SolutionStatistics 2
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user ''.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Dynamicweb.Data.DatabaseConnectionProvider.CreateConnection()
+   at Dynamicweb.Data.Database.CreateConnection()
+   at Dynamicweb.Data.Database.CreateDataReader(CommandBuilder commandBuilder, IDbConnection connection, IDbTransaction transaction, Int32 commandTimeout)
+   at Dynamicweb.Content.Management.SolutionStatistics.get_InstalledModules()
+   at Dynamicweb.Content.Management.Installation.GetInstallationXml()
+ClientConnectionId:85c34533-e727-439b-a6d4-1673abfc266d
+Error Number:18456,State:1,Class:14

@@ -1,0 +1,16 @@
+2018-05-02 17:44:59.938: Running.
+2018-05-02 17:44:59.938: Fetching build definition.
+2018-05-02 17:44:59.938: Fetched build definition. 'Dynamicweb.Security.UserManagement.Indexing.UserIndexBuilder'.
+2018-05-02 17:44:59.946: Creating index writer.
+2018-05-02 17:44:59.946: Created index writer: 'Dynamicweb.Indexing.Lucene.LuceneIndexWriter'.
+2018-05-02 17:44:59.946: Starting build process.
+2018-05-02 17:44:59.946: Dynamicweb.Security.UserManagement.Indexing.UserIndexBuilder building using Dynamicweb.Indexing.Lucene.LuceneIndexWriter... Action: 'Full', Resume: 'False'
+2018-05-02 17:44:59.946: Opening index writer.
+2018-05-02 17:44:59.946: Opened index writer
+2018-05-02 17:44:59.946: Opening database connection.
+2018-05-02 17:44:59.990: Starting processing users.
+2018-05-02 17:44:59.994: Handling users
+2018-05-02 17:45:00.014: Closing index writer.
+2018-05-02 17:45:00.026: Closed index writer.
+2018-05-02 17:45:00.026: Ended build process.
+2018-05-02 17:45:00.026: Completed (3 / 3).

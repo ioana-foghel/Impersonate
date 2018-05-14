@@ -1,0 +1,17 @@
+2018-05-09 09:49:33.4496|ERROR|Templates|Additional System info has been logged|Error in razor template
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at Dynamicweb.Frontend.Content.GetModuleOutput(Paragraph paragraph, PageView pageview)
+   at System.Lazy`1.CreateValue()
+   at System.Lazy`1.LazyInitValue()
+   at CompiledRazorTemplates.Dynamic.cefdaeadabbf.<RenderModule>b__c(TextWriter __razor_helper_writer)
+   at RazorEngine.Templating.TemplateWriter.WriteTo(TextWriter writer)
+   at RazorEngine.Templating.TemplateBase.WriteTo(TextWriter writer, TemplateWriter helper)
+   at CompiledRazorTemplates.Dynamic.cefdaeadabbf.<>c__DisplayClass1.<RenderContent>b__0(TextWriter __razor_helper_writer)
+   at RazorEngine.Templating.TemplateWriter.WriteTo(TextWriter writer)
+   at RazorEngine.Templating.TemplateBase.Write(TemplateWriter helper)
+   at CompiledRazorTemplates.Dynamic.cefdaeadabbf.Execute()
+   at RazorEngine.Templating.TemplateBase.RazorEngine.Templating.ITemplate.Run(ExecuteContext context)
+   at RazorEngine.Templating.TemplateService.Run(ITemplate template, DynamicViewBag viewBag)
+   at RazorEngine.Templating.TemplateService.Parse(String razorTemplate, Object model, DynamicViewBag viewBag, String cacheName)
+   at RazorEngine.Razor.Parse[T](String razorTemplate, T model, String cacheName)
+   at Dynamicweb.Rendering.Template.RenderRazorTemplate()

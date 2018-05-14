@@ -1,0 +1,106 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Web;
+
+@{
+    string selectedCategory = HttpContext.Current.Request.QueryString.Get("Category");
+}
+
+@functions {
+
+    public class Blog
+    {
+        public string id { get; set; }
+        public string date { get; set; }
+        public string author { get; set; }
+        public string subscription { get; set; }
+        public string title { get; set; }
+        public string image { get; set; }
+        public string summary { get; set; }
+        public string link { get; set; }
+    }
+
+    public class Category
+    {
+        public string id { get; set; }
+        public string title { get; set; }
+    }
+
+    public class Root
+    {
+        public List<Blog> Blogs { get; set; }
+        public string selectedCategory { get; set; }
+        public List<Category> Categories { get; set; }
+    }
+
+    public string Truncate(string value, int maxChars)
+    {
+        return value.Length <= maxChars ? value : value.Substring(0, maxChars) + "...";
+    }
+}
+
+@{
+    List<Root> feedObject = new List<Root>();
+
+    Root feedRoot = new Root();
+    feedRoot.Blogs = new List<Blog>();
+
+    foreach (LoopItem blogItem in GetLoop("ItemPublisher:Items.List"))
+    {
+        Blog blogObject = new Blog();
+        blogObject.id = blogItem.GetString("ItemPublisher:Item.Field.Id");
+        blogObject.title = blogItem.GetString("ItemPublisher:Item.Title");
+        blogObject.image = blogItem.GetString("ItemPublisher:Item.Image");
+        blogObject.summary = Truncate(blogItem.GetString("ItemPublisher:Item.Summary"), 120);
+        blogObject.date = !string.IsNullOrWhiteSpace(blogItem.GetString("ItemPublisher:Item.Date")) ? blogItem.GetDate("ItemPublisher:Item.Date").ToString("dd.MM.yyyy, HH:mm") : "";
+        blogObject.author = blogItem.GetString("ItemPublisher:Item.Author");
+        blogObject.subscription = "";
+
+        if (!(string.IsNullOrWhiteSpace(blogObject.author) && string.IsNullOrWhiteSpace(blogObject.date)))
+        {
+            blogObject.subscription += Translate("Written");
+        }
+        if (!string.IsNullOrWhiteSpace(blogObject.author))
+        {
+            blogObject.subscription += " " + Translate("by") + " " + blogObject.author;
+        }
+        if (!string.IsNullOrWhiteSpace(blogObject.date))
+        {
+            blogObject.subscription += " " + Translate("on") + " " + blogObject.date;
+        }
+
+        blogObject.link = "/Default.aspx?ID=" + blogItem.GetString("ItemPublisher:Item.Field.PageId");
+
+        feedRoot.Blogs.Add(blogObject);
+    }
+
+    feedRoot.selectedCategory = Translate("All");
+    feedRoot.Categories = new List<Category>();
+
+    Category categoryObjectAll = new Category();
+    categoryObjectAll.id = "";
+    categoryObjectAll.title = Translate("All");
+
+    feedRoot.Categories.Add(categoryObjectAll);
+
+    var solutionFields = GetLoop("ItemPublisher:ItemType.Fields").FirstOrDefault((item) => item.GetString("ItemPublisher:ItemType.Field.SystemName") == "Category");
+
+    foreach (var categoryOptions in solutionFields.GetLoop("ItemPublisher:ItemType.Field.Options"))
+    {
+        Category solutionTypeObject = new Category();
+        solutionTypeObject.id = categoryOptions.GetString("ItemPublisher:ItemType.Field.Option.Value");
+        solutionTypeObject.title = categoryOptions.GetString("ItemPublisher:ItemType.Field.Option.Label");
+
+        feedRoot.Categories.Add(solutionTypeObject);
+
+        if (selectedCategory == categoryOptions.GetString("ItemPublisher:ItemType.Field.Option.Value"))
+        {
+            feedRoot.selectedCategory = categoryOptions.GetString("ItemPublisher:ItemType.Field.Option.Label");
+        }
+    }
+
+    feedObject.Add(feedRoot);
+
+    string jsonFeed = Newtonsoft.Json.JsonConvert.SerializeObject(feedObject);
+}
+
+@jsonFeed

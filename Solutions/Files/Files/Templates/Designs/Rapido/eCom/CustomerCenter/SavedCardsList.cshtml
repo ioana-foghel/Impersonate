@@ -1,0 +1,41 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+<div class="grid__col-12 grid__col--bleed">
+    <div class="grid__cell">
+        <div class="u-pull--left">
+            <h2><i class="fa fa-credit-card"></i> @GetGlobalValue("Global:Page.Name")</h2>
+        </div>
+    </div>
+</div>
+
+<div class="grid__col-12 grid__col--bleed">
+    @if (!string.IsNullOrWhiteSpace(GetString("Ecom:CustomerCenter.SavedCards.EmptyList")))
+    {
+        <div class="u-ta-center">@Translate("No saved cards found", "No saved cards found")</div>
+    }
+    else 
+    {
+        foreach (LoopItem card in GetLoop("SavedCards"))
+        {
+        <div class="grid__col-12 grid__col--border grid__col--bleed-x">
+            <div class="grid">
+                <div class="grid__col-md-4 grid__col-xs-12 grid__col--bleed-y">
+                    <div id="@card.GetString("Ecom:SavedCard.ID")" class="u-bold">@card.GetString("Ecom:SavedCard.Name")</div>
+                </div>
+                <div class="grid__col-md-4 grid__col-xs-12 grid__col--bleed-y">
+                    <div id="CardType_@card.GetString("Ecom:SavedCard.ID")" class="u-bold">@Translate("Card type"): @card.GetString("Ecom:SavedCard.CardType")</div>
+                    <div>@Translate("Payment method"): @card.GetString("Ecom:SavedCard.Payment")</div>
+                    <div>@Translate("Card no"). @card.GetString("Ecom:SavedCard.Identifier")</div>
+                </div>
+                <div class="grid__col-md-4 grid__col-xs-12 grid__col--bleed-y">
+                    <div class="grid__cell">
+                        <div class="u-pull--right">
+                            <a href="@card.GetString("Ecom:CustomerCenter.SavedCards.DeleteUrl")" title="@Translate("Delete saved card")" onclick="return confirm('Are you sure to delete saved card?');" class="btn btn--secondary btn--condensed dw-mod"><i class="fa fa-times"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    }
+</div>

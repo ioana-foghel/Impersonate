@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Status>
+  <StartTime Ticks="636614611153073570" Humanized="2018-05-09 11:11:55" />
+  <EndTime Ticks="636614611163421843" Humanized="2018-05-09 11:11:56" />
+  <Runtime>1035</Runtime>
+  <Count>0</Count>
+  <TotalCount>0</TotalCount>
+  <State>Failed</State>
+  <Fail>
+    <Reason>BuildIndex failed.</Reason>
+    <ExceptionMessage>Lock obtain timed out: NativeFSLock@E:\impersonate\Solutions\Files\Files\System\Indexes\Content\Content builder\ContentIndex\write.lock</ExceptionMessage>
+    <ExceptionStackTrace>   at Lucene.Net.Store.Lock.Obtain(Int64 lockWaitTimeout)
+   at Lucene.Net.Index.IndexWriter.Init(Directory d, Analyzer a, Boolean create, IndexDeletionPolicy deletionPolicy, Int32 maxFieldLength, IndexingChain indexingChain, IndexCommit commit)
+   at Lucene.Net.Index.IndexWriter..ctor(Directory d, Analyzer a, Boolean create, MaxFieldLength mfl)
+   at Dynamicweb.Indexing.Lucene.LuceneIndexWriter.Open(Boolean openForAppend)
+   at Dynamicweb.Content.ContentIndexBuilder.Build(IIndexWriter writer, Tracker tracker)
+   at Dynamicweb.Indexing.Index.Build(String instance, String name, Tracker tracker)
+   at Dynamicweb.Indexing.IndexService.&lt;&gt;c__DisplayClass14_0.&lt;BuildIndex&gt;b__0(Tracker tracker)</ExceptionStackTrace>
+  </Fail>
+  <LogInformation>Failed.</LogInformation>
+  <Meta>
+    <Build>Content builder</Build>
+  </Meta>
+</Status>

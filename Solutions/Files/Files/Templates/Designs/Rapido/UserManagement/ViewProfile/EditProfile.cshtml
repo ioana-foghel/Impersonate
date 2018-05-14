@@ -1,0 +1,44 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@{ 
+    string requestNewPassword = System.Web.HttpContext.Current.Request["UserManagement_Form_NewPassword"];
+    string requestConfirmPassword = System.Web.HttpContext.Current.Request["UserManagement_Form_NewPasswordConfirm"];
+}
+<div class="grid__col-lg-8 grid__col-md-8 grid__col-sm-12 grid__col-xs-12 grid__col--bleed">
+    <div class="grid__cell">        
+            <h3 style="text-align:center"><i class="fa fa-user"></i> @Translate("Edit user account")</h3>
+    @if ((!string.IsNullOrWhiteSpace(requestNewPassword) && requestNewPassword == requestConfirmPassword))
+    {
+        <p style="color:#265b8c; font-size:20px; font-weight:bold">@Translate("Your new password was saved", "Your new password was saved")</p><br />
+    }
+    </div>
+
+ <div class="grid__cell">
+     <div class="u-pull-left">
+         <label for="UserManagement_Form_Name">@Translate("Name:")</label>
+         <div class="u-full-width" id="UserManagement_Form_Name">@GetString("UserManagement:User.Name")</div>
+
+         <label for="UserManagement_Form_Email">@Translate("Email:")</label>         
+         <div class="u-full-width" id="UserManagement_Form_Email">@GetString("UserManagement:User.Email")</div>      
+    </div>
+</div><br />
+
+    @GetString("UserManagement:User.FormStart")
+        <div class="u-border u-padding u-margin-bottom">
+            <h3>@Translate("Change password?")</h3>
+
+            <label for="UserManagement_Form_NewPassword">@Translate("Old password")</label>
+            @GetString("UserManagement:User.OldPassword.Input").Replace("input ", "input class=\"u-full-width\"")
+            <div class="field-error dw-mod">@GetString("UserManagement:User.OldPassword.Input.Error")</div>
+
+            <label for="UserManagement_Form_NewPassword">@Translate("New password")</label>
+            @GetString("UserManagement:User.NewPassword.Input").Replace("input ", "input class=\"u-full-width\"")
+            <div class="field-error dw-mod">@GetString("UserManagement:User.NewPassword.Input.Error")</div>
+
+            <label for="UserManagement_Form_NewPasswordConfirm">@Translate("Confirm password")</label>
+            @GetString("UserManagement:User.NewPasswordConfirm.Input").Replace("input ", "input class=\"u-full-width\"")
+            <div class="field-error dw-mod">@GetString("UserManagement:User.NewPasswordConfirm.Input.Error")</div>
+        </div>
+
+        <button type="submit" class="btn btn--primary dw-mod" id="submitter">@Translate("Save changes")</button>
+    @GetString("UserManagement:User.FormEnd")
+</div>

@@ -1,0 +1,15 @@
+﻿// -----------------------------------------------------------------------------
+// Contains all styles related to the Wbsite settings LayoutTopBackgroundColor
+// -----------------------------------------------------------------------------
+
+.header-top.dw-mod {
+    .header-top-mixin();
+}
+
+.header-top-mixin() when not (@top-background-color = none) {
+    background-color: @top-background-color;
+
+    .header-menu__link:hover {
+       background-color: @top-background-color;
+    }
+}

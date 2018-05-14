@@ -1,0 +1,84 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+@Include("Includes/FeedHelpers.cshtml")
+
+@using System.Text;
+@using System.IO;
+@using System.Threading;
+@using System.Web;
+@using System.Xml.Linq;
+
+@{
+	string exportFormat = HttpContext.Current.Request.Form["format"];
+	string productId = HttpContext.Current.Request.QueryString.Get("ProductID");
+	string downloadParameter = HttpContext.Current.Request.Form["download"];
+	string filename = HttpContext.Current.Request.Form["filename"];
+	bool download = false;
+	
+	if(string.IsNullOrEmpty(filename))
+		{
+			filename = string.Format("export_{0}", DateTime.Now.ToString());
+		}
+	
+	if(!string.IsNullOrEmpty(downloadParameter))
+	{
+		download = bool.Parse(downloadParameter);
+	}
+	
+	var fields = new List<Field>();
+	
+	fields.Add(new Field("ID", "ID", "Ecom:Product.ID", FieldType.System));
+	fields.Add(new Field("Name", "Name", "Ecom:Product.Name", FieldType.Standard));
+	fields.Add(new Field("Number", "Number", "Ecom:Product.Number", FieldType.Standard));
+	fields.Add(new Field("ShortDescription", "Short description", "Ecom:Product.ShortDescription", FieldType.Standard));
+	fields.Add(new Field("LongDescription", "Long description", "Ecom:Product.LongDescription", FieldType.Standard));
+	fields.Add(new Field("Price", "Price", "Ecom:Product.Price.PriceWithVATFormatted", FieldType.Standard));
+	fields.Add(new Field("Created", "Created", "Ecom:Product.Created", FieldType.System));
+	fields.Add(new Field("Updated", "Updated", "Ecom:Product.Updated", FieldType.System));
+	fields.Add(new Field("Publication", "Publication Date", "Ecom:Product.Updated", FieldType.System));
+	
+	foreach(LoopItem customField in GetLoop("CustomFieldList"))
+	{
+	    var field = new Field(customField.GetString("Ecom:CustomField.System"), customField.GetString("Ecom:CustomField.Name"), "Ecom:Product:Field." + customField.GetString("Ecom:CustomField.Template"), FieldType.Custom);
+		fields.Add(field);
+	
+	}
+
+	if(exportFormat == "csv")
+	{
+		HttpContext.Current.Response.ContentType = "text/csv";
+		
+		HttpContext.Current.Response.AddHeader("Content-Disposition", string.Format("attachment;filename={0}.csv", filename));
+	}
+	else if(exportFormat == "json")
+	{
+		HttpContext.Current.Response.ContentType = "application/json";
+		
+		if(download)
+		{
+			HttpContext.Current.Response.AddHeader("Content-Disposition", string.Format("attachment;filename={0}.json", filename));
+		}
+	}
+	else if(exportFormat == "xml")
+	{
+		HttpContext.Current.Response.ContentType = "text/xml";
+		
+		if(download)
+		{
+			HttpContext.Current.Response.AddHeader("Content-Disposition", string.Format("attachment;filename={0}.xml", filename));
+		}
+	}
+}
+
+@if(exportFormat == "csv")
+{
+    HttpContext.Current.Response.Write(GenerateCsv(fields, productId));
+}
+else if(exportFormat == "json")
+{
+    HttpContext.Current.Response.Write(GenerateJson(fields, productId));
+}
+else if(exportFormat == "xml")
+{
+    HttpContext.Current.Response.Write(GenerateXml(fields, productId));
+}

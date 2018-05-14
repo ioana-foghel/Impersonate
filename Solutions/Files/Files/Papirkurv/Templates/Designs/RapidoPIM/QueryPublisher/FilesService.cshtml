@@ -1,0 +1,104 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Web;
+@using System.Collections;
+
+@functions {
+    public class File
+    {
+        public string path { get; set; }
+        public string name { get; set; }
+        public string extension { get; set; }
+    }
+
+    public class Root
+    {
+        public Root()
+        {
+            CartFiles = null;
+        }
+
+        public List<File> CartFiles { get; set; }
+    }
+}
+
+@{
+    List<Root> feedObject = new List<Root>();
+
+    Root feedRoot = new Root();
+
+    var addedFile = HttpContext.Current.Request["AddFilePath"];
+    var removedFile = HttpContext.Current.Request["RemoveFilePath"];
+    var resetValue = HttpContext.Current.Request["Reset"];
+
+    var selectedFiles = HttpContext.Current.Session["PIM_Files"] as List<File>;
+
+    if (!string.IsNullOrEmpty(addedFile))
+    {
+        selectedFiles = HttpContext.Current.Session["PIM_Files"] as List<File>;
+
+        if (selectedFiles == null)
+        {
+            selectedFiles = new List<File>();
+        }
+
+        var newFile = new File()
+        {
+            path = addedFile,
+            name = System.IO.Path.GetFileNameWithoutExtension(addedFile),
+            extension = System.IO.Path.GetExtension(addedFile)
+        };
+
+        if (!selectedFiles.Exists(file => file.path == addedFile))
+        {
+            selectedFiles.Add(newFile);
+        }
+
+        HttpContext.Current.Session["PIM_Files"] = selectedFiles;
+
+    }
+
+    if (!string.IsNullOrEmpty(removedFile))
+    {
+        var fileToRemove = selectedFiles.Find(file => file.path == removedFile);
+
+        if(fileToRemove != null)
+        {
+            selectedFiles.Remove(fileToRemove);
+        }
+
+        if(selectedFiles.Count == 0)
+        {
+            selectedFiles = null;
+        }
+
+        HttpContext.Current.Session["PIM_Files"] = selectedFiles;
+    }
+
+    if (!string.IsNullOrEmpty(resetValue))
+    {
+        bool reset = false;
+
+        if (bool.TryParse(resetValue, out reset))
+        {
+            if (reset)
+            {
+                selectedFiles = null;
+                HttpContext.Current.Session["PIM_Files"] = selectedFiles;
+            }
+        }
+    }
+
+    string jsonFeed = string.Empty;
+
+    if (selectedFiles != null && selectedFiles.Count > 0)
+    {
+        feedRoot.CartFiles = selectedFiles;
+
+
+        feedObject.Add(feedRoot);
+
+        jsonFeed = Newtonsoft.Json.JsonConvert.SerializeObject(feedObject);
+    }
+}
+
+@jsonFeed
